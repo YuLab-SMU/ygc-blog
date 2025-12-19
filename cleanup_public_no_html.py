@@ -22,7 +22,14 @@ def process_directory(current_dir: Path) -> bool:
     返回 True 表示该目录应该保留。
     返回 False 表示该目录已被移除。
     """
-    
+
+    # 0. 特殊例外规则：tags 目录及其子内容都保留
+    if current_dir == public_root / "tags":
+        return True
+
+    if current_dir == public_root / "static":
+        return True
+
     # 1. 优先检查特殊规则：如果是 assets 且父目录有 HTML
     # 如果满足条件，则保留当前目录及其所有子内容（不递归进入删除检查）
     if current_dir.name == 'assets':
