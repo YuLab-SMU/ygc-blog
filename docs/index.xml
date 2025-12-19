@@ -10,19 +10,19 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组公众号YuLabSMU。. ]]></description>
-    <pubDate>Fri, 19 Dec 2025 05:46:51 GMT</pubDate>
+    <pubDate>Fri, 19 Dec 2025 06:54:16 GMT</pubDate>
   </item><item>
     <title>可交互的ggtree</title>
     <link>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
     <guid>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</guid>
     <description><![CDATA[  开发ggtree就是我的使命！ 可交互这个功能是GISAID的创始人Peter Bogner和我提出来的，我们拉了个线上Zoom会议，聊了聊。于是我和双斌就着手来做这下事情。 当我们做了个demo，发给他们的时候，跟我说，两周后WHO要开会选疫苗株，他们把数据整理了发我，我来帮他们画。 这时候，我基本上就有求必应，乃至于说加班加点也要帮他们弄了。因为可以说，这是在给世界做贡献。 ggtree的交互，出现得悄无声息 library(ggtree) set.seed(123) tr &lt;- rtree(20) # 这是静态的，和原来一样 p &lt;- ggtree(tr) # 交互开关，这... ]]></description>
-    <pubDate>Wed, 17 Dec 2025 16:00:00 GMT</pubDate>
+    <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>Obsidian-Quartz博客系统</title>
     <link>https://quartz.jzhao.xyz/Tools/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</link>
     <guid>https://quartz.jzhao.xyz/Tools/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</guid>
     <description><![CDATA[ 创建Quartz博客 Quartz是使用Node.js的，所以首先是需要安装Node.js： scoop install nodejs-lts 从github.com/jackyzha0/quartz下载。然后是安装依赖： npm install 然后就可以创建博客了： npx quartz create 与Obsidian的联动 平时用Obsidian来写东西，但并不是写啥，都会公开。所以对于是否要公开，用一个YAML frontmatter做为开关。 --- publish: true --- true是要发表的，false是不发表的。 但是Quartz默认是不管的，它并不去识别publi... ]]></description>
-    <pubDate>Wed, 17 Dec 2025 16:00:00 GMT</pubDate>
+    <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
