@@ -1,36 +1,65 @@
 from pathlib import Path
 import shutil
 
-# 假设脚本和 public 在同一级目录；也可以改成绝对路径
+# 设置根目录，假设脚本位于根目录的上一级或同级
 public_root = (Path(__file__).resolve().parent / "docs").resolve()
 
 if not public_root.is_dir():
     raise SystemExit(f"public directory not found: {public_root}")
 
-# 收集所有 html 文件及其所有祖先目录
-html_files = list(public_root.rglob("*.html"))
-# 存储所有需要保留的目录
-preserved_dirs = set()
+def has_html_file(directory: Path) -> bool:
+    """检查目录下是否有 .html 文件（不递归）"""
+    try:
+        for _ in directory.glob("*.html"):
+            return True
+    except OSError:
+        pass
+    return False
 
-for html_file in html_files:
-    current_dir = html_file.parent
-    while current_dir != public_root.parent: # 向上遍历直到 public_root 的父目录
-        preserved_dirs.add(current_dir)
-        if current_dir == public_root: # 包含 public_root 本身
-            break
-        current_dir = current_dir.parent
+def process_directory(current_dir: Path) -> bool:
+    """
+    递归处理目录：
+    返回 True 表示该目录应该保留。
+    返回 False 表示该目录已被移除。
+    """
+    
+    # 1. 优先检查特殊规则：如果是 assets 且父目录有 HTML
+    # 如果满足条件，则保留当前目录及其所有子内容（不递归进入删除检查）
+    if current_dir.name == 'assets':
+        if has_html_file(current_dir.parent):
+            return True
 
-deleted_count = 0
+    # 2. 基础判断：当前目录是否有 HTML
+    should_keep = has_html_file(current_dir)
+    
+    # 3. 递归处理所有子目录 (Post-order traversal)
+    try:
+        subdirs = [p for p in current_dir.iterdir() if p.is_dir()]
+    except OSError as e:
+        print(f"Error accessing {current_dir}: {e}")
+        return True # 无法访问时保守保留
 
-# 按深度从深到浅遍历目录，避免父目录先删掉导致子目录找不到
-# 排除 public_root 本身，因为它不应该被删除
-all_dirs = [p for p in public_root.rglob("*") if p.is_dir() and p != public_root]
-all_dirs.sort(key=lambda p: len(p.parts), reverse=True)
+    for subdir in subdirs:
+        # 递归调用处理子目录
+        # 如果子目录被保留，则当前目录也必须保留
+        if process_directory(subdir):
+            should_keep = True
+            
+    # 4. 根目录保护
+    if current_dir == public_root:
+        return True
 
-for d in all_dirs:
-    if d not in preserved_dirs:
-        print(f"Removing directory without HTML: {d.relative_to(public_root)}")
-        shutil.rmtree(d)
-        deleted_count += 1
+    # 5. 执行删除或保留
+    if not should_keep:
+        print(f"Removing: {current_dir.relative_to(public_root)}")
+        try:
+            shutil.rmtree(current_dir)
+        except OSError as e:
+            print(f"Failed to remove {current_dir}: {e}")
+        return False
+    else:
+        return True
 
-print(f"Done. Removed {deleted_count} directories.")
+print(f"Starting cleanup on: {public_root}")
+process_directory(public_root)
+print("Cleanup finished.")
