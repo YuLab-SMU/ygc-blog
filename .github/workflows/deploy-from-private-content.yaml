@@ -39,11 +39,27 @@ jobs:
 
       - name: Build Quartz
         working-directory: blog
-        # 注意：这里 -d 指向 ../YuNotebooks，因为我们在 blog 目录下运行，而 YuNotebooks 在 blog 的同级目录
-        # actions/checkout 将两个仓库分别放在了工作区的根目录下：
-        # /home/runner/work/ygc-blog/ygc-blog/blog
-        # /home/runner/work/ygc-blog/ygc-blog/YuNotebooks
-        run: npx quartz build -d ../YuNotebooks -o docs
+        # 构建到临时目录，避免直接覆盖时残留旧文件
+        run: npx quartz build -d ../YuNotebooks -o public_temp
+
+      - name: Sync content to docs
+        working-directory: blog
+        run: |
+          # 确保 docs 目录存在
+          mkdir -p docs
+          
+          # 清空 docs 目录（保留 .git 目录，如果有的话）
+          # 注意：这将删除 docs 下的所有现有文件
+          echo "Cleaning up docs directory..."
+          find docs -mindepth 1 -not -path '*/.git*' -delete
+          
+          # 将构建产物移动到 docs
+          echo "Moving build artifacts to docs..."
+          # 使用 bash 的 dotglob 选项来匹配隐藏文件
+          bash -c "shopt -s dotglob && mv public_temp/* docs/"
+          
+          # 删除临时目录
+          rmdir public_temp
 
       - name: Run Cleanup Script
         working-directory: blog
