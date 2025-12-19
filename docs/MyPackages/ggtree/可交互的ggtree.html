@@ -184,10 +184,9 @@ pre:hover > .expand-button {
 <p>眼尖的你可能发现，这张截图，高亮的区域和legend对应不上，其实是对着的，没有问题。你看到的不一样，是因为我截图的是鼠标正好悬停在上面，鼠标悬停会高亮相应的图形元素，就像上一张图，在分支上，那个分支就有了颜色一样，所以相当于叠多了个颜色，就看着不一样。当我们把鼠标移开之后，它就是原来的颜色，是一模一样的。</p>
 <p>然后可交互图，一般不是只给你导出PNG, SVG这些，不给保存PDF？</p>
 <p>让我们把交互特性给关了。</p>
-<pre><code>ggtree_unset_interactive()
-
-p3
-</code></pre>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="r" data-theme="github-light github-dark"><code data-language="r" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ggtree_unset_interactive()</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">p3</span></span></code></pre></figure>
 <p><img src="./assets/可交互的ggtree/file-20251218135820852.png" alt/></p>
 <p>这就是美妙之处，零学习成本，静态与交互，随意切换。</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
                 s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
