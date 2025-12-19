@@ -2,7 +2,7 @@ from pathlib import Path
 import shutil
 
 # 假设脚本和 public 在同一级目录；也可以改成绝对路径
-public_root = (Path(__file__).resolve().parent / "public").resolve()
+public_root = (Path(__file__).resolve().parent / "docs").resolve()
 
 if not public_root.is_dir():
     raise SystemExit(f"public directory not found: {public_root}")

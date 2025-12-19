@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>YGC</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on YGC</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>可交互的ggtree</title>
+    <link>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
+    <guid>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</guid>
+    <description><![CDATA[  开发ggtree就是我的使命！ 可交互这个功能是GISAID的创始人Peter Bogner和我提出来的，我们拉了个线上Zoom会议，聊了聊。于是我和双斌就着手来做这下事情。 当我们做了个demo，发给他们的时候，跟我说，两周后WHO要开会选疫苗株，他们把数据整理了发我，我来帮他们画。 这时候，我基本上就有求必应，乃至于说加班加点也要帮他们弄了。因为可以说，这是在给世界做贡献。 ggtree的交互，出现得悄无声息 library(ggtree) set.seed(123) tr &lt;- rtree(20) # 这是静态的，和原来一样 p &lt;- ggtree(tr) # 交互开关，这... ]]></description>
+    <pubDate>Wed, 17 Dec 2025 16:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
