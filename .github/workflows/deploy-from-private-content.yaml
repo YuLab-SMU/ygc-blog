@@ -1,0 +1,68 @@
+name: Deploy from Private Content
+
+on:
+  # 允许手动触发
+  workflow_dispatch:
+  # 每天北京时间 03:00 (UTC 19:00) 自动运行
+  schedule:
+    - cron: '0 19 * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 需要写入权限来 push 更改
+
+    steps:
+      - name: Checkout Blog Repo
+        uses: actions/checkout@v4
+        with:
+          path: blog  # 将博客仓库 checkout 到 'blog' 目录
+          fetch-depth: 0 # 获取完整的 git 历史，以便 push
+
+      - name: Checkout Private Content Repo
+        uses: actions/checkout@v4
+        with:
+          repository: GuangchuangYu/YuNotebooks
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }} # 需要你在 Secrets 中配置 PRIVATE_REPO_TOKEN
+          path: YuNotebooks # 将私有内容 checkout 到 'YuNotebooks' 目录
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        working-directory: blog
+        run: npm ci
+
+      - name: Build Quartz
+        working-directory: blog
+        # 注意：这里 -d 指向 ../YuNotebooks，因为我们在 blog 目录下运行，而 YuNotebooks 在 blog 的同级目录
+        # actions/checkout 将两个仓库分别放在了工作区的根目录下：
+        # /home/runner/work/ygc-blog/ygc-blog/blog
+        # /home/runner/work/ygc-blog/ygc-blog/YuNotebooks
+        run: npx quartz build -d ../YuNotebooks -o docs
+
+      - name: Run Cleanup Script
+        working-directory: blog
+        run: python cleanup_public_no_html.py
+
+      - name: Run Image Path Correction Script
+        working-directory: blog
+        run: python correct-image-path.py
+
+      - name: Commit and Push
+        working-directory: blog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          # 检查是否有更改，如果有则提交
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy: update docs from YuNotebooks content"
+            git push
+          fi

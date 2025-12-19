@@ -1,18 +1,14 @@
-# Quartz v4
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
-Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
+- 博客：<https://yulab-smu.top/ygc-blog>
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+## 课题组主页
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+- 主页：<https://yulab-smu.top/>
+- GitHub：<https://github.com/YuLab-SMU>
 
-## Sponsors
+## 课题组公众号
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+欢迎关注课题组[公众号YuLabSMU](https://yulab-smu.top/images/biobabble.jpg)。
+
