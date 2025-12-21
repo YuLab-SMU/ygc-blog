@@ -10,7 +10,7 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 20 Dec 2025 09:32:18 GMT</pubDate>
+    <pubDate>Sun, 21 Dec 2025 09:47:01 GMT</pubDate>
   </item><item>
     <title>可交互的ggtree</title>
     <link>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
@@ -42,6 +42,12 @@
     <description><![CDATA[  来自于GitHub中的需求，两个问题： 只画一条通路，不想要pvalue_table的rowname 希望pvalue_table可定制，比如可以把NES放进去。 先跑个示例： library(DOSE) data(geneList) x &lt;- gseDO(geneList) 那么我在gseaplot2这个函数里加了两个参数，分别应对这两个问题： pvalue_table_columns：用于指定什么信息放进表格里展示 pvalue_table_rownames：用于指定那个信息拿来当rownames 默认行为保持不变： gseaplot2(x, 1, pvalue_table=T) ... ]]></description>
     <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
   </item><item>
+    <title>小丫画图，代码开放，注释中英文对照</title>
+    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%B0%8F%E4%B8%AB%E7%94%BB%E5%9B%BE%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%BC%80%E6%94%BE%EF%BC%8C%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7</link>
+    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%B0%8F%E4%B8%AB%E7%94%BB%E5%9B%BE%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%BC%80%E6%94%BE%EF%BC%8C%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7</guid>
+    <description><![CDATA[  作为_iMetaMed第一卷第一期的封面文章发表，也就是说创刊号的封面文章，说起来好像蛮有纪念意义一样。特别是如果iMetaMed_能够成为一个高攀不起的期刊的话。 文章的解读可以参考：《iMetaMed | 大连医科大学葛瑛-FigureYa：一个用于提升生物医学数据解读与研究效率的标准化可视化框架》，还有从小丫个人角度的版本：《FigureYa更新啦！借助学术的力量》。 这个评论谬赞了，但对于小丫画图来说，真的就是这个味。当年我博士还没毕业的时候，小丫说想要搞个众筹模式，来帮助大家实现下游的一些数据可视化需求，问我能不能来支持一下。我大概说我可以先来打个样，记得小丫说有我的支持，她有信心... ]]></description>
+    <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
+  </item><item>
     <title>use-positron</title>
     <link>https://quartz.jzhao.xyz/Tools/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</guid>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/MyPackages/enrichplot/p%E5%80%BC%E7%9A%84%E5%88%86%E5%B8%83%E4%BD%A0%E8%80%83%E8%99%91%E8%BF%87%E6%B2%A1%E6%9C%89%EF%BC%9F</guid>
     <description><![CDATA[ 画图拿p值来上色，基本上很多人没有注意p值的分布，除非是工具培养了习惯，比如说火山图，p值就被转换成-10*log10(pvalue)，所有人就默认这样画，但换一个就不清不楚了。 如果是一个随机的东西，去做检验，那p值的分布也会相对比较均一，或者是比较正态，均值在0.5附近之类的。 这个我们都可以试一下的，拿随机的基因ID来搞个富集分析： require(clusterProfiler) data(geneList, package=&quot;DOSE&quot;) set.seed(42) de2 = sample(names(geneList), 200) y = enrichGO(de... ]]></description>
     <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>卷积神经网络CNN</title>
-    <link>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN</link>
-    <guid>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN</guid>
-    <description><![CDATA[ 数字识别用传统的机器学习就可以做到蛮高的准确率，使用神经网络，完全也可以用全连接的网络来识别，无非是一个多分类的问题。和我们平时做多分类没有差别。这里我们用卷积神经网络（CNN）来做，CNN在图像识别上应用非常广泛。因为全连接神经网络的输入是一个向量，把图片按照行连接成一个向量，就会把空间信息给抹掉。这就是CNN要解决的，要利用空间信息，来找patterns，比如要识别一只鸟，图片中有一小块是一个鸟嘴，这对识别鸟是有用的。 CNN概述 CNN和全连接的神经网络的区别首先在在于它传递的数据是有形状的，也就是前面说的要利用空间信息，所以用sliding windows的策略，扫描一个又一个的窗口（... ]]></description>
-    <pubDate>Mon, 15 Sep 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
