@@ -10,7 +10,13 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sun, 21 Dec 2025 09:47:01 GMT</pubDate>
+    <pubDate>Mon, 22 Dec 2025 15:57:54 GMT</pubDate>
+  </item><item>
+    <title>基因组学深度学习入门指南-转录因子结合位点识别</title>
+    <link>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
+    <guid>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</guid>
+    <description><![CDATA[ 这份教程是基于 Nature Genetics, 2018 的论文 “A Primer on Deep Learning in Genomics” 的补充材料编写的。我们将一步步看如何利用深度学习来解决基因组学中的一个经典问题：发现DNA中的转录因子结合位点。 虽然原教程使用的是 Keras/TensorFlow，但为了适应现代深度学习的趋势，这里使用 PyTorch 框架进行重写和讲解。 0. ]]></description>
+    <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>可交互的ggtree</title>
     <link>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/MyPackages/mirrorselect/%E5%8C%85%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%81%E9%95%9C%E5%83%8F%E8%A6%81%E4%B8%8D%E8%A6%81%E8%83%8C%E9%94%85%EF%BC%9F</guid>
     <description><![CDATA[ 一条指令装一下ggplot2，它竟然告诉我没这个包，这难道不是在欺负我？ &gt; install.packages(&quot;ggplot2&quot;) Installing package into ‘E:/software-data/RLibrary’ (as ‘lib’ is unspecified) Warning: unable to access index for repository mirrors.ustc.edu.cn/CRAN/src/contrib: cannot open URL &#039;mirrors.ustc.edu.cn/CRAN/src/contri... ]]></description>
     <pubDate>Wed, 08 Oct 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>p值的分布你考虑过没有？</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/enrichplot/p%E5%80%BC%E7%9A%84%E5%88%86%E5%B8%83%E4%BD%A0%E8%80%83%E8%99%91%E8%BF%87%E6%B2%A1%E6%9C%89%EF%BC%9F</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/enrichplot/p%E5%80%BC%E7%9A%84%E5%88%86%E5%B8%83%E4%BD%A0%E8%80%83%E8%99%91%E8%BF%87%E6%B2%A1%E6%9C%89%EF%BC%9F</guid>
-    <description><![CDATA[ 画图拿p值来上色，基本上很多人没有注意p值的分布，除非是工具培养了习惯，比如说火山图，p值就被转换成-10*log10(pvalue)，所有人就默认这样画，但换一个就不清不楚了。 如果是一个随机的东西，去做检验，那p值的分布也会相对比较均一，或者是比较正态，均值在0.5附近之类的。 这个我们都可以试一下的，拿随机的基因ID来搞个富集分析： require(clusterProfiler) data(geneList, package=&quot;DOSE&quot;) set.seed(42) de2 = sample(names(geneList), 200) y = enrichGO(de... ]]></description>
-    <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
