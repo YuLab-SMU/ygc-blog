@@ -10,7 +10,13 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Thu, 25 Dec 2025 10:10:55 GMT</pubDate>
+    <pubDate>Fri, 26 Dec 2025 09:14:33 GMT</pubDate>
+  </item><item>
+    <title>R画的屎好看吗？</title>
+    <link>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/R%E7%94%BB%E7%9A%84%F0%9F%92%A9%E5%A5%BD%E7%9C%8B%E5%90%97%EF%BC%9F</link>
+    <guid>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/R%E7%94%BB%E7%9A%84%F0%9F%92%A9%E5%A5%BD%E7%9C%8B%E5%90%97%EF%BC%9F</guid>
+    <description><![CDATA[ 知乎上的帖子，MATLAB在逐渐被Python淘汰吗？ - 知乎： 我想可以翻译成R来画一下，先照着写一个产生数据的函数： shitshape &lt;- function(points = 400, circle_pts = 40) { linspace &lt;- function(a, b, n) seq(a, b, length.out = n) cross3 &lt;- function(a, b) { c( a[2] * b[3] - a[3] * b[2], a[3] * b[1] - a[1] * b[3], a[1] * b[2] - a[2] * b[1] ) } norm... ]]></description>
+    <pubDate>Fri, 26 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>基因组学深度学习入门指南-转录因子结合位点识别</title>
     <link>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/Tools/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</guid>
     <description><![CDATA[ 定制版不香吗？ 虽然标题是扔掉RStudio，但我使用RStudio的时间其实非常有限，基本上只有我需要讲课演示的时候，才会安装在课堂上用一下。用了二十年的R，有十几年的时间是在Emacs中使用R的： 后来我一直用一个定制的版本叫SPACEMACS，定制的就是香，省心。 这几年转向使用VSCODE，平时用着也挺爽的，但是现在有Positron，还是那句话，定制版本省心，于是喜新厌旧。 Bash 安装之后，TERMINAL打开是CMD，这可不行，我一惯是用bash的。打开settings.json是这样子的： { &quot;python.defaultInterpreterPath&quot;... ]]></description>
     <pubDate>Sun, 12 Oct 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>包不存在！镜像要不要背锅？</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/mirrorselect/%E5%8C%85%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%81%E9%95%9C%E5%83%8F%E8%A6%81%E4%B8%8D%E8%A6%81%E8%83%8C%E9%94%85%EF%BC%9F</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/mirrorselect/%E5%8C%85%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%81%E9%95%9C%E5%83%8F%E8%A6%81%E4%B8%8D%E8%A6%81%E8%83%8C%E9%94%85%EF%BC%9F</guid>
-    <description><![CDATA[ 一条指令装一下ggplot2，它竟然告诉我没这个包，这难道不是在欺负我？ &gt; install.packages(&quot;ggplot2&quot;) Installing package into ‘E:/software-data/RLibrary’ (as ‘lib’ is unspecified) Warning: unable to access index for repository mirrors.ustc.edu.cn/CRAN/src/contrib: cannot open URL &#039;mirrors.ustc.edu.cn/CRAN/src/contri... ]]></description>
-    <pubDate>Wed, 08 Oct 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
