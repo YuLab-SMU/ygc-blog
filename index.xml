@@ -10,7 +10,13 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sun, 28 Dec 2025 08:08:12 GMT</pubDate>
+    <pubDate>Mon, 29 Dec 2025 16:27:12 GMT</pubDate>
+  </item><item>
+    <title>功能富集分析的背景偏差</title>
+    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
+    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</guid>
+    <description><![CDATA[  你可能遇到过这种“怪事”： 同一份基因列表，别的工具能跑出一堆显著通路，clusterProfiler 却结果很少，甚至没有。 同一条通路，别的工具给出的 p 值小很多，看起来“更显著”。 这两件事，其实是一回事：很多时候，不是 clusterProfiler “不灵”，而是它把容易踩坑的细节都算进去了，所以 p 值更保守、结果更克制。经过多年不懈努力地说，大家慢慢形成了共识：富集分析要避坑，clusterProfiler 值得优先考虑。 我的❤️充满惆怅，只为今天的村庄还唱着过去的歌谣 富集分析离不开基因功能注释库。Nature Methods 的文章提到：有超过 42% 的软件，注释库几... ]]></description>
+    <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>用 R 语言把“屎”画出来</title>
     <link>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%94%A8-R-%E8%AF%AD%E8%A8%80%E6%8A%8A%E2%80%9C%E5%B1%8E%E2%80%9D%E7%94%BB%E5%87%BA%E6%9D%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E6%9E%81%E7%AB%AF%E6%A1%88%E4%BE%8B</link>
@@ -36,35 +42,29 @@
     <description><![CDATA[ 创建Quartz博客 Quartz是使用Node.js的，所以首先是需要安装Node.js： scoop install nodejs-lts 从github.com/jackyzha0/quartz下载。然后是安装依赖： npm install 然后就可以创建博客了： npx quartz create 与Obsidian的联动 平时用Obsidian来写东西，但并不是写啥，都会公开。所以对于是否要公开，用一个YAML frontmatter做为开关。 --- publish: true --- true是要发表的，false是不发表的。 但是Quartz默认是不管的，它并不去识别publi... ]]></description>
     <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
+    <title>综述解析空间转录组技术在神经科学中的应用</title>
+    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</link>
+    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</guid>
+    <description><![CDATA[  国产平台替代国外平台是趋势，但“能不能用”“用起来怎么样”，终归要靠数据说话。我们做了一次对比：在单细胞空间转录组（单细胞级别的空间信息）场景里，把 GeneMind SURFSeq 5000 和 Illumina NovaSeq 6000 放在同一套流程、同一类样本上跑一遍，看看差异到底在哪里。 这次用到的空间转录组技术是寻因的 SeekSpace。它和很多“在切片上原位测序”的路线不太一样：传统思路大多是把转录本透化下来、留在组织原位做检测；SeekSpace 的做法更像“把空间坐标带进细胞里”，再去做单细胞测序。 简单说就是： 数据形态上，它仍然是一份单细胞转录组数据； 但每个细胞额外... ]]></description>
+    <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>一个快捷键搞定远程执行</title>
+    <link>https://quartz.jzhao.xyz/Tools/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</link>
+    <guid>https://quartz.jzhao.xyz/Tools/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</guid>
+    <description><![CDATA[ 你有没有这种场景： 本地写代码，远程服务器跑任务（R / Python / Shell 都行） 服务器环境不好配，装一堆后端、插件、依赖还要翻墙 你其实只想要一个最朴素的能力：把编辑器里选中的几行，发到远程终端执行 我最近在折腾 Positron 的远程能力时，又一次意识到：有些“高级集成”当然很香，但在很多时候，一个简单的快捷键就能把 80% 的问题解决掉。 先说 Positron 的官方远程思路 上次写下《见异思迁：扔掉RStudio，拥抱Positron》时，我想：Positron 现在应该已经把远程 R 给配置好了吧？于是去搜了一圈。 确实是有的，是以下这样的工作形式： 需要服务器端有... ]]></description>
+    <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>生信语言之争的真相：不是语法，是生态</title>
+    <link>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</link>
+    <guid>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</guid>
+    <description><![CDATA[ 先声明：这里只讨论生物信息学的应用场景。 很多人都有一个共识：Python 取代了 Perl。我的看法更像是：Python 当然赢了，但它未必是“在 Perl 的主场赢的”，更多时候是战场换了，用户迁移了。 先问一句：Python 凭啥赢？ 靠 AI？在 AI 大火之前，Perl 在很多团队里就已经不再是首选了。 靠 NumPy / pandas 的数据科学生态？靠 scikit-learn 的机器学习？这些都很关键，但历史并不算长；而当它们真正形成势能的时候，Perl 的浪潮早已退下去。 Perl 为什么曾经那么强 Perl 在基因组时代的爆火是有原因的：文本处理就是它的强项。在大量 FAS... ]]></description>
+    <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+  </item><item>
     <title>为了上课 - 给Swiss-Model写个R包吧</title>
     <link>https://quartz.jzhao.xyz/MyPackages/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</link>
     <guid>https://quartz.jzhao.xyz/MyPackages/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</guid>
     <description><![CDATA[ Swiss-Model是啥？ 来自说明文档的介绍： SWISS-MODEL is a web-based integrated service dedicated to protein structure homology modelling. ]]></description>
     <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>KEGG的分类数据更新</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/clusterProfiler/KEGG%E7%9A%84%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/clusterProfiler/KEGG%E7%9A%84%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0</guid>
-    <description><![CDATA[ Dear clusterProfiler maintainers, First, thank you for developing and maintaining this incredibly useful package! I’ve been using clusterProfiler extensively for enrichment analysis and it’s been invaluable for my research. ]]></description>
-    <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>gseaplot2中的pvalue_table定制化</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/enrichplot/gseaplot2%E4%B8%AD%E7%9A%84pvalue_table%E5%AE%9A%E5%88%B6%E5%8C%96</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/enrichplot/gseaplot2%E4%B8%AD%E7%9A%84pvalue_table%E5%AE%9A%E5%88%B6%E5%8C%96</guid>
-    <description><![CDATA[  来自于GitHub中的需求，两个问题： 只画一条通路，不想要pvalue_table的rowname 希望pvalue_table可定制，比如可以把NES放进去。 先跑个示例： library(DOSE) data(geneList) x &lt;- gseDO(geneList) 那么我在gseaplot2这个函数里加了两个参数，分别应对这两个问题： pvalue_table_columns：用于指定什么信息放进表格里展示 pvalue_table_rownames：用于指定那个信息拿来当rownames 默认行为保持不变： gseaplot2(x, 1, pvalue_table=T) ... ]]></description>
-    <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>小丫画图，代码开放，注释中英文对照</title>
-    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%B0%8F%E4%B8%AB%E7%94%BB%E5%9B%BE%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%BC%80%E6%94%BE%EF%BC%8C%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7</link>
-    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%B0%8F%E4%B8%AB%E7%94%BB%E5%9B%BE%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%BC%80%E6%94%BE%EF%BC%8C%E6%B3%A8%E9%87%8A%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7</guid>
-    <description><![CDATA[  作为_iMetaMed第一卷第一期的封面文章发表，也就是说创刊号的封面文章，说起来好像蛮有纪念意义一样。特别是如果iMetaMed_能够成为一个高攀不起的期刊的话。 文章的解读可以参考：《iMetaMed | 大连医科大学葛瑛-FigureYa：一个用于提升生物医学数据解读与研究效率的标准化可视化框架》，还有从小丫个人角度的版本：《FigureYa更新啦！借助学术的力量》。 这个评论谬赞了，但对于小丫画图来说，真的就是这个味。当年我博士还没毕业的时候，小丫说想要搞个众筹模式，来帮助大家实现下游的一些数据可视化需求，问我能不能来支持一下。我大概说我可以先来打个样，记得小丫说有我的支持，她有信心... ]]></description>
-    <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>use-positron</title>
-    <link>https://quartz.jzhao.xyz/Tools/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</link>
-    <guid>https://quartz.jzhao.xyz/Tools/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</guid>
-    <description><![CDATA[ 定制版不香吗？ 虽然标题是扔掉RStudio，但我使用RStudio的时间其实非常有限，基本上只有我需要讲课演示的时候，才会安装在课堂上用一下。用了二十年的R，有十几年的时间是在Emacs中使用R的： 后来我一直用一个定制的版本叫SPACEMACS，定制的就是香，省心。 这几年转向使用VSCODE，平时用着也挺爽的，但是现在有Positron，还是那句话，定制版本省心，于是喜新厌旧。 Bash 安装之后，TERMINAL打开是CMD，这可不行，我一惯是用bash的。打开settings.json是这样子的： { &quot;python.defaultInterpreterPath&quot;... ]]></description>
-    <pubDate>Sun, 12 Oct 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
