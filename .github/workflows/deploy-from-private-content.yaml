@@ -39,27 +39,8 @@ jobs:
 
       - name: Build Quartz
         working-directory: blog
-        # 构建到临时目录，避免直接覆盖时残留旧文件
-        run: npx quartz build -d ../YuNotebooks -o public_temp
-
-      - name: Sync content to docs
-        working-directory: blog
-        run: |
-          # 确保 docs 目录存在
-          mkdir -p docs
-          
-          # 清空 docs 目录（保留 .git 目录，如果有的话）
-          # 注意：这将删除 docs 下的所有现有文件
-          echo "Cleaning up docs directory..."
-          find docs -mindepth 1 -not -path '*/.git*' -delete
-          
-          # 将构建产物移动到 docs
-          echo "Moving build artifacts to docs..."
-          # 使用 bash 的 dotglob 选项来匹配隐藏文件
-          bash -c "shopt -s dotglob && mv public_temp/* docs/"
-          
-          # 删除临时目录
-          rmdir public_temp
+        # 直接构建到 docs 目录 (在 Runner 中)
+        run: npx quartz build -d ../YuNotebooks -o docs
 
       - name: Run Cleanup Script
         working-directory: blog
@@ -69,16 +50,16 @@ jobs:
         working-directory: blog
         run: python correct-image-path.py
 
-      - name: Commit and Push
-        working-directory: blog
+      - name: Add CC BY-NC-ND 4.0 License
+        working-directory: blog/docs
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          # 检查是否有更改，如果有则提交
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Deploy: update docs from YuNotebooks content"
-            git push
-          fi
+          echo "This content is licensed under CC BY-NC-ND 4.0" > LICENSE
+          echo "https://creativecommons.org/licenses/by-nc-nd/4.0/" >> LICENSE
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./blog/docs
+          publish_branch: gh-pages
+          commit_message: "Deploy: update blog content from YuNotebooks"
