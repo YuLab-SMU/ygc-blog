@@ -1,0 +1,1 @@
+{"data":[{"id":"gemini-3-pro-image-preview","object":"model","created":1626777600,"owned_by":"vertex-ai","supported_endpoint_types":["gemini","openai"]}],"message":"","success":true}
