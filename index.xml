@@ -10,7 +10,7 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Thu, 01 Jan 2026 12:52:20 GMT</pubDate>
+    <pubDate>Sat, 03 Jan 2026 09:03:12 GMT</pubDate>
   </item><item>
     <title>功能富集分析的背景偏差</title>
     <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
@@ -57,7 +57,7 @@
     <title>生信语言之争的真相：不是语法，是生态</title>
     <link>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</guid>
-    <description><![CDATA[ 先声明：这里只讨论生物信息学的应用场景。 很多人都有一个共识：Python 取代了 Perl。我的看法更像是：Python 当然赢了，但它未必是“在 Perl 的主场赢的”，更多时候是战场换了，用户迁移了。 先问一句：Python 凭啥赢？ 靠 AI？在 AI 大火之前，Perl 在很多团队里就已经不再是首选了。 靠 NumPy / pandas 的数据科学生态？靠 scikit-learn 的机器学习？这些都很关键，但历史并不算长；而当它们真正形成势能的时候，Perl 的浪潮早已退下去。 Perl 为什么曾经那么强 Perl 在基因组时代的爆火是有原因的：文本处理就是它的强项。在大量 FAS... ]]></description>
+    <description><![CDATA[ 很多人都有一个共识：Python 取代了 Perl。我的看法更像是：Python 当然赢了，但它未必是“在 Perl 的主场赢的”，更多时候是战场换了，用户迁移了。 如果只用一句话总结：生信语言的胜负，很少发生在“语法”和“哲学”，更多发生在“谁把地基修好、谁让协作变得省力”。 先把“生态”说清楚：它到底指什么 说生态，不是指“包多”，而是指一套能让大多数人顺滑完成工作的共同约定。它通常至少包含这些维度： 数据容器与标准：有没有主流的数据结构承载真实数据（带元信息、带注释、带版本语义），并且被大多数工具默认支持。 互作性：包与包之间能否无缝拼起来（输入输出一致、语义一致、边界清晰），而不是每一... ]]></description>
     <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>为了上课 - 给Swiss-Model写个R包吧</title>
