@@ -10,7 +10,7 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 03 Jan 2026 09:03:12 GMT</pubDate>
+    <pubDate>Sun, 04 Jan 2026 09:00:22 GMT</pubDate>
   </item><item>
     <title>功能富集分析的背景偏差</title>
     <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
@@ -54,7 +54,7 @@
     <description><![CDATA[ 你有没有这种场景： 本地写代码，远程服务器跑任务（R / Python / Shell 都行） 服务器环境不好配，装一堆后端、插件、依赖还要翻墙 你其实只想要一个最朴素的能力：把编辑器里选中的几行，发到远程终端执行 我最近在折腾 Positron 的远程能力时，又一次意识到：有些“高级集成”当然很香，但在很多时候，一个简单的快捷键就能把 80% 的问题解决掉。 先说 Positron 的官方远程思路 上次写下《见异思迁：扔掉RStudio，拥抱Positron》时，我想：Positron 现在应该已经把远程 R 给配置好了吧？于是去搜了一圈。 确实是有的，是以下这样的工作形式： 需要服务器端有... ]]></description>
     <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
-    <title>生信语言之争的真相：不是语法，是生态</title>
+    <title>谁“取代”了谁：生信语言的主场迁移</title>
     <link>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E7%94%9F%E4%BF%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%89%E7%9A%84%E7%9C%9F%E7%9B%B8</guid>
     <description><![CDATA[ 很多人都有一个共识：Python 取代了 Perl。我的看法更像是：Python 当然赢了，但它未必是“在 Perl 的主场赢的”，更多时候是战场换了，用户迁移了。 如果只用一句话总结：生信语言的胜负，很少发生在“语法”和“哲学”，更多发生在“谁把地基修好、谁让协作变得省力”。 先把“生态”说清楚：它到底指什么 说生态，不是指“包多”，而是指一套能让大多数人顺滑完成工作的共同约定。它通常至少包含这些维度： 数据容器与标准：有没有主流的数据结构承载真实数据（带元信息、带注释、带版本语义），并且被大多数工具默认支持。 互作性：包与包之间能否无缝拼起来（输入输出一致、语义一致、边界清晰），而不是每一... ]]></description>
