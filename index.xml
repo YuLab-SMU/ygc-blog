@@ -10,11 +10,11 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Wed, 07 Jan 2026 14:03:28 GMT</pubDate>
+    <pubDate>Fri, 09 Jan 2026 08:01:10 GMT</pubDate>
   </item><item>
     <title>功能富集分析的背景偏差</title>
-    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
-    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</guid>
+    <link>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
+    <guid>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</guid>
     <description><![CDATA[  你可能遇到过这种“怪事”： 同一份基因列表，别的工具能跑出一堆显著通路，clusterProfiler 却结果很少，甚至没有。 同一条通路，别的工具给出的 p 值小很多，看起来“更显著”。 这两件事，其实是一回事：很多时候，不是 clusterProfiler “不灵”，而是它把容易踩坑的细节都算进去了，所以 p 值更保守、结果更克制。经过多年不懈努力地说，大家慢慢形成了共识：富集分析要避坑，clusterProfiler 值得优先考虑。 我的❤️充满惆怅，只为今天的村庄还唱着过去的歌谣 富集分析离不开基因功能注释库。Nature Methods 的文章提到：有超过 42% 的软件，注释库几... ]]></description>
     <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
@@ -31,8 +31,8 @@
     <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>可交互的ggtree</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</guid>
+    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
+    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</guid>
     <description><![CDATA[  开发ggtree就是我的使命！ 可交互这个功能是GISAID的创始人Peter Bogner和我提出来的，我们拉了个线上Zoom会议，聊了聊。于是我和双斌就着手来做这下事情。 当我们做了个demo，发给他们的时候，跟我说，两周后WHO要开会选疫苗株，他们把数据整理了发我，我来帮他们画。 这时候，我基本上就有求必应，乃至于说加班加点也要帮他们弄了。因为可以说，这是在给世界做贡献。 ggtree的交互，出现得悄无声息 library(ggtree) set.seed(123) tr &lt;- rtree(20) # 这是静态的，和原来一样 p &lt;- ggtree(tr) # 交互开关，这... ]]></description>
     <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
@@ -43,8 +43,8 @@
     <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>综述解析空间转录组技术在神经科学中的应用</title>
-    <link>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</link>
-    <guid>https://quartz.jzhao.xyz/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</guid>
+    <link>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</link>
+    <guid>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</guid>
     <description><![CDATA[  国产平台替代国外平台是趋势，但“能不能用”“用起来怎么样”，终归要靠数据说话。我们做了一次对比：在单细胞空间转录组（单细胞级别的空间信息）场景里，把 GeneMind SURFSeq 5000 和 Illumina NovaSeq 6000 放在同一套流程、同一类样本上跑一遍，看看差异到底在哪里。 这次用到的空间转录组技术是寻因的 SeekSpace。它和很多“在切片上原位测序”的路线不太一样：传统思路大多是把转录本透化下来、留在组织原位做检测；SeekSpace 的做法更像“把空间坐标带进细胞里”，再去做单细胞测序。 简单说就是： 数据形态上，它仍然是一份单细胞转录组数据； 但每个细胞额外... ]]></description>
     <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
@@ -61,8 +61,8 @@
     <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>为了上课 - 给Swiss-Model写个R包吧</title>
-    <link>https://quartz.jzhao.xyz/MyPackages/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</link>
-    <guid>https://quartz.jzhao.xyz/MyPackages/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</guid>
+    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</link>
+    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/swissmodel/%E4%B8%BA%E4%BA%86%E4%B8%8A%E8%AF%BE%EF%BC%8C%E7%BB%99Swiss-Model%E5%86%99%E4%B8%AAR%E5%8C%85%E5%90%A7</guid>
     <description><![CDATA[ Swiss-Model是啥？ 来自说明文档的介绍： SWISS-MODEL is a web-based integrated service dedicated to protein structure homology modelling. ]]></description>
     <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
   </item>
