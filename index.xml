@@ -10,7 +10,7 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 10 Jan 2026 15:36:46 GMT</pubDate>
+    <pubDate>Sun, 11 Jan 2026 14:24:51 GMT</pubDate>
   </item><item>
     <title>功能富集分析的背景偏差</title>
     <link>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
@@ -25,8 +25,8 @@
     <pubDate>Sun, 28 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>基因组学深度学习入门指南-转录因子结合位点识别</title>
-    <link>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
-    <guid>https://quartz.jzhao.xyz/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</guid>
+    <link>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
+    <guid>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</guid>
     <description><![CDATA[ 这份教程是基于 Nature Genetics, 2018 的论文 “A Primer on Deep Learning in Genomics” 的补充材料编写的。我们将一步步看如何利用深度学习来解决基因组学中的一个经典问题：发现DNA中的转录因子结合位点。 虽然原教程使用的是 Keras/TensorFlow，但为了适应现代深度学习的趋势，这里使用 PyTorch 框架进行重写和讲解。 0. ]]></description>
     <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
@@ -37,8 +37,8 @@
     <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>Obsidian-Quartz博客系统</title>
-    <link>https://quartz.jzhao.xyz/Tools/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</link>
-    <guid>https://quartz.jzhao.xyz/Tools/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</guid>
+    <link>https://quartz.jzhao.xyz/07_Notebooks/Obsidian/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</link>
+    <guid>https://quartz.jzhao.xyz/07_Notebooks/Obsidian/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</guid>
     <description><![CDATA[ 创建Quartz博客 Quartz是使用Node.js的，所以首先是需要安装Node.js： scoop install nodejs-lts 从github.com/jackyzha0/quartz下载。然后是安装依赖： npm install 然后就可以创建博客了： npx quartz create 与Obsidian的联动 平时用Obsidian来写东西，但并不是写啥，都会公开。所以对于是否要公开，用一个YAML frontmatter做为开关。 --- publish: true --- true是要发表的，false是不发表的。 但是Quartz默认是不管的，它并不去识别publi... ]]></description>
     <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
@@ -49,8 +49,8 @@
     <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
     <title>一个快捷键搞定远程执行</title>
-    <link>https://quartz.jzhao.xyz/Tools/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</link>
-    <guid>https://quartz.jzhao.xyz/Tools/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</guid>
+    <link>https://quartz.jzhao.xyz/07_Notebooks/Vibe-Coding/Positron/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</link>
+    <guid>https://quartz.jzhao.xyz/07_Notebooks/Vibe-Coding/Positron/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</guid>
     <description><![CDATA[ 你有没有这种场景： 本地写代码，远程服务器跑任务（R / Python / Shell 都行） 服务器环境不好配，装一堆后端、插件、依赖还要翻墙 你其实只想要一个最朴素的能力：把编辑器里选中的几行，发到远程终端执行 我最近在折腾 Positron 的远程能力时，又一次意识到：有些“高级集成”当然很香，但在很多时候，一个简单的快捷键就能把 80% 的问题解决掉。 先说 Positron 的官方远程思路 上次写下《见异思迁：扔掉RStudio，拥抱Positron》时，我想：Positron 现在应该已经把远程 R 给配置好了吧？于是去搜了一圈。 确实是有的，是以下这样的工作形式： 需要服务器端有... ]]></description>
     <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
   </item><item>
