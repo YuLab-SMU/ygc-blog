@@ -2,7 +2,6 @@
   "name": "claudesidian",
   "version": "0.13.1",
   "description": "Claude Code + Obsidian Starter Kit - AI-powered second brain",
-  "type": "module",
   "scripts": {
     "setup": "pnpm install && echo '✅ Setup complete! Configure GEMINI_API_KEY for vision features'",
     "test-gemini": "GEMINI_API_KEY=${GEMINI_API_KEY} node .claude/mcp-servers/gemini-vision.mjs",
@@ -36,7 +35,10 @@
   "license": "MIT",
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "playwright": "^1.57.0",
+    "pptxgenjs": "^4.0.1",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@eslint/compat": "^1.3.0",
@@ -52,5 +54,14 @@
     "prettier-plugin-sort-json": "^4.1.1",
     "typescript-eslint": "^8.35.0"
   },
-  "packageManager": "pnpm@9.15.4"
+  "packageManager": "pnpm@9.15.4",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuangchuangYu/YuNotebooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GuangchuangYu/YuNotebooks/issues"
+  },
+  "homepage": "https://github.com/GuangchuangYu/YuNotebooks#readme"
 }

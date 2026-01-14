@@ -6,11 +6,41 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>肿瘤免疫分析全能王！tigeR包：从数据处理到模型预测一站式解决</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</guid>
+    <description><![CDATA[  🌟 重磅发布 做肿瘤免疫研究的同学们，你们的”梦中情包”终于来了！ 由南方医科大学余光创教授团队开发的R包 tigeR，在国产高起点期刊 iMeta 上发表。 📄 论文链接: doi.org/10.1002/imt2.229 这不仅仅是一个R包，它是一个完整的肿瘤免疫治疗反应预测和分析生态系统。 🧩 为什么你需要tigeR？ 在过去，完成一套完整的肿瘤免疫分析，你可能需要安装十几个不同的R包： 做生存分析用survival 做去卷积用CIBERSORT脚本 做机器学习用caret 画图用ggplot2 … 版本冲突、数据格式转换、繁琐的代码调试，让人身心俱疲。 tigeR的出现，终结了... ]]></description>
+    <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>零代码基础也能建机器学习模型？tigeR包预测免疫治疗响应</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/04-prediction-model</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/04-prediction-model</guid>
+    <description><![CDATA[  🔮 寻找免疫治疗的”圣杯” 免疫检查点抑制剂（ICI）改变了癌症治疗的格局，但残酷的现实是：只有约20%-30%的患者能从中获益。 如何精准预测哪些患者能响应治疗？这是当前肿瘤免疫研究的”圣杯”。 如果你手里有一批珍贵的患者数据，或者你发现了一组很有潜力的Biomarker，你一定想构建一个预测模型。但是，一听到”机器学习”、“交叉验证”、“SVM”、“随机森林”，是不是就想打退堂鼓？ 别怕，tigeR把这些高大上的算法都”平民化”了。 🏗️ 像搭积木一样构建模型 tigeR的build_Model函数，让你无需精通算法原理，也能构建出鲁棒的预测模型。它支持多种经典的机器学习算法： NB... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>肿瘤微环境分析神器：一行代码调用CIBERSORT、TIMER等10大主流算法</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</guid>
+    <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
+    <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>23种免疫评分一键计算！tigeR包让Biomarker评估飞起来</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</guid>
+    <description><![CDATA[  🤔 你的基因真的是个好Biomarker吗？ 在筛选出几个感兴趣的基因后，我们通常会面临一连串的灵魂拷问： “它在治疗前后有差异吗？” “它在应答者和非应答者中表达不一样吗？” “它能预测生存期吗？” “它的预测效果比现有的签名（如TIDE, IFNG）更好吗？” 为了回答这些问题，你可能需要画箱线图、做生存分析、画ROC曲线、去查阅几十篇文献找别人的签名公式然后手算…… 这一套下来，没个几天搞不定。而且，万一公式输错了呢？ ⚡ tigeR：Biomarker评估的加速器 tigeR包把这一整套评估流程封装得行云流水。不管你是想看单个基因的表现，还是想和已发表的Signature一决高下，... ]]></description>
+    <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Tue, 13 Jan 2026 06:23:43 GMT</pubDate>
+    <pubDate>Wed, 14 Jan 2026 08:24:00 GMT</pubDate>
+  </item><item>
+    <title>还在为肿瘤免疫数据清洗头秃？tigeR包一键搞定！</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/01-data-and-batch-effect</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/01-data-and-batch-effect</guid>
+    <description><![CDATA[  😭 那个通宵洗数据的夜晚 还记得上次你兴致勃勃地下载了几个GEO数据集，准备大干一场做个肿瘤免疫分析吗？ 结果呢？ 打开Excel，格式乱七八糟；临床信息缺胳膊少腿；好不容易整理好了，一合并，批次效应（Batch Effect） 像一堵墙一样挡在那里。原本应该聚在一起的样本，因为测序平台不同，硬生生分成了两拨。 看着那个像”马赛克”一样的热图，你的心情是不是也碎了一地？ “要是能有个工具，能帮我把这些脏活累活都干了就好了。” 朋友，你的愿望实现了。今天我要介绍的这个神器——tigeR，就是专门为了拯救被数据折磨的你而生的。 😫 为什么肿瘤免疫数据这么难搞？ 做生信分析的同学都知道，数据预... ]]></description>
+    <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>让AI来解读富集分析结果</title>
     <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/clusterProfiler/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</link>
@@ -35,36 +65,6 @@
     <guid>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%94%A8-R-%E8%AF%AD%E8%A8%80%E6%8A%8A%E2%80%9C%E5%B1%8E%E2%80%9D%E7%94%BB%E5%87%BA%E6%9D%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E6%9E%81%E7%AB%AF%E6%A1%88%E4%BE%8B</guid>
     <description><![CDATA[ 知乎上的帖子，说MATLAB画的shit都比Python好看： 我想可以翻译成R来画一下，先照着写一个产生数据的函数： shitshape &lt;- function(points = 400, circle_pts = 40) { linspace &lt;- function(a, b, n) seq(a, b, length.out = n) cross3 &lt;- function(a, b) { c( a[2] * b[3] - a[3] * b[2], a[3] * b[1] - a[1] * b[3], a[1] * b[2] - a[2] * b[1] ) } normal... ]]></description>
     <pubDate>Sun, 28 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>基因组学深度学习入门指南-转录因子结合位点识别</title>
-    <link>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/08-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</link>
-    <guid>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/08-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97</guid>
-    <description><![CDATA[ 这份教程是基于 Nature Genetics, 2018 的论文 “A Primer on Deep Learning in Genomics” 的补充材料编写的。我们将一步步看如何利用深度学习来解决基因组学中的一个经典问题：发现DNA中的转录因子结合位点。 虽然原教程使用的是 Keras/TensorFlow，但为了适应现代深度学习的趋势，这里使用 PyTorch 框架进行重写和讲解。 0. ]]></description>
-    <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>可交互的ggtree</title>
-    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</link>
-    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</guid>
-    <description><![CDATA[  开发ggtree就是我的使命！ 可交互这个功能是GISAID的创始人Peter Bogner和我提出来的，我们拉了个线上Zoom会议，聊了聊。于是我和双斌就着手来做这下事情。 当我们做了个demo，发给他们的时候，跟我说，两周后WHO要开会选疫苗株，他们把数据整理了发我，我来帮他们画。 这时候，我基本上就有求必应，乃至于说加班加点也要帮他们弄了。因为可以说，这是在给世界做贡献。 ggtree的交互，出现得悄无声息 library(ggtree) set.seed(123) tr &lt;- rtree(20) # 这是静态的，和原来一样 p &lt;- ggtree(tr) # 交互开关，这... ]]></description>
-    <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Obsidian-Quartz博客系统</title>
-    <link>https://quartz.jzhao.xyz/07_Notebooks/Obsidian/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</link>
-    <guid>https://quartz.jzhao.xyz/07_Notebooks/Obsidian/Obsidian-Quartz%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F</guid>
-    <description><![CDATA[ 创建Quartz博客 Quartz是使用Node.js的，所以首先是需要安装Node.js： scoop install nodejs-lts 从github.com/jackyzha0/quartz下载。然后是安装依赖： npm install 然后就可以创建博客了： npx quartz create 与Obsidian的联动 平时用Obsidian来写东西，但并不是写啥，都会公开。所以对于是否要公开，用一个YAML frontmatter做为开关。 --- publish: true --- true是要发表的，false是不发表的。 但是Quartz默认是不管的，它并不去识别publi... ]]></description>
-    <pubDate>Thu, 18 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>综述解析空间转录组技术在神经科学中的应用</title>
-    <link>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</link>
-    <guid>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</guid>
-    <description><![CDATA[  国产平台替代国外平台是趋势，但“能不能用”“用起来怎么样”，终归要靠数据说话。我们做了一次对比：在单细胞空间转录组（单细胞级别的空间信息）场景里，把 GeneMind SURFSeq 5000 和 Illumina NovaSeq 6000 放在同一套流程、同一类样本上跑一遍，看看差异到底在哪里。 这次用到的空间转录组技术是寻因的 SeekSpace。它和很多“在切片上原位测序”的路线不太一样：传统思路大多是把转录本透化下来、留在组织原位做检测；SeekSpace 的做法更像“把空间坐标带进细胞里”，再去做单细胞测序。 简单说就是： 数据形态上，它仍然是一份单细胞转录组数据； 但每个细胞额外... ]]></description>
-    <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>一个快捷键搞定远程执行</title>
-    <link>https://quartz.jzhao.xyz/07_Notebooks/Vibe-Coding/Positron/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</link>
-    <guid>https://quartz.jzhao.xyz/07_Notebooks/Vibe-Coding/Positron/%E4%B8%80%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C</guid>
-    <description><![CDATA[ 你有没有这种场景： 本地写代码，远程服务器跑任务（R / Python / Shell 都行） 服务器环境不好配，装一堆后端、插件、依赖还要翻墙 你其实只想要一个最朴素的能力：把编辑器里选中的几行，发到远程终端执行 我最近在折腾 Positron 的远程能力时，又一次意识到：有些“高级集成”当然很香，但在很多时候，一个简单的快捷键就能把 80% 的问题解决掉。 先说 Positron 的官方远程思路 上次写下《见异思迁：扔掉RStudio，拥抱Positron》时，我想：Positron 现在应该已经把远程 R 给配置好了吧？于是去搜了一圈。 确实是有的，是以下这样的工作形式： 需要服务器端有... ]]></description>
-    <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>

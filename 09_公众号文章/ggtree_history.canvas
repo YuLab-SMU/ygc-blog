@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"title","type":"text","text":"# ggtree: Evolution of Tree Visualization\nFrom Grammar of Graphics to Data Integration Suite","x":0,"y":-250,"width":500,"height":120,"color":"1"},
+		{"id":"genesis","type":"text","text":"## 2014: Genesis\n\n- Born during Guangchuang Yu's PhD at HKU\n- Goal: Apply `ggplot2` grammar to phylogenetic trees\n- Solved the pain point of complex tree annotation","x":0,"y":0,"width":400,"height":220,"color":"2"},
+		{"id":"mee","type":"text","text":"## 2017: The Foundation (MEE)\n\n- **First Major Paper**: *Methods in Ecology and Evolution*\n- Defined the grammar for tree visualization\n- `geom_tree()`, `geom_tiplab()`\n- Established ggtree as the standard for R users","x":0,"y":300,"width":400,"height":220,"color":"3"},
+		{"id":"mbe","type":"text","text":"## 2018: Data Integration (MBE)\n\n- **Second Paper**: *Molecular Biology and Evolution*\n- Introduced `facet_plot()`\n- solved the \"Tree + Heatmap/Barplot\" alignment problem\n- Mapping associated data to phylogeny","x":0,"y":600,"width":400,"height":220,"color":"4"},
+		{"id":"suite","type":"text","text":"## 2020: The Modular Trinity\n\n- **Refactoring Phase**\n- Split into **treeio** (I/O), **tidytree** (Manipulation), and **ggtree** (Vis)\n- Tidy interface for tree data (`as_tibble`, `left_join`)","x":0,"y":900,"width":400,"height":200,"color":"5"},
+		{"id":"extra","type":"text","text":"## 2021: The Ring of Power (ggtreeExtra)\n\n- **ggtreeExtra Published** (*MBE*)\n- Specialized for circular layouts\n- Multiple rings of data (heatmaps, bars) around the tree\n- Complex microbiome visualization made easy","x":0,"y":1200,"width":400,"height":260,"color":"6"},
+		{"id":"imeta","type":"text","text":"## 2022: The Modern Era (iMeta)\n\n- **Serialized Data Objects**\n- Focus on reproducibility and data sharing\n- Enhanced support for diverse tree-like structures","x":0,"y":1500,"width":400,"height":200,"color":"1"}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"title","fromSide":"bottom","toNode":"genesis","toSide":"top"},
+		{"id":"e2","fromNode":"genesis","fromSide":"bottom","toNode":"mee","toSide":"top"},
+		{"id":"e3","fromNode":"mee","fromSide":"bottom","toNode":"mbe","toSide":"top"},
+		{"id":"e4","fromNode":"mbe","fromSide":"bottom","toNode":"suite","toSide":"top"},
+		{"id":"e5","fromNode":"suite","fromSide":"bottom","toNode":"extra","toSide":"top"},
+		{"id":"e6","fromNode":"extra","fromSide":"bottom","toNode":"imeta","toSide":"top"}
+	]
+}

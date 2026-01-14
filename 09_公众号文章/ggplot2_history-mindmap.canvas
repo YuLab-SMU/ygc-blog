@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"title","type":"text","text":"# ggplot2: A Visual History\nFrom Grammar of Graphics to S7","x":0,"y":-200,"width":400,"height":100,"color":"1"},
+		{"id":"origin","type":"text","text":"## 2005: Inception\n\n- Created by **Hadley Wickham**\n- Based on *The Grammar of Graphics* by Leland Wilkinson\n- A structured approach to describing statistical graphics","x":0,"y":0,"width":400,"height":200},
+		{"id":"phil","type":"text","text":"## Core Philosophy\n\n- **Data**: The raw information\n- **Aes**: Mapping variables to visual properties\n- **Geoms**: Geometric objects (points, lines)\n- **Layers**: Building plots iteratively","x":500,"y":0,"width":300,"height":260,"color":"4"},
+		{"id":"v09","type":"text","text":"## 2012: v0.9.0\n\n- Major internal refactoring\n- Changes to scale construction and layer organization\n- Established the modern internal structure","x":0,"y":300,"width":400,"height":180},
+		{"id":"maintenance","type":"text","text":"## 2014: Maintenance Mode\n\n- Announcement to focus on stability\n- Prepared the ground for the extension system","x":0,"y":550,"width":400,"height":150,"color":"2"},
+		{"id":"v20","type":"text","text":"## 2015: v2.0.0 (The Extension Era)\n\n- **ggproto** system introduced\n- Officially supported creating extensions\n- Led to the explosion of the `gg*` ecosystem","x":0,"y":800,"width":400,"height":220,"color":"3"},
+		{"id":"ecosystem","type":"text","text":"## The Ecosystem Flourishes\n\n- **ggtree**: Phylogenetic trees\n- **ggraph**: Network graphs\n- **ggforce**: Accelerating ggplot2\n- **cowplot/patchwork**: Plot composition","x":500,"y":800,"width":300,"height":260,"color":"5"},
+		{"id":"v30","type":"text","text":"## 2018: v3.0.0 (Tidy Eval)\n\n- Full support for **Tidy Evaluation**\n- Quasiquotation in aes()\n- Removed dependency on `plyr`, moved to `dplyr`/`glue`","x":0,"y":1100,"width":400,"height":180},
+		{"id":"v3x","type":"text","text":"## 2020-2024: v3.x Series\n\n- **v3.3.0**: Bi-directional geoms\n- **v3.4.0**: Line linewidth aesthetic\n- **v3.5.0**: Pattern fills, better legends\n- **CLI**: Improved error messaging","x":0,"y":1350,"width":400,"height":200},
+		{"id":"v40","type":"text","text":"## 2025: v4.0.0 (Modernization)\n\n- **S7 Object System**: Rewrote OO internals from S3 to S7\n- Performance improvements\n- Quality of life updates","x":0,"y":1650,"width":400,"height":180,"color":"6"}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"title","fromSide":"bottom","toNode":"origin","toSide":"top"},
+		{"id":"e2","fromNode":"origin","fromSide":"bottom","toNode":"v09","toSide":"top"},
+		{"id":"e3","fromNode":"origin","fromSide":"right","toNode":"phil","toSide":"left"},
+		{"id":"e4","fromNode":"v09","fromSide":"bottom","toNode":"maintenance","toSide":"top"},
+		{"id":"e5","fromNode":"maintenance","fromSide":"bottom","toNode":"v20","toSide":"top"},
+		{"id":"e6","fromNode":"v20","fromSide":"bottom","toNode":"v30","toSide":"top"},
+		{"id":"e7","fromNode":"v20","fromSide":"right","toNode":"ecosystem","toSide":"left"},
+		{"id":"e8","fromNode":"v30","fromSide":"bottom","toNode":"v3x","toSide":"top"},
+		{"id":"e9","fromNode":"v3x","fromSide":"bottom","toNode":"v40","toSide":"top"}
+	]
+}
