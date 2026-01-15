@@ -24,17 +24,17 @@
     <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
+    <title>Guangchuang Yu&#039;s Blog</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
+    <pubDate>Thu, 15 Jan 2026 16:26:50 GMT</pubDate>
+  </item><item>
     <title>23种免疫评分一键计算！tigeR包让Biomarker评估飞起来</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</link>
     <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</guid>
     <description><![CDATA[  🤔 你的基因真的是个好Biomarker吗？ 在筛选出几个感兴趣的基因后，我们通常会面临一连串的灵魂拷问： “它在治疗前后有差异吗？” “它在应答者和非应答者中表达不一样吗？” “它能预测生存期吗？” “它的预测效果比现有的签名（如TIDE, IFNG）更好吗？” 为了回答这些问题，你可能需要画箱线图、做生存分析、画ROC曲线、去查阅几十篇文献找别人的签名公式然后手算…… 这一套下来，没个几天搞不定。而且，万一公式输错了呢？ ⚡ tigeR：Biomarker评估的加速器 tigeR包把这一整套评估流程封装得行云流水。不管你是想看单个基因的表现，还是想和已发表的Signature一决高下，... ]]></description>
     <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Guangchuang Yu&#039;s Blog</title>
-    <link>https://quartz.jzhao.xyz/</link>
-    <guid>https://quartz.jzhao.xyz/</guid>
-    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Wed, 14 Jan 2026 08:24:00 GMT</pubDate>
   </item><item>
     <title>还在为肿瘤免疫数据清洗头秃？tigeR包一键搞定！</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/01-data-and-batch-effect</link>
