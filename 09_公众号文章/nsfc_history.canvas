@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"root","x":-400,"y":0,"width":300,"height":120,"color":"1","type":"text","text":"# 国自然 (NSFC) \n## 发展历史与改革关键节点"},
+		{"id":"phase1","x":0,"y":0,"width":250,"height":60,"color":"2","type":"text","text":"## 1986-2006\n**初创与探索期**"},
+		{"id":"phase2","x":300,"y":0,"width":250,"height":60,"color":"3","type":"text","text":"## 2007-2017\n**规范与法制化期**"},
+		{"id":"phase3","x":600,"y":0,"width":250,"height":60,"color":"4","type":"text","text":"## 2018-至今\n**系统性深化改革期**"},
+		{"id":"n1986","x":0,"y":100,"width":240,"height":180,"color":"2","type":"text","text":"**1986: 正式成立**\n\n- **背景**: 89位院士致信邓小平\n- **批准**: 国务院批准成立\n- **原则**: 依靠专家、发扬民主、择优支持、公正合理\n- **定位**: 突破计划经济，引入竞争机制"},
+		{"id":"n2007","x":300,"y":100,"width":240,"height":150,"color":"3","type":"text","text":"**2007: 法制化里程碑**\n\n- **《国家自然科学基金条例》**颁布\n- **意义**: 标志着科学基金进入法制化运行阶段\n- **规范**: 明确了申请、评审、资助、监督等全流程法律责任"},
+		{"id":"n2014","x":300,"y":300,"width":240,"height":120,"color":"3","type":"text","text":"**2014: 资金管理改革**\n\n- 引入**间接费用**机制\n- 建立**结余资金**留用制度\n- 赋予依托单位更多管理权"},
+		{"id":"n2018","x":600,"y":100,"width":260,"height":180,"color":"4","type":"text","text":"**2018: 确立新时代改革方案**\n\n- **体制**: 改由科技部管理（保留副部级）\n- **三大任务**:\n  1. 明确资助导向\n  2. 完善评审机制\n  3. 优化学科布局"},
+		{"id":"n_tasks","x":600,"y":320,"width":260,"height":160,"color":"5","type":"text","text":"**核心改革举措: 四类科学问题属性**\n\n1. 鼓励探索，突出原创\n2. 聚焦前沿，独辟蹊径\n3. 需求牵引，突破瓶颈\n4. 共性导向，交叉融通"},
+		{"id":"n2019","x":900,"y":100,"width":240,"height":140,"color":"6","type":"text","text":"**2019-2020: 评审与评价改革**\n\n- **分类评审**: 全面试点四类属性分类评审\n- **代表作评价**: 强化“不唯论文”，注重质量与贡献\n- **包干制**: 在杰青/优青项目中试点经费包干"},
+		{"id":"n2021","x":900,"y":280,"width":240,"height":120,"color":"6","type":"text","text":"**2021: 交叉科学部成立**\n\n- **第九大学部**: 交叉科学部\n- **机制**: 建立符合交叉科学特征的评价机制\n- **目标**: 应对复杂科学问题，打破学科壁垒"},
+		{"id":"n2023","x":1200,"y":100,"width":240,"height":140,"color":"1","type":"text","text":"**2023: 机构改革与基础研究**\n\n- **机构改革**: 21世纪中心等划入，加强统筹\n- **定位**: 强化基础研究“总机关”作用\n- **非共识项目**: 启动重大非共识项目试点"},
+		{"id":"n2024","x":1200,"y":280,"width":240,"height":200,"color":"1","type":"text","text":"**2024: 人才与未来**\n\n- **女性优待**: 杰青女性年龄放宽至48岁\n- **博士生资助**: 首设博士研究生基础研究项目\n- **杰青分级**: 杰青项目结题分级评价，延续资助（滚动支持）\n- **临床评价**: 试点临床医师科研评价体系改革"}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"root","fromSide":"right","toNode":"phase1","toSide":"left"},
+		{"id":"e2","fromNode":"phase1","fromSide":"right","toNode":"phase2","toSide":"left"},
+		{"id":"e3","fromNode":"phase2","fromSide":"right","toNode":"phase3","toSide":"left"},
+		{"id":"e4","fromNode":"phase1","fromSide":"bottom","toNode":"n1986","toSide":"top"},
+		{"id":"e5","fromNode":"phase2","fromSide":"bottom","toNode":"n2007","toSide":"top"},
+		{"id":"e6","fromNode":"n2007","fromSide":"bottom","toNode":"n2014","toSide":"top"},
+		{"id":"e7","fromNode":"phase3","fromSide":"bottom","toNode":"n2018","toSide":"top"},
+		{"id":"e8","fromNode":"n2018","fromSide":"bottom","toNode":"n_tasks","toSide":"top"},
+		{"id":"e9","fromNode":"n2018","fromSide":"right","toNode":"n2019","toSide":"left"},
+		{"id":"e10","fromNode":"n2019","fromSide":"bottom","toNode":"n2021","toSide":"top"},
+		{"id":"e11","fromNode":"n2019","fromSide":"right","toNode":"n2023","toSide":"left"},
+		{"id":"e12","fromNode":"n2023","fromSide":"bottom","toNode":"n2024","toSide":"top"}
+	]
+}

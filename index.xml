@@ -18,17 +18,23 @@
     <description><![CDATA[  🔮 寻找免疫治疗的”圣杯” 免疫检查点抑制剂（ICI）改变了癌症治疗的格局，但残酷的现实是：只有约20%-30%的患者能从中获益。 如何精准预测哪些患者能响应治疗？这是当前肿瘤免疫研究的”圣杯”。 如果你手里有一批珍贵的患者数据，或者你发现了一组很有潜力的Biomarker，你一定想构建一个预测模型。但是，一听到”机器学习”、“交叉验证”、“SVM”、“随机森林”，是不是就想打退堂鼓？ 别怕，tigeR把这些高大上的算法都”平民化”了。 🏗️ 像搭积木一样构建模型 tigeR的build_Model函数，让你无需精通算法原理，也能构建出鲁棒的预测模型。它支持多种经典的机器学习算法： NB... ]]></description>
     <pubDate>Sat, 17 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
+    <title>Guangchuang Yu&#039;s Blog</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
+    <pubDate>Fri, 16 Jan 2026 16:22:11 GMT</pubDate>
+  </item><item>
+    <title>Base Plot图形语法plotbb：填坑记</title>
+    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/plotbb/plotbb2026</link>
+    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/plotbb/plotbb2026</guid>
+    <description><![CDATA[  摘要： 挖坑容易填坑难，但这次我带着 bb_bar、scales=&quot;free&quot; 和气泡图回来了！让 Base Plot 再次伟大（误）！ 经常关注我的朋友可能还记得，2019年和2020年的时候，我写了两篇关于 plotbb 的文章（《可别再说base plot不能图形语法！》、《base plot的图形语法》）。当时也是一时兴起，觉得 R 语言的 base plot 虽然底层强大（毕竟是 R 的亲儿子），但写起来太过程式了，缺乏 ggplot2 那样优雅的“图形语法”支持。于是我就撸起袖子，写了一个叫 plotbb 的包——Brammar of Braphics，基于 ... ]]></description>
+    <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
     <title>肿瘤微环境分析神器：一行代码调用CIBERSORT、TIMER等10大主流算法</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</link>
     <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</guid>
     <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Guangchuang Yu&#039;s Blog</title>
-    <link>https://quartz.jzhao.xyz/</link>
-    <guid>https://quartz.jzhao.xyz/</guid>
-    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Thu, 15 Jan 2026 16:26:50 GMT</pubDate>
   </item><item>
     <title>23种免疫评分一键计算！tigeR包让Biomarker评估飞起来</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</guid>
     <description><![CDATA[  你可能遇到过这种“怪事”： 同一份基因列表，别的工具能跑出一堆显著通路，clusterProfiler 却结果很少，甚至没有。 同一条通路，别的工具给出的 p 值小很多，看起来“更显著”。 这两件事，其实是一回事：很多时候，不是 clusterProfiler “不灵”，而是它把容易踩坑的细节都算进去了，所以 p 值更保守、结果更克制。经过多年不懈努力地说，大家慢慢形成了共识：富集分析要避坑，clusterProfiler 值得优先考虑。 我的❤️充满惆怅，只为今天的村庄还唱着过去的歌谣 富集分析离不开基因功能注释库。Nature Methods 的文章提到：有超过 42% 的软件，注释库几... ]]></description>
     <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>用 R 语言把“屎”画出来</title>
-    <link>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%94%A8-R-%E8%AF%AD%E8%A8%80%E6%8A%8A%E2%80%9C%E5%B1%8E%E2%80%9D%E7%94%BB%E5%87%BA%E6%9D%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E6%9E%81%E7%AB%AF%E6%A1%88%E4%BE%8B</link>
-    <guid>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%94%A8-R-%E8%AF%AD%E8%A8%80%E6%8A%8A%E2%80%9C%E5%B1%8E%E2%80%9D%E7%94%BB%E5%87%BA%E6%9D%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E6%9E%81%E7%AB%AF%E6%A1%88%E4%BE%8B</guid>
-    <description><![CDATA[ 知乎上的帖子，说MATLAB画的shit都比Python好看： 我想可以翻译成R来画一下，先照着写一个产生数据的函数： shitshape &lt;- function(points = 400, circle_pts = 40) { linspace &lt;- function(a, b, n) seq(a, b, length.out = n) cross3 &lt;- function(a, b) { c( a[2] * b[3] - a[3] * b[2], a[3] * b[1] - a[1] * b[3], a[1] * b[2] - a[2] * b[1] ) } normal... ]]></description>
-    <pubDate>Sun, 28 Dec 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
