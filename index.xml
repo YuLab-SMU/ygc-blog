@@ -6,17 +6,17 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Guangchuang Yu&#039;s Blog</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
+    <pubDate>Sun, 18 Jan 2026 09:38:31 GMT</pubDate>
+  </item><item>
     <title>肿瘤免疫分析全能王！tigeR包：从数据处理到模型预测一站式解决</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</link>
     <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</guid>
     <description><![CDATA[  🌟 重磅发布 做肿瘤免疫研究的同学们，你们的”梦中情包”终于来了！ 由南方医科大学余光创教授团队开发的R包 tigeR，在国产高起点期刊 iMeta 上发表。 📄 论文链接: doi.org/10.1002/imt2.229 这不仅仅是一个R包，它是一个完整的肿瘤免疫治疗反应预测和分析生态系统。 🧩 为什么你需要tigeR？ 在过去，完成一套完整的肿瘤免疫分析，你可能需要安装十几个不同的R包： 做生存分析用survival 做去卷积用CIBERSORT脚本 做机器学习用caret 画图用ggplot2 … 版本冲突、数据格式转换、繁琐的代码调试，让人身心俱疲。 tigeR的出现，终结了... ]]></description>
     <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Guangchuang Yu&#039;s Blog</title>
-    <link>https://quartz.jzhao.xyz/</link>
-    <guid>https://quartz.jzhao.xyz/</guid>
-    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 01:49:12 GMT</pubDate>
   </item><item>
     <title>零代码基础也能建机器学习模型？tigeR包预测免疫治疗响应</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/04-prediction-model</link>
