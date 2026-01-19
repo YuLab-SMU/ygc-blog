@@ -10,61 +10,61 @@
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sun, 18 Jan 2026 09:38:31 GMT</pubDate>
+    <pubDate>Mon, 19 Jan 2026 09:33:34 GMT</pubDate>
+  </item><item>
+    <title>生物学家能修好收音机吗？一篇20年前的文章，治好了我的科研焦虑</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</guid>
+    <description><![CDATA[  从一封深夜邮件开始：你怕的不是“做不出来”，而是“来不及” 你有没有经历过这种时刻？ 凌晨一点，你刷到一篇新文章：又一个通路被“彻底阐明”，又一个靶点被“精准锁定”，又一个模型被“统一解释”。 你把手机扣在桌上，脑子里只有一句话：我还没把实验室跑顺，这个领域会不会就被别人“做完了”？ 这种焦虑很真实。 尤其当你身处一个“热”得发烫的方向：凋亡、免疫、肿瘤微环境、单细胞、空间组学、AI for Biology……新数据像洪水，新概念像烟花，会议日程像列车时刻表，永远追不上。 20多年前，一位研究凋亡的科学家 Yuri Lazebnik 就在类似的焦虑里，写下了一篇几乎可以当作“科研心理急救包”... ]]></description>
+    <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>肿瘤免疫分析全能王！tigeR包：从数据处理到模型预测一站式解决</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/05-summary</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/05-summary</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/05-summary</guid>
     <description><![CDATA[  🌟 重磅发布 做肿瘤免疫研究的同学们，你们的”梦中情包”终于来了！ 由南方医科大学余光创教授团队开发的R包 tigeR，在国产高起点期刊 iMeta 上发表。 📄 论文链接: doi.org/10.1002/imt2.229 这不仅仅是一个R包，它是一个完整的肿瘤免疫治疗反应预测和分析生态系统。 🧩 为什么你需要tigeR？ 在过去，完成一套完整的肿瘤免疫分析，你可能需要安装十几个不同的R包： 做生存分析用survival 做去卷积用CIBERSORT脚本 做机器学习用caret 画图用ggplot2 … 版本冲突、数据格式转换、繁琐的代码调试，让人身心俱疲。 tigeR的出现，终结了... ]]></description>
     <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>零代码基础也能建机器学习模型？tigeR包预测免疫治疗响应</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/04-prediction-model</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/04-prediction-model</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/04-prediction-model</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/04-prediction-model</guid>
     <description><![CDATA[  🔮 寻找免疫治疗的”圣杯” 免疫检查点抑制剂（ICI）改变了癌症治疗的格局，但残酷的现实是：只有约20%-30%的患者能从中获益。 如何精准预测哪些患者能响应治疗？这是当前肿瘤免疫研究的”圣杯”。 如果你手里有一批珍贵的患者数据，或者你发现了一组很有潜力的Biomarker，你一定想构建一个预测模型。但是，一听到”机器学习”、“交叉验证”、“SVM”、“随机森林”，是不是就想打退堂鼓？ 别怕，tigeR把这些高大上的算法都”平民化”了。 🏗️ 像搭积木一样构建模型 tigeR的build_Model函数，让你无需精通算法原理，也能构建出鲁棒的预测模型。它支持多种经典的机器学习算法： NB... ]]></description>
     <pubDate>Sat, 17 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>Base Plot图形语法plotbb：填坑记</title>
-    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/plotbb/plotbb2026</link>
-    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/plotbb/plotbb2026</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</guid>
     <description><![CDATA[  摘要： 挖坑容易填坑难，但这次我带着 bb_bar、scales=&quot;free&quot; 和气泡图回来了！让 Base Plot 再次伟大（误）！ 经常关注我的朋友可能还记得，2019年和2020年的时候，我写了两篇关于 plotbb 的文章（《可别再说base plot不能图形语法！》、《base plot的图形语法》）。当时也是一时兴起，觉得 R 语言的 base plot 虽然底层强大（毕竟是 R 的亲儿子），但写起来太过程式了，缺乏 ggplot2 那样优雅的“图形语法”支持。于是我就撸起袖子，写了一个叫 plotbb 的包——Brammar of Braphics，基于 ... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>肿瘤微环境分析神器：一行代码调用CIBERSORT、TIMER等10大主流算法</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/03-tme-analysis</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/03-tme-analysis</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/03-tme-analysis</guid>
     <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>23种免疫评分一键计算！tigeR包让Biomarker评估飞起来</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/02-biomarker-evaluation</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/02-biomarker-evaluation</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/02-biomarker-evaluation</guid>
     <description><![CDATA[  🤔 你的基因真的是个好Biomarker吗？ 在筛选出几个感兴趣的基因后，我们通常会面临一连串的灵魂拷问： “它在治疗前后有差异吗？” “它在应答者和非应答者中表达不一样吗？” “它能预测生存期吗？” “它的预测效果比现有的签名（如TIDE, IFNG）更好吗？” 为了回答这些问题，你可能需要画箱线图、做生存分析、画ROC曲线、去查阅几十篇文献找别人的签名公式然后手算…… 这一套下来，没个几天搞不定。而且，万一公式输错了呢？ ⚡ tigeR：Biomarker评估的加速器 tigeR包把这一整套评估流程封装得行云流水。不管你是想看单个基因的表现，还是想和已发表的Signature一决高下，... ]]></description>
     <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>还在为肿瘤免疫数据清洗头秃？tigeR包一键搞定！</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/01-data-and-batch-effect</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/tigeR/01-data-and-batch-effect</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/01-data-and-batch-effect</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/01-data-and-batch-effect</guid>
     <description><![CDATA[  😭 那个通宵洗数据的夜晚 还记得上次你兴致勃勃地下载了几个GEO数据集，准备大干一场做个肿瘤免疫分析吗？ 结果呢？ 打开Excel，格式乱七八糟；临床信息缺胳膊少腿；好不容易整理好了，一合并，批次效应（Batch Effect） 像一堵墙一样挡在那里。原本应该聚在一起的样本，因为测序平台不同，硬生生分成了两拨。 看着那个像”马赛克”一样的热图，你的心情是不是也碎了一地？ “要是能有个工具，能帮我把这些脏活累活都干了就好了。” 朋友，你的愿望实现了。今天我要介绍的这个神器——tigeR，就是专门为了拯救被数据折磨的你而生的。 😫 为什么肿瘤免疫数据这么难搞？ 做生信分析的同学都知道，数据预... ]]></description>
     <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>让AI来解读富集分析结果</title>
-    <link>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/clusterProfiler/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</link>
-    <guid>https://quartz.jzhao.xyz/01_Projects/Teaching--and--courses/clusterProfiler/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</guid>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</guid>
     <description><![CDATA[  让AI打工人，跑一下富集分析，然后还要让他来解读。我打包的示例数据geneList是一个乳腺癌的数据，我们来看看解读得怎么样。 下面的AI打工人跑完分析给的解读 基于 DOSE 包提供的 geneList （Top 100 基因）跑出的 enrichKEGG 结果，我为你进行了综合解读。这个结果非常经典，清晰地指向了一个核心的生物学主题。 综合富集结果解读 核心结论 ：这组基因最核心的生物学过程是 “细胞周期与有丝分裂的活跃增殖” (Cell Proliferation &amp; Mitosis) 。 我们不仅看到了单一的通路，而是看到了一组高度关联的 Terms 共同指向这一过程： 1. ]]></description>
     <pubDate>Tue, 13 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>从CNN到Attention：我的基因组学深度学习进阶笔记</title>
-    <link>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</link>
-    <guid>https://quartz.jzhao.xyz/07_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</guid>
+    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</link>
+    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</guid>
     <description><![CDATA[ 上次跟着基因组学深度学习入门指南跑通了一个基础的CNN模型，效果还不错。但听说现在NLP领域Attention机制大杀四方，我就在想，这玩意儿能不能用到基因组序列分析上？毕竟DNA序列也是一种“语言”。 于是，我决定动手试试：把Attention机制加到CNN里，看看能不能提升性能，顺便搞懂它到底在关注什么。 这份笔记记录了我的探索过程，包括核心代码实现、遇到的坑（Dimension mismatch, RuntimeErrors…）以及最终的实验结果。 0. ]]></description>
     <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>功能富集分析的背景偏差</title>
-    <link>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</link>
-    <guid>https://quartz.jzhao.xyz/01_Projects/Research--and--manuscripts/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</guid>
-    <description><![CDATA[  你可能遇到过这种“怪事”： 同一份基因列表，别的工具能跑出一堆显著通路，clusterProfiler 却结果很少，甚至没有。 同一条通路，别的工具给出的 p 值小很多，看起来“更显著”。 这两件事，其实是一回事：很多时候，不是 clusterProfiler “不灵”，而是它把容易踩坑的细节都算进去了，所以 p 值更保守、结果更克制。经过多年不懈努力地说，大家慢慢形成了共识：富集分析要避坑，clusterProfiler 值得优先考虑。 我的❤️充满惆怅，只为今天的村庄还唱着过去的歌谣 富集分析离不开基因功能注释库。Nature Methods 的文章提到：有超过 42% 的软件，注释库几... ]]></description>
-    <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
