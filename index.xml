@@ -6,11 +6,35 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
+    <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
+    <pubDate>Tue, 20 Jan 2026 09:34:33 GMT</pubDate>
+  </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Mon, 19 Jan 2026 09:33:34 GMT</pubDate>
+    <pubDate>Tue, 20 Jan 2026 09:34:33 GMT</pubDate>
+  </item><item>
+    <title>富集分析“翻车”了怎么办？clusterProfiler 智能体学会了“绝地求生”</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</guid>
+    <description><![CDATA[  导读：你是否遇到过这样的尴尬：辛苦测序拿到的差异基因，一跑富集分析，结果全是空？或者只有几个不痛不痒的通路？传统流程到这里往往就卡住了。但今天，clusterProfiler 的 AI 智能体学会了一项新技能——在没有通路的情况下，直接“裸读”基因列表，强行挖掘生物学意义。 “没有显著通路” = “没有生物学意义”？ 大错特错。 在实际科研中，我们经常会遇到“富集失败”的情况： 基因太少：可能只有 10-20 个差异基因，达不到统计学显著性。 功能太特异：比如某些罕见的嗅觉受体亚型，或者未被 KEGG 收录的新颖功能模块。 背景噪音大：数据质量一般，导致 p-value 矫正后全军覆没。 以... ]]></description>
+    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>AI 懂网络了！clusterProfiler 引入“知识引导”模式，构建细胞调控全景图</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/knowledge-guided-interpretation</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/knowledge-guided-interpretation</guid>
+    <description><![CDATA[  摘要：还在看孤立的富集通路？clusterProfiler 4.19.4 再进化！引入 Knowledge-Guided Interpretation，整合 PPI 网络、Hub Gene 识别、Fold Change 表达量以及多源知识库（如 ChEA TF）推理。让 LLM 从“看名单”进化到“看网络”，自动构建 Regulator → Target → Function 的因果调控模型！ 🕸️ 通路富集只是开始，不是终点 做完富集分析，我们往往得到的是一张**“碎片化”的清单**： Top 1: Cell Cycle Top 2: DNA Replication Top 3: P53... ]]></description>
+    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>告别瞎猜！clusterProfiler 新增“参考引导”模式，让 AI 注释准确率暴涨 10 倍！</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</guid>
+    <description><![CDATA[  摘要：单细胞注释总是“似是而非”？LLM 总是产生“幻觉”？clusterProfiler 4.19.4 版本带来重磅更新：引入 prior 参数支持“参考引导”注释，更有 interpret_hierarchical 实现“分层打击”。SingleR/scGPT 的结果不再浪费，直接化身 AI 的“标准答案”！ 😰 还在为亚群注释“掉头发”吗？ 做过单细胞分析的朋友一定经历过这种绝望时刻： 辛辛苦苦跑完聚类，对着 Cluster 1 的富集结果发呆。 通路里全是 “Cell cycle”、“Ribosome biogenesis”、“Metabolism”… 这到底是个增殖的 T 细胞？... ]]></description>
+    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>生物学家能修好收音机吗？一篇20年前的文章，治好了我的科研焦虑</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</link>
@@ -41,30 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/03-tme-analysis</guid>
     <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>23种免疫评分一键计算！tigeR包让Biomarker评估飞起来</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/02-biomarker-evaluation</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/02-biomarker-evaluation</guid>
-    <description><![CDATA[  🤔 你的基因真的是个好Biomarker吗？ 在筛选出几个感兴趣的基因后，我们通常会面临一连串的灵魂拷问： “它在治疗前后有差异吗？” “它在应答者和非应答者中表达不一样吗？” “它能预测生存期吗？” “它的预测效果比现有的签名（如TIDE, IFNG）更好吗？” 为了回答这些问题，你可能需要画箱线图、做生存分析、画ROC曲线、去查阅几十篇文献找别人的签名公式然后手算…… 这一套下来，没个几天搞不定。而且，万一公式输错了呢？ ⚡ tigeR：Biomarker评估的加速器 tigeR包把这一整套评估流程封装得行云流水。不管你是想看单个基因的表现，还是想和已发表的Signature一决高下，... ]]></description>
-    <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>还在为肿瘤免疫数据清洗头秃？tigeR包一键搞定！</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/01-data-and-batch-effect</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/01-data-and-batch-effect</guid>
-    <description><![CDATA[  😭 那个通宵洗数据的夜晚 还记得上次你兴致勃勃地下载了几个GEO数据集，准备大干一场做个肿瘤免疫分析吗？ 结果呢？ 打开Excel，格式乱七八糟；临床信息缺胳膊少腿；好不容易整理好了，一合并，批次效应（Batch Effect） 像一堵墙一样挡在那里。原本应该聚在一起的样本，因为测序平台不同，硬生生分成了两拨。 看着那个像”马赛克”一样的热图，你的心情是不是也碎了一地？ “要是能有个工具，能帮我把这些脏活累活都干了就好了。” 朋友，你的愿望实现了。今天我要介绍的这个神器——tigeR，就是专门为了拯救被数据折磨的你而生的。 😫 为什么肿瘤免疫数据这么难搞？ 做生信分析的同学都知道，数据预... ]]></description>
-    <pubDate>Wed, 14 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>让AI来解读富集分析结果</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</guid>
-    <description><![CDATA[  让AI打工人，跑一下富集分析，然后还要让他来解读。我打包的示例数据geneList是一个乳腺癌的数据，我们来看看解读得怎么样。 下面的AI打工人跑完分析给的解读 基于 DOSE 包提供的 geneList （Top 100 基因）跑出的 enrichKEGG 结果，我为你进行了综合解读。这个结果非常经典，清晰地指向了一个核心的生物学主题。 综合富集结果解读 核心结论 ：这组基因最核心的生物学过程是 “细胞周期与有丝分裂的活跃增殖” (Cell Proliferation &amp; Mitosis) 。 我们不仅看到了单一的通路，而是看到了一组高度关联的 Terms 共同指向这一过程： 1. ]]></description>
-    <pubDate>Tue, 13 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>从CNN到Attention：我的基因组学深度学习进阶笔记</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/09-%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97-CNN_vs_CNN+Attention</guid>
-    <description><![CDATA[ 上次跟着基因组学深度学习入门指南跑通了一个基础的CNN模型，效果还不错。但听说现在NLP领域Attention机制大杀四方，我就在想，这玩意儿能不能用到基因组序列分析上？毕竟DNA序列也是一种“语言”。 于是，我决定动手试试：把Attention机制加到CNN里，看看能不能提升性能，顺便搞懂它到底在关注什么。 这份笔记记录了我的探索过程，包括核心代码实现、遇到的坑（Dimension mismatch, RuntimeErrors…）以及最终的实验结果。 0. ]]></description>
-    <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
