@@ -10,13 +10,19 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Tue, 20 Jan 2026 09:34:33 GMT</pubDate>
+    <pubDate>Wed, 21 Jan 2026 06:15:11 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Tue, 20 Jan 2026 09:34:33 GMT</pubDate>
+    <pubDate>Wed, 21 Jan 2026 06:15:11 GMT</pubDate>
+  </item><item>
+    <title>clusterProfiler 也能做 PPI 网络分析了？没错，还能用 ggtangle 画出花来！</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</guid>
+    <description><![CDATA[  [! abstract] 富集分析只能看通路？NONONO！clusterProfiler 现在支持一键获取基因或通路的蛋白互作网络（PPI），并结合 ggtangle 包实现高自由度的可视化。想知道怎么把 Fold Change 映射到网络图上？快来看看吧！ 这个功能其实早已经有了，当clusterProfiler遇见stringdb…，这次我主要是带来使用ggtangle进行可视化。如果你想要做网络上的一些分析，github上许愿，或许会梦想成真。 做完富集分析，拿到一堆显著的通路，下一步该干嘛？ 除了看通路名字，我们往往还想知道：这些基因之间到底有没有真实的物理互作？它们是不是形成了一... ]]></description>
+    <pubDate>Wed, 21 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>富集分析“翻车”了怎么办？clusterProfiler 智能体学会了“绝地求生”</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</link>
@@ -58,12 +64,6 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</guid>
     <description><![CDATA[  摘要： 挖坑容易填坑难，但这次我带着 bb_bar、scales=&quot;free&quot; 和气泡图回来了！让 Base Plot 再次伟大（误）！ 经常关注我的朋友可能还记得，2019年和2020年的时候，我写了两篇关于 plotbb 的文章（《可别再说base plot不能图形语法！》、《base plot的图形语法》）。当时也是一时兴起，觉得 R 语言的 base plot 虽然底层强大（毕竟是 R 的亲儿子），但写起来太过程式了，缺乏 ggplot2 那样优雅的“图形语法”支持。于是我就撸起袖子，写了一个叫 plotbb 的包——Brammar of Braphics，基于 ... ]]></description>
-    <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>肿瘤微环境分析神器：一行代码调用CIBERSORT、TIMER等10大主流算法</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/03-tme-analysis</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/03-tme-analysis</guid>
-    <description><![CDATA[  🕵️‍♂️ 揭开肿瘤”黑箱”的秘密 肿瘤不仅仅是一团癌细胞，它是一个复杂的生态系统——肿瘤微环境（TME）。这里面混杂着T细胞、B细胞、巨噬细胞、成纤维细胞……它们有的在杀伤肿瘤，有的却在帮肿瘤”打掩护”。 要搞清楚这个微环境，我们通常使用”去卷积”（Deconvolution）算法，从Bulk RNA-seq数据中推断各种细胞的比例。 但是，市面上的算法太多了：CIBERSORT, TIMER, xCell, MCPCounter… 每个软件的安装方法不一样，输入数据格式不一样，输出结果也不一样。光是把环境配好，可能就得花上一周。 “要是能把它们都装进一个盒子里就好了。” tigeR：好... ]]></description>
     <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
