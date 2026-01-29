@@ -10,13 +10,19 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Wed, 28 Jan 2026 13:02:35 GMT</pubDate>
+    <pubDate>Thu, 29 Jan 2026 10:51:55 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Wed, 28 Jan 2026 13:02:35 GMT</pubDate>
+    <pubDate>Thu, 29 Jan 2026 10:51:55 GMT</pubDate>
+  </item><item>
+    <title>一键构建“微生物版”KEGG.db：从 organism 列表到离线富集数据库</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</guid>
+    <description><![CDATA[  [!序言] 好久以以前有KEGG.db，后来KEGG不开放了，这个包也就一直不更新了，然后过了几年，也就被移除了，距今又是好几年。clusterProfiler一开始的KEGG支持也是基于这个包，在KEGG不开放之时，我很快就上线了在线爬数据的KEGG版本。但之前支持KEGG.db依然保留着。后来我们就搞了个createKEGGdb的R包，让你可以用我们在线爬数据的功能来生成一个可以安装的KEGG.db包，然后可以对接原来clusterProfiler的功能，就变成了你可以缓存KEGG的数据，分析时是本地的。 由于我现在搞个新格式：KEGG的富集分析终于真的本地化了。，原来的方式等同于废弃。... ]]></description>
+    <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>clusterProfiler 也能做 PPI 网络分析了？没错，还能用 ggtangle 画出花来！</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/04-prediction-model</guid>
     <description><![CDATA[  🔮 寻找免疫治疗的”圣杯” 免疫检查点抑制剂（ICI）改变了癌症治疗的格局，但残酷的现实是：只有约20%-30%的患者能从中获益。 如何精准预测哪些患者能响应治疗？这是当前肿瘤免疫研究的”圣杯”。 如果你手里有一批珍贵的患者数据，或者你发现了一组很有潜力的Biomarker，你一定想构建一个预测模型。但是，一听到”机器学习”、“交叉验证”、“SVM”、“随机森林”，是不是就想打退堂鼓？ 别怕，tigeR把这些高大上的算法都”平民化”了。 🏗️ 像搭积木一样构建模型 tigeR的build_Model函数，让你无需精通算法原理，也能构建出鲁棒的预测模型。它支持多种经典的机器学习算法： NB... ]]></description>
     <pubDate>Sat, 17 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Base Plot图形语法plotbb：填坑记</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/plotbb/plotbb2026</guid>
-    <description><![CDATA[  摘要： 挖坑容易填坑难，但这次我带着 bb_bar、scales=&quot;free&quot; 和气泡图回来了！让 Base Plot 再次伟大（误）！ 经常关注我的朋友可能还记得，2019年和2020年的时候，我写了两篇关于 plotbb 的文章（《可别再说base plot不能图形语法！》、《base plot的图形语法》）。当时也是一时兴起，觉得 R 语言的 base plot 虽然底层强大（毕竟是 R 的亲儿子），但写起来太过程式了，缺乏 ggplot2 那样优雅的“图形语法”支持。于是我就撸起袖子，写了一个叫 plotbb 的包——Brammar of Braphics，基于 ... ]]></description>
-    <pubDate>Fri, 16 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
