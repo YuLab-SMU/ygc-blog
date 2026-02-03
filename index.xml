@@ -6,17 +6,29 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>interpret开发记</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</guid>
+    <description><![CDATA[  [!手打的牛肉丸，哦不文章来了 =,=] 版本零 首先是看到小伙伴说把富集分析结果扔给AI来解读，那么我也来玩一下，《让AI来解读富集分析结果》。 版本一 然后转头就想，我应该写个函数，服务大家，这个主要是建立在之前fanyi包的工具基础上：《使用Fanyi包减少语言障碍、促进信息交流》。 fanyi包一开始对接一些翻译服务，后来又对接了DeepSeek等国内的LLM来做翻译。既然LLM我已经能够对接了，那写这个interpret，就是顺手的事情了。但是大家对着富集分析列表的时候，不再是一脸懵逼了，有大语言模型给出机制解说了供参考了。而且我还考虑了，你可以给上下文（比如你的实验方案、样本信息... ]]></description>
+    <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
     <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Sat, 31 Jan 2026 09:44:51 GMT</pubDate>
+    <pubDate>Tue, 03 Feb 2026 07:05:46 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 31 Jan 2026 09:44:51 GMT</pubDate>
+    <pubDate>Tue, 03 Feb 2026 07:05:46 GMT</pubDate>
+  </item><item>
+    <title>AI 时代的六角贴开发：当 hexSticker 遇上 AIGC</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</guid>
+    <description><![CDATA[ 几年前，ggtree 的六角贴（hex sticker）带起了一阵风潮。随后 hexSticker 包的发布，让 R 语言开发者能用纯代码画出自己的六角贴。 2018 年 useR 会议上的那面“贴纸墙”，这小小的六角形已经成了 R 社区的一种文化。 👉 一大波贴纸来袭 👉 2018年useR会议的一道风景线 当时我们说：“就是这么简单，你也能够纯代码生成六角贴！” 现在，有了生成式 AI，我们可以换个玩法。 纯代码绘图的局限 用 ggplot2 或 lattice 画贴纸，适合展示数据的硬核美。但如果想要更具艺术感、或复杂的插画风格，纯代码实现起来成本很高。 比如，我想为 cluster... ]]></description>
+    <pubDate>Mon, 02 Feb 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>一键构建“微生物版”KEGG.db：从 organism 列表到离线富集数据库</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</link>
@@ -53,18 +65,6 @@
     <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</guid>
     <description><![CDATA[  从一封深夜邮件开始：你怕的不是“做不出来”，而是“来不及” 你有没有经历过这种时刻？ 凌晨一点，你刷到一篇新文章：又一个通路被“彻底阐明”，又一个靶点被“精准锁定”，又一个模型被“统一解释”。 你把手机扣在桌上，脑子里只有一句话：我还没把实验室跑顺，这个领域会不会就被别人“做完了”？ 这种焦虑很真实。 尤其当你身处一个“热”得发烫的方向：凋亡、免疫、肿瘤微环境、单细胞、空间组学、AI for Biology……新数据像洪水，新概念像烟花，会议日程像列车时刻表，永远追不上。 20多年前，一位研究凋亡的科学家 Yuri Lazebnik 就在类似的焦虑里，写下了一篇几乎可以当作“科研心理急救包”... ]]></description>
     <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>肿瘤免疫分析全能王！tigeR包：从数据处理到模型预测一站式解决</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/05-summary</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/05-summary</guid>
-    <description><![CDATA[  🌟 重磅发布 做肿瘤免疫研究的同学们，你们的”梦中情包”终于来了！ 由南方医科大学余光创教授团队开发的R包 tigeR，在国产高起点期刊 iMeta 上发表。 📄 论文链接: doi.org/10.1002/imt2.229 这不仅仅是一个R包，它是一个完整的肿瘤免疫治疗反应预测和分析生态系统。 🧩 为什么你需要tigeR？ 在过去，完成一套完整的肿瘤免疫分析，你可能需要安装十几个不同的R包： 做生存分析用survival 做去卷积用CIBERSORT脚本 做机器学习用caret 画图用ggplot2 … 版本冲突、数据格式转换、繁琐的代码调试，让人身心俱疲。 tigeR的出现，终结了... ]]></description>
-    <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>零代码基础也能建机器学习模型？tigeR包预测免疫治疗响应</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/04-prediction-model</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/04-prediction-model</guid>
-    <description><![CDATA[  🔮 寻找免疫治疗的”圣杯” 免疫检查点抑制剂（ICI）改变了癌症治疗的格局，但残酷的现实是：只有约20%-30%的患者能从中获益。 如何精准预测哪些患者能响应治疗？这是当前肿瘤免疫研究的”圣杯”。 如果你手里有一批珍贵的患者数据，或者你发现了一组很有潜力的Biomarker，你一定想构建一个预测模型。但是，一听到”机器学习”、“交叉验证”、“SVM”、“随机森林”，是不是就想打退堂鼓？ 别怕，tigeR把这些高大上的算法都”平民化”了。 🏗️ 像搭积木一样构建模型 tigeR的build_Model函数，让你无需精通算法原理，也能构建出鲁棒的预测模型。它支持多种经典的机器学习算法： NB... ]]></description>
-    <pubDate>Sat, 17 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
