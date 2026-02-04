@@ -9,20 +9,26 @@
     <title>interpret开发记</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</guid>
-    <description><![CDATA[  [!手打的牛肉丸，哦不文章来了 =,=] 版本零 首先是看到小伙伴说把富集分析结果扔给AI来解读，那么我也来玩一下，《让AI来解读富集分析结果》。 版本一 然后转头就想，我应该写个函数，服务大家，这个主要是建立在之前fanyi包的工具基础上：《使用Fanyi包减少语言障碍、促进信息交流》。 fanyi包一开始对接一些翻译服务，后来又对接了DeepSeek等国内的LLM来做翻译。既然LLM我已经能够对接了，那写这个interpret，就是顺手的事情了。但是大家对着富集分析列表的时候，不再是一脸懵逼了，有大语言模型给出机制解说了供参考了。而且我还考虑了，你可以给上下文（比如你的实验方案、样本信息... ]]></description>
+    <description><![CDATA[  版本零 首先是看到小伙伴说把富集分析结果扔给AI来解读，那么我也来玩一下，《让AI来解读富集分析结果》。 版本一 然后转头就想，我应该写个函数，服务大家，这个主要是建立在之前fanyi包的工具基础上：《使用Fanyi包减少语言障碍、促进信息交流》。 fanyi包一开始对接一些翻译服务，后来又对接了DeepSeek等国内的LLM来做翻译。既然LLM我已经能够对接了，那写这个interpret，就是顺手的事情了。但是大家对着富集分析列表的时候，不再是一脸懵逼了，有大语言模型给出机制解说了供参考了。而且我还考虑了，你可以给上下文（比如你的实验方案、样本信息等）来让解说更有针对性。 我在群里一讲，又... ]]></description>
     <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Tue, 03 Feb 2026 07:05:46 GMT</pubDate>
+    <pubDate>Wed, 04 Feb 2026 15:47:23 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Tue, 03 Feb 2026 07:05:46 GMT</pubDate>
+    <pubDate>Wed, 04 Feb 2026 15:47:23 GMT</pubDate>
+  </item><item>
+    <title>GO（ALL）结果怎么画 barplot：split 分组取 TopN + autofacet 一键分面</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/goall-barplot</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/goall-barplot</guid>
+    <description><![CDATA[ 很多人第一次用 enrichGO(ont = &quot;ALL&quot;) 画 barplot 时，会遇到一个小尴尬：你想看 BP/CC/MF 各自最显著的条目，但默认的 “TopN” 往往会被某一个本体占满，另外两个本体几乎看不到。 下面用两个很短的例子，把这个问题一次说清楚： 第一步用 split = &quot;ONTOLOGY&quot; 做到“每个本体各取 TopN”；第二步用 enrichplot::autofacet() 把 BP/CC/MF 自动分面排好。 准备数据：做一个 GO（ALL）富集结果 这里用 DOSE 自带的 geneList 凑一个演示用的基因集合，重点不在... ]]></description>
+    <pubDate>Wed, 04 Feb 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>AI 时代的六角贴开发：当 hexSticker 遇上 AIGC</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</guid>
     <description><![CDATA[  摘要：单细胞注释总是“似是而非”？LLM 总是产生“幻觉”？clusterProfiler 4.19.4 版本带来重磅更新：引入 prior 参数支持“参考引导”注释，更有 interpret_hierarchical 实现“分层打击”。SingleR/scGPT 的结果不再浪费，直接化身 AI 的“标准答案”！ 😰 还在为亚群注释“掉头发”吗？ 做过单细胞分析的朋友一定经历过这种绝望时刻： 辛辛苦苦跑完聚类，对着 Cluster 1 的富集结果发呆。 通路里全是 “Cell cycle”、“Ribosome biogenesis”、“Metabolism”… 这到底是个增殖的 T 细胞？... ]]></description>
     <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>生物学家能修好收音机吗？一篇20年前的文章，治好了我的科研焦虑</title>
-    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</link>
-    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/fix-radio</guid>
-    <description><![CDATA[  从一封深夜邮件开始：你怕的不是“做不出来”，而是“来不及” 你有没有经历过这种时刻？ 凌晨一点，你刷到一篇新文章：又一个通路被“彻底阐明”，又一个靶点被“精准锁定”，又一个模型被“统一解释”。 你把手机扣在桌上，脑子里只有一句话：我还没把实验室跑顺，这个领域会不会就被别人“做完了”？ 这种焦虑很真实。 尤其当你身处一个“热”得发烫的方向：凋亡、免疫、肿瘤微环境、单细胞、空间组学、AI for Biology……新数据像洪水，新概念像烟花，会议日程像列车时刻表，永远追不上。 20多年前，一位研究凋亡的科学家 Yuri Lazebnik 就在类似的焦虑里，写下了一篇几乎可以当作“科研心理急救包”... ]]></description>
-    <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
