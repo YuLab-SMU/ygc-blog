@@ -6,23 +6,23 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>interpret开发记</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</guid>
-    <description><![CDATA[  版本零 首先是看到小伙伴说把富集分析结果扔给AI来解读，那么我也来玩一下，《让AI来解读富集分析结果》。 版本一 然后转头就想，我应该写个函数，服务大家，这个主要是建立在之前fanyi包的工具基础上：《使用Fanyi包减少语言障碍、促进信息交流》。 fanyi包一开始对接一些翻译服务，后来又对接了DeepSeek等国内的LLM来做翻译。既然LLM我已经能够对接了，那写这个interpret，就是顺手的事情了。但是大家对着富集分析列表的时候，不再是一脸懵逼了，有大语言模型给出机制解说了供参考了。而且我还考虑了，你可以给上下文（比如你的实验方案、样本信息等）来让解说更有针对性。 我在群里一讲，又... ]]></description>
-    <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
-  </item><item>
     <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Sat, 07 Feb 2026 10:03:30 GMT</pubDate>
+    <pubDate>Sun, 08 Feb 2026 16:30:48 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 07 Feb 2026 10:03:30 GMT</pubDate>
+    <pubDate>Sun, 08 Feb 2026 16:30:48 GMT</pubDate>
+  </item><item>
+    <title>interpret开发记</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</guid>
+    <description><![CDATA[  版本零 首先是看到小伙伴说把富集分析结果扔给AI来解读，那么我也来玩一下，《让AI来解读富集分析结果》。 版本一 然后转头就想，我应该写个函数，服务大家，这个主要是建立在之前fanyi包的工具基础上：《使用Fanyi包减少语言障碍、促进信息交流》。 fanyi包一开始对接一些翻译服务，后来又对接了DeepSeek等国内的LLM来做翻译。既然LLM我已经能够对接了，那写这个interpret，就是顺手的事情了。但是大家对着富集分析列表的时候，不再是一脸懵逼了，有大语言模型给出机制解说了供参考了。而且我还考虑了，你可以给上下文（比如你的实验方案、样本信息等）来让解说更有针对性。 我在群里一讲，又... ]]></description>
+    <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>GO（ALL）结果怎么画 barplot：split 分组取 TopN + autofacet 一键分面</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/goall-barplot</link>
