@@ -1,0 +1,228 @@
+---
+title: "Benchmark: chunked_array vs vector"
+format: gfm
+execute:
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(yulab.utils)
+library(bench)
+library(ggplot2)
+```
+
+## 设计思路
+
+`chunked_array` 的核心优势在于**拼接（concatenation）不做数据拷贝**——它只是把新的 chunk 追加到列表中，
+代价是后续的**随机访问**需要定位 chunk。本文档全面对比这两种策略在不同操作场景下的性能表现。
+
+## 1. 拼接性能（核心优势场景）
+
+### 1.1 两两拼接
+
+```{r bench-concat-pair}
+sizes <- c(1e3, 1e4, 1e5, 1e6)
+
+bench_concat <- bench::press(
+  n = sizes,
+  {
+    a <- seq_len(n)
+    b <- seq_len(n)
+    ca <- as_chunked_array(a)
+    cb <- as_chunked_array(b)
+    bench::mark(
+      vector    = c(a, b),
+      chunked   = c2(ca, cb),
+      check     = FALSE,
+      min_iterations = 50
+    )
+  }
+)
+
+bench_concat
+```
+
+```{r plot-concat-pair}
+autoplot(bench_concat) +
+  labs(title = "两两拼接: c() vs c2()",
+       subtitle = "chunked_array 避免数据拷贝，向量越大优势越明显") +
+  theme_minimal(base_size = 13)
+```
+
+### 1.2 迭代拼接（循环追加）
+
+这是 `chunked_array` 的**最佳使用场景**：在循环中不断追加数据。
+传统 vector 每次 `c()` 都会重新分配内存，复杂度为 O(n²)。
+
+```{r bench-concat-iter}
+n_iters <- c(100, 500, 1000, 2000)
+chunk_size <- 100
+
+bench_iter <- bench::press(
+  n = n_iters,
+  {
+    chunks <- lapply(seq_len(n), function(i) seq_len(chunk_size))
+    bench::mark(
+      vector = {
+        v <- integer(0)
+        for (ch in chunks) v <- c(v, ch)
+        v
+      },
+      chunked = {
+        ca <- as_chunked_array(integer(0))
+        for (ch in chunks) ca <- c2(ca, ch)
+        ca
+      },
+      check = FALSE,
+      min_iterations = 5
+    )
+  }
+)
+
+bench_iter
+```
+
+```{r plot-concat-iter}
+autoplot(bench_iter) +
+  labs(title = "迭代拼接: 循环 c() vs 循环 c2()",
+       subtitle = "vector 的 O(n²) 拷贝 vs chunked_array 的 O(1) 追加") +
+  theme_minimal(base_size = 13)
+```
+
+## 2. 索引访问性能
+
+### 2.1 单元素随机访问
+
+```{r bench-index-single}
+N <- 1e6
+vec <- seq_len(N)
+ca  <- Reduce(c2, lapply(split(vec, ceiling(seq_along(vec) / 1000)), as_chunked_array))
+# ca 有 1000 个 chunk，每个 1000 元素
+
+set.seed(42)
+random_idx <- sample(N, 1000)
+
+bench_single <- bench::mark(
+  vector  = { for (i in random_idx) vec[i] },
+  chunked = { for (i in random_idx) ca[i] },
+  check   = FALSE,
+  min_iterations = 10
+)
+
+bench_single
+```
+
+### 2.2 批量切片访问
+
+```{r bench-index-batch}
+slice_sizes <- c(10, 100, 1000, 10000)
+
+bench_slice <- bench::press(
+  k = slice_sizes,
+  {
+    idx <- sample(N, k)
+    bench::mark(
+      vector  = vec[idx],
+      chunked = ca[idx],
+      check   = FALSE,
+      min_iterations = 50
+    )
+  }
+)
+
+bench_slice
+```
+
+```{r plot-index-batch}
+autoplot(bench_slice) +
+  labs(title = "批量索引: vector[i] vs chunked_array[i]",
+       subtitle = "chunked_array 需要 chunk 定位开销") +
+  theme_minimal(base_size = 13)
+```
+
+## 3. 转换与还原
+
+```{r bench-as-vector}
+sizes_conv <- c(1e4, 1e5, 1e6)
+
+bench_conv <- bench::press(
+  n = sizes_conv,
+  {
+    v <- seq_len(n)
+    ca <- Reduce(c2, lapply(split(v, ceiling(seq_along(v) / 1000)), as_chunked_array))
+    bench::mark(
+      as.vector = as.vector(ca),
+      check     = FALSE,
+      min_iterations = 20
+    )
+  }
+)
+
+bench_conv
+```
+
+## 4. length() 计算
+
+```{r bench-length}
+bench_len <- bench::mark(
+  vector  = length(vec),
+  chunked = length(ca),
+  check   = FALSE,
+  min_iterations = 1000
+)
+
+bench_len
+```
+
+## 5. 内存占用对比
+
+```{r bench-memory}
+n_chunks <- c(10, 100, 1000)
+chunk_sz <- 1000
+
+mem_results <- lapply(n_chunks, function(nc) {
+  v <- seq_len(nc * chunk_sz)
+  ca <- Reduce(c2, lapply(split(v, ceiling(seq_along(v) / chunk_sz)), as_chunked_array))
+  data.frame(
+    n_chunks    = nc,
+    total_elems = nc * chunk_sz,
+    vec_bytes   = as.numeric(object.size(v)),
+    ca_bytes    = as.numeric(object.size(ca)),
+    overhead    = sprintf("%.1f%%", (as.numeric(object.size(ca)) / as.numeric(object.size(v)) - 1) * 100)
+  )
+})
+
+mem_df <- do.call(rbind, mem_results)
+knitr::kable(mem_df, col.names = c("Chunks", "Total Elements", "Vector (bytes)", 
+                                     "Chunked Array (bytes)", "Overhead"),
+             caption = "内存占用对比")
+```
+
+## 6. 总结
+
+```{r summary-table}
+#| echo: false
+summary_df <- data.frame(
+  操作 = c("两两拼接", "迭代拼接 (循环追加)", "单元素随机访问", 
+           "批量切片访问", "length()", "内存占用"),
+  chunked_array = c("✅ 快 (O(1), 无拷贝)", 
+                     "✅✅ 极快 (O(1) vs O(n²))",
+                     "⚠️ 略慢 (chunk 定位开销)", 
+                     "⚠️ 略慢 (chunk 定位开销)",
+                     "⚠️ 略慢 (链式计算)", 
+                     "⚠️ 略高 (list 结构开销)"),
+  适用建议 = c("大向量拼接", 
+              "⭐ 最佳场景：循环累积数据",
+              "频繁随机访问请转 as.vector()", 
+              "大批量访问请转 as.vector()",
+              "可忽略", 
+              "chunk 越多开销越大")
+)
+
+knitr::kable(summary_df, align = "lll",
+             caption = "chunked_array vs vector 性能特征总结")
+```
+
+> **使用建议**：`chunked_array` 最适合**写多读少**的场景——在循环中不断追加数据，
+> 最后一次性 `as.vector()` 转换。如果需要频繁随机访问，建议尽早转换为普通 vector。

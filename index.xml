@@ -10,13 +10,49 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Mon, 09 Feb 2026 15:24:12 GMT</pubDate>
+    <pubDate>Wed, 11 Feb 2026 16:37:29 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Mon, 09 Feb 2026 15:24:12 GMT</pubDate>
+    <pubDate>Wed, 11 Feb 2026 16:37:29 GMT</pubDate>
+  </item><item>
+    <title>别再在 for 循环里 c() 了，c2()到底快在哪？</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/yulab.utils/benchmark</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/yulab.utils/benchmark</guid>
+    <description><![CDATA[  做 R 的性能优化，有一个场景几乎人人踩过坑：在循环里不断 c(v, new) 追加数据。小数据时看不出来，一旦规模上来，速度像被抽走一样。 这篇文章想把话说清楚：yulab.utils 里的 chunked_array 不是“更快的向量”，它其实换了一套数据组织方式。它在“写入/拼接”上赢得很干脆，但在“随机访问”上要付成本。 我把两者在常见操作上做了系统 benchmark，结论放在前面： 如果你的核心操作是“反复追加”，chunked_array 会救你； 如果你需要频繁 x[i] 随机访问，那还是尽早 as.vector()。 下面是细节。 先说人话：chunked_array 是怎... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>走亲戚串门：路径规划、剪枝与早停</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E4%B8%B2%E9%97%A8%EF%BC%9A%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E3%80%81%E5%89%AA%E6%9E%9D%E4%B8%8E%E6%97%A9%E5%81%9C</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E4%B8%B2%E9%97%A8%EF%BC%9A%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E3%80%81%E5%89%AA%E6%9E%9D%E4%B8%8E%E6%97%A9%E5%81%9C</guid>
+    <description><![CDATA[  春节串门这件事，最累的往往不是人情世故，是路线。 你以为自己只是“去看看亲戚”，实际上你在做一个隐形的优化问题： 亲戚分布在不同地点 每家都有一个“最佳到访时间”（太早扰人、太晚尴尬） 你有体力和情绪的上限 还要躲开堵车、饭点、娃睡觉 这像什么？像路径规划。 而且是那种典型的：约束一堆、目标不止一个、还随时可能临时改动的路径规划。 1）先定目标函数：你到底要“最短路”，还是“最少社交消耗”？ 算法里最怕的就是目标没写清楚。 你说“想找最优路径”，但最优到底指什么？最短距离？最少时间？最少过路费？ 串门也是。 有的人追求“全覆盖”：一圈都得走到；有的人追求“成本最低”：尽量少跑、少折腾；还有的... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>扫除与“数据清洗”：春节前我在家跑了一遍 QC</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E6%89%AB%E9%99%A4%EF%BC%9A%E6%89%AB%E9%99%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E6%89%AB%E9%99%A4%EF%BC%9A%E6%89%AB%E9%99%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97</guid>
+    <description><![CDATA[  春节前的大扫除，我以前总把它当体力活：拖地、擦窗、整理柜子，干到腰酸背痛。 后来有一年收拾到一半，我突然反应过来：这不就是生信分析的第一步吗？ 原始数据不干净，后面模型再高级也白搭；屋子不清爽，年也过得别扭。索性我给自己立了个“分析流程”，照着跑一遍，心里反而踏实。 0）先把目标讲明白：清理不是为了好看 数据清洗的目标从来不是“把数据变漂亮”，而是把噪声压下去，让真正的信号露出来。 扫除也一样：不是为了把家变成样板间，而是把那些会让你烦、让你找不到东西、让你越住越累的干扰项清掉。 换句话说：我不追求“无尘”，我追求“少折腾”。 1）去接头（Adapter Trimming）：先剪掉“过时的尾... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>分箱收纳=分桶统计：收纳做不好，多半是没选对 bucket</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E6%94%B6%E7%BA%B3%EF%BC%9A%E5%88%86%E7%AE%B1%E6%94%B6%E7%BA%B3%E4%B8%8E%E5%88%86%E6%A1%B6%E7%BB%9F%E8%AE%A1</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E6%94%B6%E7%BA%B3%EF%BC%9A%E5%88%86%E7%AE%B1%E6%94%B6%E7%BA%B3%E4%B8%8E%E5%88%86%E6%A1%B6%E7%BB%9F%E8%AE%A1</guid>
+    <description><![CDATA[  我以前特别讨厌收纳。 不是讨厌把东西放整齐，是讨厌“收进去之后，找不到”。更准确地说：收纳一旦变成“把东西塞进看不见的地方”，它就会以另一种形式回到你面前——下次要用的时候，全屋翻箱倒柜。 后来我发现，收纳这件事和统计里的分桶（binning / bucketing）很像。桶选错了，后面再努力都只是把问题藏起来。 1）先把直觉讲清楚：分桶不是为了好看，是为了可检索 做数据分析时，你把连续变量分成若干个 bin，目的不是为了让图表“更整齐”，而是为了： 让你能看出趋势（比如某个区间突然陡升） 让你能比较（A 组在哪些桶里更集中） 让你能快速定位（出了问题先查哪个区间） 收纳也一样： 把东西分箱... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>年货采购=样本设计：你买的不是年货，是实验的变量</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E9%87%87%E8%B4%AD%EF%BC%9A%E5%B9%B4%E8%B4%A7%E9%87%87%E8%B4%AD%E4%B8%8E%E6%A0%B7%E6%9C%AC%E8%AE%BE%E8%AE%A1</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E9%87%87%E8%B4%AD%EF%BC%9A%E5%B9%B4%E8%B4%A7%E9%87%87%E8%B4%AD%E4%B8%8E%E6%A0%B7%E6%9C%AC%E8%AE%BE%E8%AE%A1</guid>
+    <description><![CDATA[  每年买年货，我都能买出一点“科研味”。 不是因为我爱做表格，而是因为年货这件事特别像样本设计：你买什么、买多少、什么时候买、从哪家买、给谁吃——这些选择最后会变成你过年期间的体验。 买得好，是一套稳的实验；买得乱，后面全是返工。 1）先把研究问题写清楚：你到底想过一个什么年？ 样本设计第一步是明确研究问题。你不写清楚，就会出现经典的“想到什么采什么”，最后数据一堆，结论一句都不敢说。 年货也一样。 有人过年要的是“省心”：少做饭、少跑腿、少洗碗；有人要的是“热闹”：亲戚来一波、朋友来一波；有人要的是“仪式感”：必须手工、必须现做。 目标不同，采购策略就不该一样。 所以我现在会先问自己三个问题... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>春节问候：一场春节限定的“序列比对”与“模式识别”</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E9%97%AE%E5%80%99</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E9%97%AE%E5%80%99</guid>
+    <description><![CDATA[  又是一年春节，除了舌尖上的“多组学”盛宴，对于我们生信人来说，还有一场无声的、充满挑战的“序列比对”与“模式识别”实验。 没错，说的就是那些来自七大姑八大姨的灵魂拷问。 第一步：收集数据——高度保守的“一致性序列” (Consensus Sequence) 你以为亲戚的关心是随机的吗？不，那简直是生物进化中最完美的 Consensus Sequence（一致性序列）！ 无论你身处何地，无论你的亲戚是久未谋面还是朝夕相处，他们的问候总能表现出惊人的 Sequence Identity（序列一致性）。 经典模版1号： “工作怎么样啊？工资多少了？有对象没？” 经典模版2号： “啥时候结婚啊？啥时... ]]></description>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>interpret开发记</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/interpret-dev</link>
@@ -29,42 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/goall-barplot</guid>
     <description><![CDATA[ 很多人第一次用 enrichGO(ont = &quot;ALL&quot;) 画 barplot 时，会遇到一个小尴尬：你想看 BP/CC/MF 各自最显著的条目，但默认的 “TopN” 往往会被某一个本体占满，另外两个本体几乎看不到。 下面用两个很短的例子，把这个问题一次说清楚： 第一步用 split = &quot;ONTOLOGY&quot; 做到“每个本体各取 TopN”；第二步用 enrichplot::autofacet() 把 BP/CC/MF 自动分面排好。 准备数据：做一个 GO（ALL）富集结果 这里用 DOSE 自带的 geneList 凑一个演示用的基因集合，重点不在... ]]></description>
     <pubDate>Wed, 04 Feb 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>AI 时代的六角贴开发：当 hexSticker 遇上 AIGC</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</guid>
-    <description><![CDATA[ 几年前，ggtree 的六角贴（hex sticker）带起了一阵风潮。随后 hexSticker 包的发布，让 R 语言开发者能用纯代码画出自己的六角贴。 2018 年 useR 会议上的那面“贴纸墙”，这小小的六角形已经成了 R 社区的一种文化。 👉 一大波贴纸来袭 👉 2018年useR会议的一道风景线 当时我们说：“就是这么简单，你也能够纯代码生成六角贴！” 现在，有了生成式 AI，我们可以换个玩法。 纯代码绘图的局限 用 ggplot2 或 lattice 画贴纸，适合展示数据的硬核美。但如果想要更具艺术感、或复杂的插画风格，纯代码实现起来成本很高。 比如，我想为 cluster... ]]></description>
-    <pubDate>Mon, 02 Feb 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>一键构建“微生物版”KEGG.db：从 organism 列表到离线富集数据库</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</guid>
-    <description><![CDATA[  [!序言] 好久以以前有KEGG.db，后来KEGG不开放了，这个包也就一直不更新了，然后过了几年，也就被移除了，距今又是好几年。clusterProfiler一开始的KEGG支持也是基于这个包，在KEGG不开放之时，我很快就上线了在线爬数据的KEGG版本。但之前支持KEGG.db依然保留着。后来我们就搞了个createKEGGdb的R包，让你可以用我们在线爬数据的功能来生成一个可以安装的KEGG.db包，然后可以对接原来clusterProfiler的功能，就变成了你可以缓存KEGG的数据，分析时是本地的。 由于我现在搞个新格式：KEGG的富集分析终于真的本地化了。，原来的方式等同于废弃。... ]]></description>
-    <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>clusterProfiler 也能做 PPI 网络分析了？没错，还能用 ggtangle 画出花来！</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</guid>
-    <description><![CDATA[  [! abstract] 富集分析只能看通路？NONONO！clusterProfiler 现在支持一键获取基因或通路的蛋白互作网络（PPI），并结合 ggtangle 包实现高自由度的可视化。想知道怎么把 Fold Change 映射到网络图上？快来看看吧！ 这个功能其实早已经有了，当clusterProfiler遇见stringdb…，这次我主要是带来使用ggtangle进行可视化。如果你想要做网络上的一些分析，github上许愿，或许会梦想成真。 做完富集分析，拿到一堆显著的通路，下一步该干嘛？ 除了看通路名字，我们往往还想知道：这些基因之间到底有没有真实的物理互作？它们是不是形成了一... ]]></description>
-    <pubDate>Wed, 21 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>富集分析“翻车”了怎么办？clusterProfiler 智能体学会了“绝地求生”</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</guid>
-    <description><![CDATA[  导读：你是否遇到过这样的尴尬：辛苦测序拿到的差异基因，一跑富集分析，结果全是空？或者只有几个不痛不痒的通路？传统流程到这里往往就卡住了。但今天，clusterProfiler 的 AI 智能体学会了一项新技能——在没有通路的情况下，直接“裸读”基因列表，强行挖掘生物学意义。 “没有显著通路” = “没有生物学意义”？ 大错特错。 在实际科研中，我们经常会遇到“富集失败”的情况： 基因太少：可能只有 10-20 个差异基因，达不到统计学显著性。 功能太特异：比如某些罕见的嗅觉受体亚型，或者未被 KEGG 收录的新颖功能模块。 背景噪音大：数据质量一般，导致 p-value 矫正后全军覆没。 以... ]]></description>
-    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>AI 懂网络了！clusterProfiler 引入“知识引导”模式，构建细胞调控全景图</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/knowledge-guided-interpretation</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/knowledge-guided-interpretation</guid>
-    <description><![CDATA[  摘要：还在看孤立的富集通路？clusterProfiler 4.19.4 再进化！引入 Knowledge-Guided Interpretation，整合 PPI 网络、Hub Gene 识别、Fold Change 表达量以及多源知识库（如 ChEA TF）推理。让 LLM 从“看名单”进化到“看网络”，自动构建 Regulator → Target → Function 的因果调控模型！ 🕸️ 通路富集只是开始，不是终点 做完富集分析，我们往往得到的是一张**“碎片化”的清单**： Top 1: Cell Cycle Top 2: DNA Replication Top 3: P53... ]]></description>
-    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>告别瞎猜！clusterProfiler 新增“参考引导”模式，让 AI 注释准确率暴涨 10 倍！</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</guid>
-    <description><![CDATA[  摘要：单细胞注释总是“似是而非”？LLM 总是产生“幻觉”？clusterProfiler 4.19.4 版本带来重磅更新：引入 prior 参数支持“参考引导”注释，更有 interpret_hierarchical 实现“分层打击”。SingleR/scGPT 的结果不再浪费，直接化身 AI 的“标准答案”！ 😰 还在为亚群注释“掉头发”吗？ 做过单细胞分析的朋友一定经历过这种绝望时刻： 辛辛苦苦跑完聚类，对着 Cluster 1 的富集结果发呆。 通路里全是 “Cell cycle”、“Ribosome biogenesis”、“Metabolism”… 这到底是个增殖的 T 细胞？... ]]></description>
-    <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
