@@ -27,7 +27,7 @@
 		{"id":"vae_note","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/变分编码器VAE.md","x":3220,"y":580,"width":360,"height":140},
 		{"id":"vae_mnist","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/VAE生成手写数字.md","x":3220,"y":740,"width":360,"height":140},
 		{"id":"w8","type":"text","text":"第8周 Transformer\n输出：最小注意力模块前向 + shape跟踪","x":3620,"y":440,"width":360,"height":120},
-		{"id":"tf_note","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/Transformer.md","x":3620,"y":580,"width":360,"height":140},
+		{"id":"tf_note","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/10-Transformer.md","x":3620,"y":580,"width":360,"height":140},
 		{"id":"addons","type":"text","text":"加餐（可选）\nA 强化学习：主线跑通后再学\nB 基因组方向：把同一套训练/评估/诊断迁移过去","x":4020,"y":440,"width":360,"height":200},
 		{"id":"rl_note","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/增强式学习RL.md","x":4020,"y":660,"width":360,"height":120},
 		{"id":"genomics_note","type":"file","file":"05_Notebooks/机器学习与统计方法/深度学习/08-基因组学深度学习入门指南.md","x":4020,"y":800,"width":360,"height":120},
