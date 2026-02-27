@@ -40,7 +40,8 @@ jobs:
       - name: Build Quartz
         working-directory: blog
         # 直接构建到 docs 目录 (在 Runner 中)
-        run: npx quartz build -d ../YuNotebooks -o docs
+        # 忽略 00_biobabble 目录
+        run: npx quartz build -d ../YuNotebooks -o docs --ignore 00_biobabble
 
       - name: Run Cleanup Script
         working-directory: blog
