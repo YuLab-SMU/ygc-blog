@@ -37,11 +37,19 @@ jobs:
         working-directory: blog
         run: npm ci
 
+      - name: Prepare Public Content
+        working-directory: blog
+        run: |
+          rm -rf ../public-content
+          mkdir -p ../public-content
+          cp -a ../YuNotebooks/. ../public-content/
+          rm -rf ../public-content/00_biobabble
+
       - name: Build Quartz
         working-directory: blog
         # 直接构建到 docs 目录 (在 Runner 中)
-        # 忽略 00_biobabble 目录
-        run: npx quartz build -d ../YuNotebooks -o docs --ignore 00_biobabble
+        # 使用预过滤后的内容目录
+        run: npx quartz build -d ../public-content -o docs
 
       - name: Run Cleanup Script
         working-directory: blog
