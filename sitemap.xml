@@ -1,9 +1,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/KEGG%E7%9A%84%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0</loc>
-    <lastmod>2025-11-20T00:00:00.000Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/DOSE/DOSE%E5%8C%85%E5%BC%95%E7%94%A8%E8%BF%87%E7%99%BE</loc>
+    <lastmod>2018-11-26T00:00:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/goall-barplot</loc>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/DOSE/%E8%BF%98%E6%83%B3%E7%94%A8clusterProfiler%E4%BB%A5%E5%89%8D%E7%9A%84%E9%82%A3%E4%BA%9B%E7%94%BB%E5%9B%BE%E5%87%BD%E6%95%B0%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F</loc>
+    <lastmod>2019-09-19T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/GOSemSim/%E5%9F%BA%E5%9B%A0%E6%88%96%E8%9B%8B%E7%99%BD%E4%B9%8B%E9%97%B4%EF%BC%8C%E8%B0%81%E6%98%AF%E8%B0%81%E7%9A%84%E6%AD%BB%E5%85%9A%EF%BC%9F</loc>
+    <lastmod>2018-01-04T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/aplot/%E6%8B%BC%E5%9B%BE%E8%BF%98%E8%83%BD%E6%8A%8A%E4%BD%A0%E7%94%BB%E5%9B%BE%E7%9A%84%E4%BA%94%E6%AF%9B%E7%89%B9%E6%95%88%E7%BB%99%E5%90%83%E4%BA%86%E4%B8%8D%E6%88%90%EF%BC%9F</loc>
+    <lastmod>2021-12-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/aplot/%E6%8B%BC%E5%9B%BE%EF%BC%9F%E6%88%91%E6%8E%90%E6%8C%87%E4%B8%80%E7%AE%97%EF%BC%8C%E5%8F%91%E7%8E%B0%E4%BA%8B%E6%83%85%E6%B2%A1%E9%82%A3%E4%B9%88%E7%AE%80%E5%8D%95%EF%BC%81</loc>
+    <lastmod>2020-06-02T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/GO/goall-barplot</loc>
     <lastmod>2026-02-04T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/KEGG/KEGG%E7%9A%84%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0</loc>
+    <lastmod>2025-11-20T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/fallback-mode-article</loc>
     <lastmod>2026-01-20T00:00:00.000Z</lastmod>
@@ -15,7 +30,7 @@
     <lastmod>2026-01-20T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</loc>
-    <lastmod>2026-02-13T16:23:50.000Z</lastmod>
+    <lastmod>2026-02-28T10:07:52.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/reference-guided-interpretation</loc>
     <lastmod>2026-01-20T00:00:00.000Z</lastmod>
@@ -23,23 +38,98 @@
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/%E8%AE%A9AI%E6%9D%A5%E8%A7%A3%E8%AF%BB%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</loc>
     <lastmod>2026-01-13T00:00:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/ppi_network_analysis</loc>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/others/Comparison_of_clusterProfiler_and_GSEA-P</loc>
+    <lastmod>2017-06-08T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/others/why_clusterProfiler_fails</loc>
+    <lastmod>2017-05-24T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/others/%E5%90%AC%E8%AF%B4%E4%BD%A0%E6%9C%89RNAseq%E6%95%B0%E6%8D%AE%E5%8D%B4%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E8%B7%91GSEA</loc>
+    <lastmod>2017-08-17T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/utilities/leading_edge_analysis</loc>
+    <lastmod>2018-08-22T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/utilities/ppi_network_analysis</loc>
     <lastmod>2026-01-21T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/utilities/%E7%94%A8dplyr%E5%8A%A8%E8%AF%8D%E6%93%8D%E4%BD%9C%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</loc>
+    <lastmod>2020-07-22T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/createKEGGdb/createKEGGdb-microbiota</loc>
     <lastmod>2026-01-29T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/cnetplot%E5%8F%AA%E6%A0%87%E6%B3%A8%E9%83%A8%E5%88%86%E8%8A%82%E7%82%B9%E7%9A%84label</loc>
+    <lastmod>2019-12-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/dotplot_for_GSEA</loc>
+    <lastmod>2016-12-30T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/dotplot%E5%B1%95%E7%A4%BA%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C</loc>
+    <lastmod>2017-07-25T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/enrichment_map</loc>
+    <lastmod>2017-09-01T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/enrichplot_%E8%AE%A9%E4%BD%A0%E4%BB%AC%E5%AF%B9clusterProfiler%E7%B3%BB%E5%88%97%E5%8C%85%E6%97%A0%E6%B3%95%E8%87%AA%E6%8B%94</loc>
+    <lastmod>2018-03-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/goall-barplot</loc>
+    <lastmod>2026-02-01T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/gseaplot2%E4%B8%AD%E7%9A%84pvalue_table%E5%AE%9A%E5%88%B6%E5%8C%96</loc>
     <lastmod>2025-11-10T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/gseaplot%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A2%9C%E8%89%B2</loc>
+    <lastmod>2017-09-12T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/joyplot%EF%BC%9AGSEA%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B9%9F%E8%83%BD%E5%BF%AB%E4%B9%90%E8%B5%B7%E6%9D%A5</loc>
+    <lastmod>2017-08-25T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/p%E5%80%BC%E7%9A%84%E5%88%86%E5%B8%83%E4%BD%A0%E8%80%83%E8%99%91%E8%BF%87%E6%B2%A1%E6%9C%89%EF%BC%9F</loc>
     <lastmod>2025-09-18T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/%E4%B8%80%E6%A0%B7%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%8C%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84upset</loc>
+    <lastmod>2019-09-27T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/%E5%A4%9A%E5%87%BA%E6%9D%A5%E7%9A%84%E7%82%B9%E6%98%AF%E7%8C%B4%E5%AD%90%E5%8F%98%E7%9A%84%E5%90%97%EF%BC%9F</loc>
+    <lastmod>2020-06-17T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/%E5%AE%89%E8%A3%85enrichplot%E5%8F%8A%E5%8D%87%E7%BA%A7clusterProfiler</loc>
+    <lastmod>2018-03-12T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/enrichplot/%E6%90%9E%E5%A4%A7%E4%BD%A0%E7%9A%84%E7%82%B9%EF%BC%8C%E8%AE%A9%E6%88%91%E4%BB%AC%E7%94%BB%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%B0%94%E6%B3%A1%E5%9B%BE</loc>
+    <lastmod>2017-07-26T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/ggbreak%EF%BC%9A%E4%BD%A0%E4%BB%AC%E8%A6%81%E7%9A%84%E5%9D%90%E6%A0%87%E8%BD%B4%E6%88%AA%E6%96%AD%EF%BC%8C%E5%AE%83%E6%9D%A5%E4%BA%86</loc>
+    <lastmod>2021-05-23T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E9%95%BF%E5%9D%90%E6%A0%87%E8%BD%B4%E5%A4%9A%E8%A1%8C%E5%B1%95%E7%A4%BA%E6%94%AF%E6%8C%81%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F%E4%BA%86</loc>
+    <lastmod>2022-03-15T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/ggmsa/DNA%E5%BA%8F%E5%88%97%E9%87%8D%E7%BB%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%96%B9%E6%B3%95</loc>
+    <lastmod>2019-01-29T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/ggmsa/%E5%85%B3%E4%BA%8E%E5%A4%9A%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%8C%E6%88%91%E4%BB%AC%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8C%85</loc>
+    <lastmod>2020-03-23T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/ggtree/%E5%8F%AF%E4%BA%A4%E4%BA%92%E7%9A%84ggtree</loc>
     <lastmod>2025-12-18T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/2018%E5%B9%B4useR%E4%BC%9A%E8%AE%AE%E7%9A%84%E4%B8%80%E9%81%93%E9%A3%8E%E6%99%AF%E7%BA%BF</loc>
+    <lastmod>2018-07-20T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/AI-sticker</loc>
     <lastmod>2026-02-02T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/ggtree_hex_sticker</loc>
+    <lastmod>2016-11-20T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/hexSticker/%E4%B8%80%E5%A4%A7%E6%B3%A2%E8%B4%B4%E7%BA%B8%E6%9D%A5%E8%A2%AD</loc>
+    <lastmod>2017-06-30T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/meshes/using_meshes_for_MeSH_Enrichment_Analysis</loc>
+    <lastmod>2018-02-26T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/mirrorselect/%E5%8C%85%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%81%E9%95%9C%E5%83%8F%E8%A6%81%E4%B8%8D%E8%A6%81%E8%83%8C%E9%94%85%EF%BC%9F</loc>
     <lastmod>2025-10-08T00:00:00.000Z</lastmod>
@@ -68,6 +158,12 @@
     <loc>https://quartz.jzhao.xyz/01_Development/documentation/yulab.utils/benchmark</loc>
     <lastmod>2026-02-11T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/01_Development/documentation/yulab.utils/%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%A3%85%E4%B8%8D%E4%BA%86github%E7%9A%84%E5%8C%85%EF%BC%9F</loc>
+    <lastmod>2020-12-21T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%95%99%E6%9D%90-%E4%B8%93%E8%91%97/%E2%80%9CY%E5%8F%94%E7%9A%84%E4%B9%A6%E2%80%9D_%E5%8D%B0%E5%88%B01%E4%B8%87+%E5%86%8C%E4%BA%86%EF%BC%81</loc>
+    <lastmod>2023-04-04T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9Aaplot%E8%AE%A9%E4%BD%A0%E8%BD%BB%E6%9D%BE%E7%94%BB%E5%87%BA%E5%A4%8D%E6%9D%82%E7%9A%84%E5%9B%BE</loc>
     <lastmod>2025-06-30T00:00:00.000Z</lastmod>
   </url><url>
@@ -76,9 +172,6 @@
   </url><url>
     <loc>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%B8%A4%E6%B5%8B%E5%BA%8F%E5%B9%B3%E5%8F%B0%E5%9C%A8%E5%8D%95%E7%BB%86%E8%83%9E%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%A0%94%E7%A9%B6%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83</loc>
     <lastmod>2025-12-10T00:00:00.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E4%BD%BF%E7%94%A8treeio%E5%92%8Cggtree%E6%8E%A2%E7%B4%A2Phylogenetic-placement%E6%95%B0%E6%8D%AE</loc>
-    <lastmod>2025-04-12T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%81%8F%E5%B7%AE</loc>
     <lastmod>2025-12-29T00:00:00.000Z</lastmod>
@@ -98,11 +191,71 @@
     <loc>https://quartz.jzhao.xyz/05_Notebooks/Vibe-Coding/Positron/%E8%A7%81%E5%BC%82%E6%80%9D%E8%BF%81%EF%BC%9A%E6%89%94%E6%8E%89RStudio%EF%BC%8C%E6%8B%A5%E6%8A%B1Positron</loc>
     <lastmod>2025-10-12T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/algorithm/SIR_Model_of_Epidemics</loc>
+    <lastmod>2018-06-12T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/algorithm/%E7%94%A8Taylor%E5%85%AC%E5%BC%8F%E4%BC%B0%E8%AE%A1%E5%87%BD%E6%95%B0%E5%80%BC</loc>
+    <lastmod>2019-01-28T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/algorithm/%E7%94%A8%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9</loc>
+    <lastmod>2017-10-08T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/algorithm/%E9%80%92%E5%BD%92</loc>
+    <lastmod>2022-02-22T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/AI%E5%AD%A6%E8%B5%B7%E6%9D%A5%EF%BC%8C%E6%AF%95%E7%AB%9FAI%E8%AE%A9%E5%9C%B0%E7%90%83%E8%BF%90%E8%BD%AC</loc>
     <lastmod>2024-11-25T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/10._Calculate_Covariance_Matrix</loc>
+    <lastmod>2025-02-26T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/11._Solve_Linear_Equations_using_Jacobi_Method</loc>
+    <lastmod>2025-03-06T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/12._Singular_Value_Decomposition_(SVD)</loc>
+    <lastmod>2025-03-12T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/13._Determinant_of_a_4x4_Matrix_using_Laplace's_Expansion</loc>
+    <lastmod>2025-03-20T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/14._Linear_Regression_Using_Normal_Equation</loc>
+    <lastmod>2025-05-20T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/15._Linear_Regression_Using_Gradient_Descent</loc>
+    <lastmod>2025-06-04T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/16._Feature_Scaling_Implementation</loc>
+    <lastmod>2025-07-02T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/17._K-Means_Clustering</loc>
+    <lastmod>2025-07-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/18._Cross-Validation_Data_Split_Implementation</loc>
+    <lastmod>2025-08-13T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/19._Principal_Component_Analysis_(PCA)_Implementation</loc>
+    <lastmod>2025-10-14T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/20._Decision_Tree_Learning</loc>
+    <lastmod>2025-12-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/6._%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81%E5%80%BC</loc>
+    <lastmod>2025-01-28T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/7._Matrix_Transformation</loc>
+    <lastmod>2025-02-04T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/8._Calculate_2x2_Matrix_Inverse</loc>
+    <lastmod>2025-02-13T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Deep-ML/9._Matrix_times_Matrix</loc>
+    <lastmod>2025-02-19T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/KMeans%E5%BA%94%E7%94%A8%E4%BA%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE</loc>
     <lastmod>2025-08-18T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/Support_Vector_Machine</loc>
+    <lastmod>2017-10-03T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/01-%E7%94%A8PyTorch%E8%AE%AD%E7%BB%83%E7%AE%80%E5%8D%95%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92</loc>
     <lastmod>2025-06-18T00:00:00.000Z</lastmod>
@@ -131,6 +284,111 @@
     <loc>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E7%AE%80%E5%8D%95%E7%9A%84KMeans</loc>
     <lastmod>2025-06-15T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE10_Summation_of_Primes</loc>
+    <lastmod>2025-01-27T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE11_Largest_Product_in_a_Grid</loc>
+    <lastmod>2025-02-10T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE12_Highly_Divisible_Triangular_Number</loc>
+    <lastmod>2025-02-17T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE13_Large_Sum</loc>
+    <lastmod>2025-02-24T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE148%EF%BC%9AExploring_Pascal's_Triangle</loc>
+    <lastmod>2024-10-22T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE14_Longest_Collatz_Sequence</loc>
+    <lastmod>2025-03-03T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE15%EF%BC%9ALattice_Paths</loc>
+    <lastmod>2025-03-10T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE16_Power_Digit_Sum</loc>
+    <lastmod>2025-03-18T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE17_Number_Letter_Counts</loc>
+    <lastmod>2025-03-31T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE18_Maximum_Path_Sum_I</loc>
+    <lastmod>2025-04-09T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE19_Counting_Sundays</loc>
+    <lastmod>2025-04-16T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE1_Multiples_of_3_or_5</loc>
+    <lastmod>2024-11-18T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE31_Coin_Sums</loc>
+    <lastmod>2024-11-13T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE4_Largest_Palindrome_Product</loc>
+    <lastmod>2024-12-17T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE5_Smallest_Multiple</loc>
+    <lastmod>2024-12-25T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE7_10001st_Prime</loc>
+    <lastmod>2025-01-08T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE8_Largest_Product_in_a_Series</loc>
+    <lastmod>2025-01-16T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ProjectEuler/PE9_Special_Pythagorean_Triplet</loc>
+    <lastmod>2025-01-21T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s01_-_Counting_DNA_Nucleotides</loc>
+    <lastmod>2017-10-16T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s02_-_Transcribing_DNA_into_RNA</loc>
+    <lastmod>2017-10-23T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s03_-_Complementing_a_Strand_of_DNA</loc>
+    <lastmod>2017-10-30T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s04_-_Computing_GC_Content</loc>
+    <lastmod>2017-11-07T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s05_-_Finding_a_Motif_in_DNA</loc>
+    <lastmod>2017-12-18T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s06_-_Consensus_and_Profile</loc>
+    <lastmod>2017-12-26T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s07_-_Finding_a_Shared_Motif</loc>
+    <lastmod>2018-10-10T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s08_-__RNA_Splicing</loc>
+    <lastmod>2019-02-19T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/ROSALIND/s09_-_Perfect_Matchings_and_RNA_Secondary_Structures</loc>
+    <lastmod>2019-08-27T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/Linear_Congruential_Generator</loc>
+    <lastmod>2018-11-26T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/Neumann%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8</loc>
+    <lastmod>2018-10-29T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%B1%82%E5%87%BD%E6%95%B0%E5%80%BC</loc>
+    <lastmod>2019-09-19T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E5%88%A9%E7%94%A8%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%BC%B0%E8%AE%A1Pi%E5%80%BC</loc>
+    <lastmod>2018-08-06T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E6%89%8B%E4%B8%8A%E6%8F%A1%E6%9C%89%E5%A4%9A%E5%B0%91%E5%B9%B8%E8%BF%90%E7%A5%A8%EF%BC%9F</loc>
+    <lastmod>2019-05-07T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97</loc>
+    <lastmod>2019-05-14T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E7%94%A8%E9%93%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98</loc>
+    <lastmod>2020-03-15T00:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/05_Notebooks/%E7%BC%96%E7%A0%81%E7%BB%83%E4%B9%A0/cpp/%E9%87%91%E9%93%B6%E5%B2%9B%E8%88%AA%E7%BA%BF</loc>
+    <lastmod>2019-03-11T00:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/%E7%A7%91%E7%A0%94%E6%84%9F%E6%82%9F/2026%E6%98%A5%E8%8A%82/%E6%98%A5%E8%8A%82%E4%B8%B2%E9%97%A8%EF%BC%9A%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E3%80%81%E5%89%AA%E6%9E%9D%E4%B8%8E%E6%97%A9%E5%81%9C</loc>
     <lastmod>2026-02-11T00:00:00.000Z</lastmod>
   </url><url>
@@ -153,10 +411,10 @@
     <lastmod>2025-12-01T00:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</loc>
-    <lastmod>2026-02-13T16:23:50.000Z</lastmod>
+    <lastmod>2026-02-28T10:07:52.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/</loc>
-    <lastmod>2026-02-13T16:23:50.000Z</lastmod>
+    <lastmod>2026-02-28T10:07:52.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%94%A8-R-%E8%AF%AD%E8%A8%80%E6%8A%8A%E2%80%9C%E5%B1%8E%E2%80%9D%E7%94%BB%E5%87%BA%E6%9D%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E6%9E%81%E7%AB%AF%E6%A1%88%E4%BE%8B</loc>
     <lastmod>2025-12-28T00:00:00.000Z</lastmod>
