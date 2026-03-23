@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>常见统计检验的本质：番外篇（生信与临床的三大神兽）</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="YGC"/><meta property="og:title" content="常见统计检验的本质：番外篇（生信与临床的三大神兽）"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="常见统计检验的本质：番外篇（生信与临床的三大神兽）"/><meta name="twitter:description" content="在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细..."/><meta property="og:description" content="在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细..."/><meta property="og:image:alt" content="在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细..."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细..."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="05_Notebooks/机器学习与统计方法/常见统计检验的本质：番外篇"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">YGC</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-217"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-217" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../05_Notebooks/">05_Notebooks</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../05_Notebooks/机器学习与统计方法/">机器学习与统计方法</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>常见统计检验的本质：番外篇（生信与临床的三大神兽）</a></div></nav><h1 class="article-title">常见统计检验的本质：番外篇（生信与临床的三大神兽）</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-23T00:00:00.000Z">Mar 23, 2026</time><span>23 min read</span></p></div></div><article class="popover-hint"><p>在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了<strong>线性模型（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span></span></span></span>）</strong> 的框架下。</p>
+<p>但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路：</p>
+<ol>
+<li><strong>多重检验校正 (FDR / q-value)</strong>：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？</li>
+<li><strong>孟德尔随机化 (Mendelian Randomization, MR)</strong>：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？</li>
+<li><strong>降维 (PCA / t-SNE / UMAP)</strong>：为什么做单细胞分析上来就得画个点点图？降维到底在降什么？</li>
+</ol>
+<p>这三个概念课本上讲得极其玄乎，充满了反人类的数学公式。今天，我们不谈公式，只谈本质。把这三大神兽也扒得底朝天。</p>
+<hr/>
+<h2 id="1-多重检验校正为什么生信人天天看-q-value">1. 多重检验校正：为什么生信人天天看 q-value？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-多重检验校正为什么生信人天天看-q-value" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>场景</strong>：你花了 10 万块钱测了一批 RNA-seq 数据（对照组 vs 患病组）。你用我们在基础篇里讲的线性模型（GLM），对着 2 万个基因挨个算了一遍 p 值。
+你狂喜地发现：哇！有 500 个基因的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span>！
+你拿着结果去找老板，老板冷冷地说：“做 FDR 校正了吗？”
+你用 R 语言跑了个 <code>p.adjust()</code>。结果傻眼了，500 个显著基因瞬间缩水成了 3 个。</p>
+<p>这有何难理解的呢？这一切，都要从 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span> 的本质说起。</p>
+<h3 id="p-值冤枉一个好人的概率">p 值：冤枉一个好人的概率<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#p-值冤枉一个好人的概率" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span> 的意思是：<strong>如果这个基因真的没变化（是个好人），但我通过抽样误差，硬生生算出它有变化的概率，只有 5%。</strong>
+对于单一一个基因来说，5% 的冤枉率是可以接受的。</p>
+<p>但问题是，你测了 <strong>2 万个基因</strong>啊！
+即便这 2 万个基因在两组之间<strong>完全没有任何差异</strong>，仅仅因为 5% 的假阳性率（也就是纯靠运气中奖的概率），你也会算出：
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">20000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span> 个假阳性基因！</p>
+<p>这就是<strong>多重检验问题 (Multiple Testing Problem)</strong>：只要你抛硬币的次数足够多，总能连续抛出 10 次正面。</p>
+<h3 id="bonferroni-校正宁可错杀一千不可放过一个">Bonferroni 校正：宁可错杀一千，不可放过一个<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bonferroni-校正宁可错杀一千不可放过一个" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>早期统计学家很暴力，发明了 Bonferroni 校正：既然你测了 2 万次，那我就把标准严苛 2 万倍。
+你的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 值必须小于 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.05/20000</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.0000025</span></span></span></span>，我才承认你显著。
+结果呢？大家发现，要求太高了，连真正有差异的基因都被筛掉了（假阴性太高）。</p>
+<h3 id="fdr-benjamini-hochberg-与-q-value排个队按比例打折">FDR (Benjamini-Hochberg) 与 q-value：排个队，按比例打折<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fdr-benjamini-hochberg-与-q-value排个队按比例打折" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>后来，Benjamini 和 Hochberg 提出了极其聪明的 <strong>FDR (False Discovery Rate，错误发现率)</strong> 概念。
+它的逻辑变了。它不再关注“冤枉好人的绝对概率”，而是关注：<strong>在你抓的这批“坏人（显著基因）”里，有多少比例是被冤枉的（假阳性）？</strong></p>
+<p>为了控制 FDR，统计学家发明了各种校正算法（最经典的叫 BH 法）。它的底层逻辑（极简版）是这样的：</p>
+<ol>
+<li>把你算出来的两万个 p 值，从小到大排个队。</li>
+<li>排名越靠前的（p值越小的），说明它越“罪大恶极”，我给它的惩罚越小。</li>
+<li>排名靠后的，说明它本身就不太显著，我就狠狠地惩罚它，把它乘上一个巨大的倍数。</li>
+</ol>
+<p>这样一顿操作之后，每个基因原本的 p 值，就变成了一个新的、被惩罚过的值。
+<strong>这个校正后的新 p 值（Adjusted p-value），在很多生信软件里，就被称为 q-value</strong>（严格来说，q-value 是 Storey 提出来的基于 FDR 的另一种更精细的估算，但现在大家习惯把它们混着用，都指代校正后的 p 值）。</p>
+<p><strong>怎么解读呢？</strong>
+假设你设定阈值 <code>q-value &lt; 0.05</code>，然后筛出了 100 个基因。
+它的物理意义是：<strong>这 100 个基因组成的名单里，我允许有 5%（也就是 5 个基因）是假阳性（靠运气混进来的），只要另外 95 个是真的就行。</strong></p>
+<p>这就是为什么生信文章里，大家永远在看 q-value 而不是 p 值。
+<strong>一句话总结：p 值管的是“个体冤不冤”，q 值管的是“你交上来的这份群体名单，水份大不大”。</strong></p>
+<h3 id="常见应用场景什么时候必须做多重检验校正">常见应用场景：什么时候必须做多重检验校正？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#常见应用场景什么时候必须做多重检验校正" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>只要你在同一项研究中，对<strong>不同的特征</strong>进行了<strong>多次独立统计检验</strong>，就必须做校正。在生物医学中，几乎所有的组学数据都是重灾区：</p>
+<ol>
+<li><strong>转录组学 (RNA-seq / 芯片)</strong>：同时比较 2 万个基因在两组间的表达差异（生信最常见场景，通常用 <code>q-value &lt; 0.05</code> 过滤）。</li>
+<li><strong>全基因组关联分析 (GWAS)</strong>：同时测试百万级别的 SNP 位点与某种疾病的关系。因为基数太大，GWAS 通常不用 FDR，而是用最传统严苛的 Bonferroni 校正变体（这也是为什么医学界公认的 GWAS 显著性阈值是极其变态的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>）。</li>
+<li><strong>微生物组学 (Microbiome)</strong>：比较肠道里几百种不同细菌菌群在用药前后的丰度变化。</li>
+<li><strong>代谢组学 / 蛋白质组学</strong>：筛选成千上万种代谢物或蛋白的浓度差异。</li>
+</ol>
+<p><strong>避坑指南</strong>：如果你只测了 3 个基因的 qPCR 去验证一个很明确的假说，那直接用普通 p 值就行了，没必要强行搞个 FDR 校正（强行做反而显得死板）。但如果你做了全转录组测序，哪怕你文章最后只重点展示了 3 个基因，你也必须在方法学里证明：这 3 个基因是从 2 万个基因中，经过全局 FDR 校正后依然坚挺的“真家伙”。</p>
+<hr/>
+<h2 id="2-孟德尔随机化-mr不用做实验的因果推断神器">2. 孟德尔随机化 (MR)：不用做实验的因果推断神器<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-孟德尔随机化-mr不用做实验的因果推断神器" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>痛点场景</strong>：
+在临床和公共卫生研究中，我们天天喊着“寻找致病元凶”，但现实往往极其打脸。
+比如，你想证明“血液中某种生物标志物（比如 CRP 蛋白）升高，会导致冠心病”。你观察了一万个人，发现 CRP 高的人确实冠心病多（有相关性）。
+但审稿人马上会喷你：</p>
+<ol>
+<li><strong>反向因果</strong>：你怎么知道不是因为他得了冠心病，身体发炎，才导致 CRP 升高的？</li>
+<li><strong>混杂因素</strong>：你怎么知道不是因为这些人本身就爱吃垃圾食品（混杂因素），垃圾食品同时导致了 CRP 升高和冠心病？</li>
+</ol>
+<p>要证明因果，唯一的金标准是<strong>随机对照双盲试验 (RCT)</strong>：你找一万人，强行给一半人注射 CRP 蛋白，另一半人注射生理盐水，观察 10 年。
+这显然既没钱做，又违背医学伦理。那怎么办？</p>
+<p><strong>降维打击时刻：孟德尔随机化 (MR)</strong>
+近几年医学顶刊（如 BMJ, Lancet）被一种叫 MR 的分析方法疯狂刷屏。它的核心逻辑极其天才：<strong>既然我们不能做人工的随机分组，那老天爷（基因）不是早就替我们分好组了吗！</strong></p>
+<p>统计学家引入了一个叫<strong>工具变量 (Instrumental Variable)</strong> 的概念。
+假设我们找到了一个基因（SNP，比如 rs12345），这个基因只干一件事：<strong>让人一出生就疯狂想喝咖啡</strong>。</p>
+<ul>
+<li>携带 A 型基因的人，天生爱喝咖啡。</li>
+<li>携带 B 型基因的人，天生不爱喝。</li>
+</ul>
+<p><strong>绝杀逻辑来了：</strong></p>
+<ol>
+<li>基因是父母随机给的（符合孟德尔遗传定律，也就是“<strong>随机分组</strong>”）。</li>
+<li>基因在你出生时就决定了，绝对不会因为你后来抽烟、熬夜（混杂因素）而改变（也就是“<strong>双盲、抗干扰</strong>”）。</li>
+<li>如果我们发现，携带 A 型基因（爱喝咖啡基因）的人，得肺癌的比例显著高于 B 型基因的人，那我们就可以理直气壮地说：<strong>喝咖啡导致了肺癌！</strong></li>
+</ol>
+<p>在具体实操中，MR 的本质也就是我们在《高阶非线性篇》里讲的<strong>连着跑两次线性回归</strong>（这叫两步最小二乘法，2SLS）：</p>
+<ul>
+<li><strong>第一步</strong>：跑个线性模型，用基因 (SNP) 去预测咖啡饮用量。</li>
+<li><strong>第二步</strong>：跑个线性模型，用刚才预测出来的咖啡量，去回归肺癌的发病风险。</li>
+</ul>
+<p>人生苦短，只要你会跑回归，去公共数据库 (GWAS Catalog) 里下载几万个 SNP 的数据一组合，一篇 MR 文章就出来了。</p>
+<h3 id="常见应用场景mr-到底能解决什么临床问题">常见应用场景：MR 到底能解决什么临床问题？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#常见应用场景mr-到底能解决什么临床问题" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>既然懂了原理，那现在医学界疯狂发 MR 文章，到底在研究些什么？</p>
+<ol>
+<li><strong>推翻伪科学</strong>：回到开头那个“CRP 蛋白与冠心病”的例子。现实中，科学家真的用 MR 做了分析，结果发现：那些天生携带“高 CRP 表达基因”的人，得冠心病的风险<strong>并没有</strong>增加！这直接证明了 CRP 只是冠心病发炎时产生的一个“伴随物（吃瓜群众）”，而不是致病原因。这个发现直接让药企停止了针对 CRP 的冠心病靶向药研发，省下了几十亿美金。</li>
+<li><strong>老药新用 (Drug Repurposing)</strong>：假设有一种降压药的靶点是基因 X。我们用 MR 发现，携带“基因 X 表达量低（模拟药物抑制效果）”的人，不仅血压低，而且得老年痴呆的概率也显著降低。这就暗示：这种现成的降压药，很可能可以直接拿来跨界预防老年痴呆！</li>
+<li><strong>生活方式的“铁证”</strong>：比如“喝咖啡到底致不致癌？”、“每天睡 8 小时和 6 小时对寿命有因果影响吗？”通过寻找与“咖啡代谢”、“睡眠时长”相关的 SNP，MR 能够排除社会阶层、饮食习惯等混杂干扰，给出最硬核的医学建议。</li>
+<li><strong>双向 MR (谁是因，谁是果)</strong>：肠道里某种有益菌变少了，是因为得了抑郁症，还是抑郁症导致了有益菌减少？通过互为工具变量做两遍 MR，就能把“鸡生蛋还是蛋生鸡”的问题彻底终结。</li>
+</ol>
+<blockquote>
+<p><strong>进阶吐槽</strong>：其实，“孟德尔随机化”只是一个蹭了生物学热度的花哨名字。在经济学和社会学里，这套方法早就被玩烂了，它的真名叫做<strong>工具变量法 (Instrumental Variable, IV)</strong>。
+只要你能找到一个“只影响自变量，且绝对不受混杂因素影响，就像掷骰子一样随机”的变量，你就能做因果推断。</p>
+<ul>
+<li>比如经济学家想研究“参军是否会影响未来的收入”。参军的人本身体质就不一样（混杂因素），不能直接比。怎么办？他们用“<strong>出生月份（抽签的月份）</strong>”作为工具变量！出生月份是完全随机的（老天爷发的牌），且出生月份只影响你是否被抽中去参军，不直接影响你以后的收入。
+这和用 SNP 做孟德尔随机化，在数学本质和逻辑上<strong>完 全 一 样</strong>。只不过生物学家借用“孟德尔遗传定律（基因随机分配）”这个自然现象，给它起了一个极其高大上的专属名字罢了。</li>
+</ul>
+<p><strong>扩展脑洞</strong>：既然懂了底层的工具变量逻辑，在生物医学里，除了基因（SNP），还有没有其他“老天爷发的盲盒”可以用来做因果推断？当然有！</p>
+<ul>
+<li><strong>出生月份/季节</strong>：比如研究“日照时间/维生素D”对某种疾病的因果关系，你的出生月份就是一个完美的工具变量。</li>
+<li><strong>居住地到某类医院的物理距离</strong>：比如研究“做某种高级手术”对生存率的影响。有钱人可能更倾向于去做（经济条件是混杂因素）。但“你家离有这台机器的医院有多远”在很大程度上是随机的，距离越近越可能做，且距离本身不直接影响生存率。</li>
+<li><strong>政策/指南的突然改变</strong>：比如某年某月突然出台了新的用药指南。在这个时间点前后的病人，本身病情没区别，但用药却截然不同。这个“时间断点”就是一个天然的随机工具变量（这在统计学里又叫断点回归 Regression Discontinuity，也是工具变量的一种变体）。</li>
+</ul>
+</blockquote>
+<hr/>
+<h2 id="3-降维-pca-与-umap到底在降什么维">3. 降维 (PCA 与 UMAP)：到底在降什么维？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-降维-pca-与-umap到底在降什么维" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>场景</strong>：你做了一次单细胞转录组测序，测了 10000 个细胞，每个细胞有 20000 个基因的表达量。你要怎么把这些细胞画在纸上，看看它们是不是分成了不同的亚群（比如 T细胞、B细胞）？
+你不可能画一个 20000 维的坐标系。你只能画二维（X轴和Y轴）。这就需要<strong>降维 (Dimensionality Reduction)</strong>。</p>
+<h3 id="pca-主成分分析找一个最能拉开差距的拍照角度">PCA (主成分分析)：找一个最能拉开差距的拍照角度<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pca-主成分分析找一个最能拉开差距的拍照角度" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>想象一下，桌子上放着一块极其不规则的石头（代表你的高维数据）。你想给它拍张二维的照片，让大家看清它的形状。</p>
+<ul>
+<li>如果你从正上方拍，可能只能看到一个圆面。</li>
+<li>如果你从侧面找一个极其刁钻的角度拍，就能看到它最长、最宽、变化最剧烈的轮廓。</li>
+</ul>
+<p><strong>PCA 的本质，就是在 20000 维的空间里，旋转你的照相机，找一个“方差最大（最能把细胞拉开差距）”的拍照角度。</strong></p>
+<ul>
+<li>拍出来的最长的那条边，叫 PC1（主成分1）。</li>
+<li>垂直于 PC1 的第二长的边，叫 PC2。
+这就是为什么 PCA 图的横纵坐标叫 PC1 和 PC2，它们并不是某个具体的基因，而是几万个基因按不同权重组合出来的一个“视角”。</li>
+</ul>
+<h3 id="t-sne-与-umap引力与斥力的橡皮筋游戏">t-SNE 与 UMAP：引力与斥力的橡皮筋游戏<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#t-sne-与-umap引力与斥力的橡皮筋游戏" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>PCA 虽好，但它是<strong>线性降维</strong>。它就像拿个平底锅去拍苍蝇，不管三七二十一直接拍扁。如果高维空间里的细胞像瑞士卷一样卷在一起，PCA 拍扁后，不同层的细胞就全混在一起了。</p>
+<p>这时候就需要<strong>非线性降维</strong>的神器：t-SNE 和目前的绝对王者 <strong>UMAP</strong>。</p>
+<p>别去管它们复杂的拓扑学公式，你只需要记住这个生动的比喻——<strong>橡皮筋与磁铁</strong>：</p>
+<ol>
+<li>在 20000 维的高维空间里，算法先看看哪些细胞靠得很近（比如它们都是 T 细胞）。算法用一根“橡皮筋”把它们紧紧绑在一起。</li>
+<li>然后，算法把这 10000 个细胞全扔到一张平面的二维白纸上。</li>
+<li>刚扔上去的时候，位置是乱的。但是：
+<ul>
+<li>绑了橡皮筋的细胞（本来就相似的），会<strong>互相拉扯（引力）</strong>，聚成一团。</li>
+<li>没绑橡皮筋的细胞（不相似的），会像同极磁铁一样<strong>互相排斥（斥力）</strong>，远远推开。</li>
+</ul>
+</li>
+<li>经过几千次的拉扯和排斥，整个系统稳定下来了。你在 UMAP 图上看到的那一坨一坨界限分明的“小岛”，就是这么弹出来的。</li>
+</ol>
+<h3 id="常见应用场景我们为什么要画降维图">常见应用场景：我们为什么要画降维图？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#常见应用场景我们为什么要画降维图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在生物医学数据分析中，只要你的特征数（基因、蛋白、临床指标）超过了 3 个，你就离不开降维：</p>
+<ol>
+<li><strong>单细胞亚群鉴定</strong>：把几万个细胞画在 UMAP 图上，聚成一团的就是同一个细胞类型（比如 CD8+ T细胞）。如果有一小团细胞游离在外，恭喜你，可能发现了一个新的罕见细胞亚群。</li>
+<li><strong>肿瘤分型与预后</strong>：拿着几百个病人的大队列 RNA-seq 数据，用 PCA 降维。如果你发现这些病人在 PC1 轴上明显分成了两坨，那说明这批肿瘤在分子层面上其实是两类截然不同的亚型，可能需要用完全不同的化疗方案。</li>
+<li><strong>批次效应 (Batch Effect) 检查</strong>：你分两次把样本送去测序。做完 PCA 一看，PC1 竟然完美对应了“第一批”和“第二批”。这说明测序机器的系统误差已经盖过了真正的生物学差异。这时候你就得赶紧用去批次算法（如 ComBat），否则后面的差异分析全是在测机器的区别。</li>
+</ol>
+<hr/>
+<h2 id="番外总结">番外总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#番外总结" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>从《基础篇》的 t检验，到《进阶篇》的逻辑回归与混合效应模型，再到《高阶篇》的 GAM 和这篇的“三大神兽”。</p>
+<p>统计学和生物信息学，其实从来都不是玄学。</p>
+<ul>
+<li><strong>FDR 校正</strong>：不过是给 p 值排个队打个折。</li>
+<li><strong>孟德尔随机化</strong>：不过是借着老天爷发牌的基因，跑两次回归。</li>
+<li><strong>PCA 和 UMAP</strong>：不过是找个刁钻角度拍照，或者玩一场橡皮筋弹弹乐。</li>
+</ul>
+<p>只要扒掉了这层数学公式的马甲，你会发现，这些主宰了无数顶刊的神奇算法，背后的逻辑简单得令人发指，甚至还有一点小幽默。
+祝你以后的数据分析之路，再也没有黑盒。</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-38" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#1-多重检验校正为什么生信人天天看-q-value" data-for="1-多重检验校正为什么生信人天天看-q-value">1. 多重检验校正：为什么生信人天天看 q-value？</a></li><li class="depth-1"><a href="#p-值冤枉一个好人的概率" data-for="p-值冤枉一个好人的概率">p 值：冤枉一个好人的概率</a></li><li class="depth-1"><a href="#bonferroni-校正宁可错杀一千不可放过一个" data-for="bonferroni-校正宁可错杀一千不可放过一个">Bonferroni 校正：宁可错杀一千，不可放过一个</a></li><li class="depth-1"><a href="#fdr-benjamini-hochberg-与-q-value排个队按比例打折" data-for="fdr-benjamini-hochberg-与-q-value排个队按比例打折">FDR (Benjamini-Hochberg) 与 q-value：排个队，按比例打折</a></li><li class="depth-1"><a href="#常见应用场景什么时候必须做多重检验校正" data-for="常见应用场景什么时候必须做多重检验校正">常见应用场景：什么时候必须做多重检验校正？</a></li><li class="depth-0"><a href="#2-孟德尔随机化-mr不用做实验的因果推断神器" data-for="2-孟德尔随机化-mr不用做实验的因果推断神器">2. 孟德尔随机化 (MR)：不用做实验的因果推断神器</a></li><li class="depth-1"><a href="#常见应用场景mr-到底能解决什么临床问题" data-for="常见应用场景mr-到底能解决什么临床问题">常见应用场景：MR 到底能解决什么临床问题？</a></li><li class="depth-0"><a href="#3-降维-pca-与-umap到底在降什么维" data-for="3-降维-pca-与-umap到底在降什么维">3. 降维 (PCA 与 UMAP)：到底在降什么维？</a></li><li class="depth-1"><a href="#pca-主成分分析找一个最能拉开差距的拍照角度" data-for="pca-主成分分析找一个最能拉开差距的拍照角度">PCA (主成分分析)：找一个最能拉开差距的拍照角度</a></li><li class="depth-1"><a href="#t-sne-与-umap引力与斥力的橡皮筋游戏" data-for="t-sne-与-umap引力与斥力的橡皮筋游戏">t-SNE 与 UMAP：引力与斥力的橡皮筋游戏</a></li><li class="depth-1"><a href="#常见应用场景我们为什么要画降维图" data-for="常见应用场景我们为什么要画降维图">常见应用场景：我们为什么要画降维图？</a></li><li class="depth-0"><a href="#番外总结" data-for="番外总结">番外总结</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><p>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>
