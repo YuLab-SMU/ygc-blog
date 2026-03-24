@@ -10,19 +10,19 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Mon, 23 Mar 2026 13:10:11 GMT</pubDate>
+    <pubDate>Tue, 24 Mar 2026 15:23:16 GMT</pubDate>
   </item><item>
     <title>回老家忘带电脑？我用这套“口袋办公”方案把活儿救回来了（亲测）</title>
     <link>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</guid>
     <description><![CDATA[  NOTE 10年前手握500块不到的手机在假装干活；现在是真的能把事办完。 每逢节假日，“随时随地准备干活”似乎成了现代打工人的某种“宿命”。 我最怕的不是加班本身，而是那种“人已经到老家了，电脑还在城里”的尴尬：亲戚家客厅信号满格、零食管够，你却一边陪聊一边心里发虚——万一线上出点小问题怎么办？ 后来我索性把思路反过来：假期不背电脑包，但把家里/办公室那台电脑变成常驻的“后台”。手机只负责连接、下指令，重活还是那台电脑在跑。 只要你的工作流里有一部分能用终端（Terminal）或命令行搞定（拉代码、跑脚本、改配置、看日志），一台手机就够当救命稻草。 今天分享一套我反复用过的移动端极简办公方... ]]></description>
-    <pubDate>Mon, 23 Mar 2026 13:10:11 GMT</pubDate>
+    <pubDate>Tue, 24 Mar 2026 15:23:16 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Mon, 23 Mar 2026 13:10:11 GMT</pubDate>
+    <pubDate>Tue, 24 Mar 2026 15:23:16 GMT</pubDate>
   </item><item>
     <title>常见统计检验的本质：其实都是线性模型</title>
     <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E5%85%B6%E5%AE%9E%E9%83%BD%E6%98%AF%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B</link>
