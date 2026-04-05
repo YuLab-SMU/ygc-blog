@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="YGC"/><meta property="og:title" content="我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码"/><meta name="twitter:description" content="最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大..."/><meta property="og:description" content="最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大..."/><meta property="og:image:alt" content="最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大..."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="01_Development/documentation/edify/edify-intro"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">YGC</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-63"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-63" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../01_Development/">01_Development</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../01_Development/documentation/">documentation</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../01_Development/documentation/edify/">edify</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</a></div></nav><h1 class="article-title">我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-05T10:00:58.000Z">Apr 05, 2026</time><span>17 min read</span></p></div></div><article class="popover-hint"><p>最近这段时间，我一直在想一件事：<strong>我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。</strong></p>
+<p>数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。</p>
+<p>我最近刚做了一个新的 R 包，叫 <strong>edify</strong>。它想做的事情，说大不大，说小也不小：<strong>把 lesson、判题规则、提示层级、补救路径和 AI 教练放进同一个 runtime 里，让“教学过程”本身也能被 author、被运行、被复盘。</strong></p>
+<p>我现在越来越觉得，这件事真正值得兴奋的地方，不是“又做了一个 AI 教育工具”，而是它试图把一个长期依赖经验和即时互动的过程，收进程序化工作流里。过去我们常说 reproducible analysis；我现在很想试试，<strong>能不能也做出 reproducible teaching</strong>。</p>
+<hr/>
+<h2 id="这件事为什么会让我兴奋">这件事为什么会让我兴奋<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#这件事为什么会让我兴奋" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>如果只看表面，edify 好像只是把 Markdown lesson 包了一层 runtime：能写 task、能判题、能给 hint、还能加一点 AI 反馈。这听起来不算特别新鲜。</p>
+<p>但如果往下想一层，它其实在补一块很空的接口。</p>
+<p>过去我们写教程，通常有几种办法。第一种是写一篇文章或者 notebook，读者顺着看、顺着敲。第二种是做一个 Shiny app 或网页，把一些交互放进去。第三种是直接把学习过程交给聊天式 AI，问一句答一句。它们都各自有价值，但也各自有一个共同问题：<strong>教学规则没有被清楚地结构化下来。</strong></p>
+<p>文章很适合解释概念，但不太擅长表达“如果学生在第 2 步错在这里，我应该怎么继续引导”。网页可以做交互，但 authoring 成本高。纯聊天式 AI 看起来最灵活，但最容易把“老师原本想怎么教”冲淡，最后变成一个很会说话、但不一定按你预期路径带学生走的系统。</p>
+<p>edify 想做的，恰好是把这一层补出来。</p>
+<p>它不是先问“模型会不会教”，而是先问：<strong>老师能不能先把 lesson 结构写清楚？</strong> 题目是什么、标准答案是什么、比较模式是什么、可以给几层 hint、如果学生连续答错，应该怎么补救、如果答对了，下一题是什么。把这些先写下来之后，AI 再接进来。于是 AI 在这里的角色，不是取代 lesson，而是站在 lesson 上说话。</p>
+<p>这个顺序我很喜欢。因为它保留了教学意图的主导权。</p>
+<hr/>
+<h2 id="edify-到底是什么">edify 到底是什么<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#edify-到底是什么" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>如果要用一句话概括，我会说：</p>
+<blockquote>
+<p><strong>edify 是一个 lesson-first 的交互学习 runtime。</strong></p>
+</blockquote>
+<p>它的核心不是“生成内容”，而是“运行一节课”。</p>
+<p>在这个 package 里，一节课可以写成一个 Markdown 文件。文件前面是 YAML frontmatter，写课程标题、目标、runtime 配置、retries 等；后面是一道道 task。每个 task 可以带：</p>
+<ul>
+<li><code>edify-check</code>：这道题怎么判</li>
+<li><code>edify-hint</code>：可以给几层提示</li>
+<li><code>edify-rubric</code>：对/错/部分正确时，老师想怎么评价</li>
+<li><code>edify-remediation</code>：答错后下一步怎么补</li>
+</ul>
+<p>也就是说，lesson 不再只是“内容”，而开始变成一个<strong>可执行教学对象</strong>。</p>
+<p>这套设计我现在越来越认同。因为很多时候，我们缺的不是再多一段教学文本，而是一个能把“教学过程”稳稳托住的最小 runtime。</p>
+<hr/>
+<h2 id="我最在意的不是-ai而是-lesson-first">我最在意的，不是 AI，而是 lesson-first<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#我最在意的不是-ai而是-lesson-first" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>虽然 edify 现在已经能接 AI 反馈，但我真正想守住的，其实不是“AI 感”，而是 <strong>lesson-first</strong>。</p>
+<p>这一点非常重要。</p>
+<p>如果没有 lesson-first，系统就很容易滑向另一种状态：所有交互都交给模型，学生问什么，模型就答什么，哪里卡住了，模型就自由发挥。这当然会很灵活，但也会很快失去教学的一致性。今天一个学生问到这里，模型沿着 A 路线讲；明天另一个学生提了个类似问题，模型可能沿着 B 路线讲。两个回答都不一定错，但它们不再是同一节课。</p>
+<p>我更想要的不是这种“无限自由”，而是<strong>有边界的互动</strong>。</p>
+<p>老师先写 lesson，先定义 task，先把 hint、rubric、remediation 这些结构定下来；然后 runtime 来执行；最后 AI 只在需要的时候补一层解释、澄清、追问和鼓励。这样整个系统的骨架还是课程作者提供的，而不是模型临场 improvisation。</p>
+<p>我觉得这是 edify 和很多“直接接个聊天模型做教学”的思路最不一样的地方。它不是先有 AI，再看怎么塞一点教学逻辑；它是先有教学逻辑，再看 AI 应该站在哪里发力。</p>
+<hr/>
+<h2 id="这次做出来的-mvp已经能跑到哪一步">这次做出来的 MVP，已经能跑到哪一步<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#这次做出来的-mvp已经能跑到哪一步" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>目前这个版本，其实已经不是一个纯概念验证了，而是一个<strong>可以真正试用的最小闭环</strong>。</p>
+<p>现在它已经能做这些事：</p>
+<ul>
+<li>用 Markdown 写 lesson</li>
+<li>校验 lesson 结构</li>
+<li>预览课程和教师报告</li>
+<li>启动交互式 console 学习循环</li>
+<li>支持 expression、object、output 三类判题</li>
+<li>支持多层 hint</li>
+<li>支持 retries</li>
+<li>支持 task 自动推进</li>
+<li>支持 session summary</li>
+<li>支持 rubric 和 remediation</li>
+<li>支持可选的 AI 解释反馈</li>
+</ul>
+<p>也就是说，它现在已经不只是“能解析 lesson 文件”，而是真能把一节课跑起来。</p>
+<p>下面这个例子基本能说明现在的形态：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="r" data-theme="github-light github-dark"><code data-language="r" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">library</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">edify</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;-</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> tempfile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">fileext</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;.md&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">new_lesson</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">,</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> template</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;two_tasks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">learn_lesson</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">,</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> student_id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;demo-user&quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">,</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> ai_feedback</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> TRUE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>进入之后，你不是只会看到一堆对象 print 出来，而是会进入一个真正的交互 loop。你可以像学生一样边探索、边试、边问。</p>
+<p>比如你可以这样做：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="r" data-theme="github-light github-dark"><code data-language="r" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">head</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">mtcars</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">ask</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> 我应该先关注哪些列</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">？</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">hint</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">submit</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> subset</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">mtcars</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">,</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> mpg</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> ></span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 25</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>这里面我现在最满意的一点，是交互语义终于开始像一个学习环境，而不是一个命令行壳子。</p>
+<p>普通输入默认是探索代码，会在 session 的独立 workspace 里执行；<code>/submit ...</code> 才是正式交答案；<code>/ask ...</code> 则是直接跟教练互动。这样一来，“探索”和“作答”终于分开了。</p>
+<p>这个区分其实非常关键。因为真正的学习过程，本来就不只是提交答案。学生一定会先看数据、先试表达式、先犯错、先问问题。一个把所有输入都当作 submission 的系统，交互一定会很别扭。把这层拆开之后，我才第一次觉得它开始像一个真的 tutor runtime。</p>
+<hr/>
+<h2 id="我觉得最有意思的是错误也进入了教学流程">我觉得最有意思的，是“错误也进入了教学流程”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#我觉得最有意思的是错误也进入了教学流程" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>最近在调这套交互的时候，有一个点让我印象特别深。</p>
+<p>一开始如果用户在 <code>/submit</code> 里写错表达式，比如列名写错、函数名不对，R 会直接把错误抛出来。技术上这当然正常，但从教学体验上看，其实很糟。因为 lesson 被错误打断了，学生只看到了报错，没有看到下一步。</p>
+<p>我把出错行为改了：<strong>提交错误不会打断 lesson，而是被捕获成一次失败 submission。</strong></p>
+<p>现在如果学生写：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="r" data-theme="github-light github-dark"><code data-language="r" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">submit</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> filter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">mtcars</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">,</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;"> mpg</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> ></span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 25</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|></span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> filter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">cly</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> ==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 4</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<p>系统不会直接退出，而是会返回一个结构化结果：</p>
+<ul>
+<li>这次 submission 没通过</li>
+<li>错误信息是什么</li>
+<li><code>Next steps</code> 应该怎么走</li>
+<li>如果开启了 AI，再补一段教练式解释</li>
+</ul>
+<p>这个变化意味着错误不再只是系统状态，而是正式进入教学流程。</p>
+<p>这其实是我做 edify 时越来越确信的一件事：<strong>教学 runtime 不应该只在“答对时”工作，它更应该在“答错时”工作。</strong></p>
+<p>很多时候，学生真正需要的并不是“你对了，下一题”，而是“你错在什么地方、下一步应该怎么动、这里是拼写问题、函数问题、数据结构问题，还是根本还没搞清楚题目要求”。如果 runtime 能把这些都接住，AI 才真正有地方发挥价值。</p>
+<hr/>
+<h2 id="ai-在这里最适合扮演什么角色">AI 在这里最适合扮演什么角色<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ai-在这里最适合扮演什么角色" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>我现在越来越不想把 AI 描述成“判题器”。</p>
+<p>至少在这个阶段，我更愿意让它扮演三个角色：</p>
+<p>第一，<strong>解释器</strong>。<br/>
+规则判题告诉你过没过，AI 负责把“为什么”说成人能吸收的话。</p>
+<p>第二，<strong>教练</strong>。<br/>
+不是直接给最终答案，而是在学生卡住的时候，顺着 rubric、remediation、错误信息和当前 task，把下一步说清楚。</p>
+<p>第三，<strong>错误接应层</strong>。<br/>
+学生输入了探索代码，或者 <code>/submit</code> 里写错了表达式，这时候 AI 最适合做的，不是“替你做完”，而是帮你判断这更像拼写问题、数据结构问题，还是函数上下文问题，并给一个下一步动作建议。</p>
+<p>这个边界我现在还挺满意。因为它保留了一个很重要的分工：</p>
+<ul>
+<li><strong>规则负责判定</strong></li>
+<li><strong>runtime 负责状态</strong></li>
+<li><strong>AI 负责解释</strong></li>
+</ul>
+<p>这样 AI 是强的，但不是失控的。</p>
+<hr/>
+<h2 id="我为什么会觉得这件事值得继续做下去">我为什么会觉得这件事值得继续做下去<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#我为什么会觉得这件事值得继续做下去" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>说到底，edify 最让我兴奋的，不是它今天已经有多少功能，而是它让我第一次比较清楚地看到了一条路径：</p>
+<p>我们也许真的可以把“教学”这件事，往 package 和 runtime 的方向推进。</p>
+<p>过去我们已经把很多科研活动都程序化了：分析流程、可视化流程、报告流程、模型部署流程。教学一直比较特殊，因为它有大量人和人之间的即时互动、纠错、追问和引导。但现在有了 LLM 之后，这部分互动第一次有机会被纳入一个相对稳定的 runtime 里。前提是，我们不要一上来就把一切都交给模型，而是先把课程结构写清楚。</p>
+<p>我觉得 edify 的意义，如果以后真的能走下去，不会只是“又一个教育包”，而更可能是：<strong>它尝试给 lesson、teaching flow、interactive remediation 这些长期很难结构化的对象，找到一个 R 侧的接口。</strong></p>
+<p>这件事对我来说很有吸引力。因为一旦接口稳定下来，后面很多东西都会自然长出来：</p>
+<ul>
+<li>更丰富的 lesson 模板</li>
+<li>更自然的教学 authoring 语法</li>
+<li>更好的 tutor-style 错误恢复</li>
+<li>Shiny 或网页前端</li>
+<li>session 历史与 learner progression</li>
+<li>更稳的 AI coaching policy</li>
+</ul>
+<p>这些都还没完全展开，但路径已经比一开始清楚得多了。</p>
+<hr/>
+<h2 id="现在这版还远远不是终点">现在这版还远远不是终点<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#现在这版还远远不是终点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>当然，edify 现在还只是一个 MVP。</p>
+<p>它现在更偏：</p>
+<ul>
+<li>console-first</li>
+<li>lesson-first</li>
+<li>rule-based checking first</li>
+<li>teacher-authored flow first</li>
+</ul>
+<p>它还没有重点做：</p>
+<ul>
+<li>图形化 learner 界面</li>
+<li>更复杂的多轮 AI session 管理</li>
+<li>learner 历史持久化</li>
+<li>更成熟的课程包生态</li>
+</ul>
+<p>但我反而觉得，停在这个阶段是健康的。因为到目前为止，它已经足够让我和别人真正去试，去感受哪些交互是自然的，哪些地方还只是“技术上可行但教学上不顺”。</p>
+<p>而这类系统最怕的，其实不是功能不够多，而是没有真实使用反馈就一路加复杂度。</p>
+<hr/>
+<h2 id="如果我要用一句话来概括-edify">如果我要用一句话来概括 edify<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#如果我要用一句话来概括-edify" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>如果让我现在用一句话概括它，我大概会这么说：</p>
+<blockquote>
+<p><strong>edify 想做的，不是让 AI 替老师上课，而是把老师脑子里的教学路径先写成 runtime，再让 AI 在这条路径上接住学生。</strong></p>
+</blockquote>
+<p>我觉得这件事值得继续做。</p>
+<p>因为一旦 lesson 可以被 author，teaching flow 可以被 run，错误可以被接住，hint 可以被调度，AI 可以被约束在正确的位置上，教学这件事就第一次不再只是内容分发，而开始有点像一个真正可编程的系统。</p>
+<p>这正是我现在最感兴趣的地方。</p>
+<p>这个包的源码已经在GitHub上， <a href="https://github.com/yulab-smu/edify" class="external">https://github.com/yulab-smu/edify<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-13" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#这件事为什么会让我兴奋" data-for="这件事为什么会让我兴奋">这件事为什么会让我兴奋</a></li><li class="depth-0"><a href="#edify-到底是什么" data-for="edify-到底是什么">edify 到底是什么</a></li><li class="depth-0"><a href="#我最在意的不是-ai而是-lesson-first" data-for="我最在意的不是-ai而是-lesson-first">我最在意的，不是 AI，而是 lesson-first</a></li><li class="depth-0"><a href="#这次做出来的-mvp已经能跑到哪一步" data-for="这次做出来的-mvp已经能跑到哪一步">这次做出来的 MVP，已经能跑到哪一步</a></li><li class="depth-0"><a href="#我觉得最有意思的是错误也进入了教学流程" data-for="我觉得最有意思的是错误也进入了教学流程">我觉得最有意思的，是“错误也进入了教学流程”</a></li><li class="depth-0"><a href="#ai-在这里最适合扮演什么角色" data-for="ai-在这里最适合扮演什么角色">AI 在这里最适合扮演什么角色</a></li><li class="depth-0"><a href="#我为什么会觉得这件事值得继续做下去" data-for="我为什么会觉得这件事值得继续做下去">我为什么会觉得这件事值得继续做下去</a></li><li class="depth-0"><a href="#现在这版还远远不是终点" data-for="现在这版还远远不是终点">现在这版还远远不是终点</a></li><li class="depth-0"><a href="#如果我要用一句话来概括-edify" data-for="如果我要用一句话来概括-edify">如果我要用一句话来概括 edify</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><p>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}container;content;isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>
