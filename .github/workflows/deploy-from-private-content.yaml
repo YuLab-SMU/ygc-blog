@@ -44,6 +44,7 @@ jobs:
           mkdir -p ../public-content
           cp -a ../YuNotebooks/. ../public-content/
           rm -rf ../public-content/00_biobabble
+          rm -rf ../public-content/03_Manuscript/manuscript-draft
 
       - name: Build Quartz
         working-directory: blog
