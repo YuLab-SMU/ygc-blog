@@ -10,25 +10,37 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Sat, 09 May 2026 08:21:26 GMT</pubDate>
+    <pubDate>Sat, 16 May 2026 08:11:28 GMT</pubDate>
   </item><item>
     <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
     <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Sat, 09 May 2026 08:21:26 GMT</pubDate>
+    <pubDate>Sat, 16 May 2026 08:11:28 GMT</pubDate>
   </item><item>
     <title>回老家忘带电脑？我用这套“口袋办公”方案把活儿救回来了（亲测）</title>
     <link>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</guid>
     <description><![CDATA[  NOTE 10年前手握500块不到的手机在假装干活；现在是真的能把事办完。 每逢节假日，“随时随地准备干活”似乎成了现代打工人的某种“宿命”。 我最怕的不是加班本身，而是那种“人已经到老家了，电脑还在城里”的尴尬：亲戚家客厅信号满格、零食管够，你却一边陪聊一边心里发虚——万一线上出点小问题怎么办？ 后来我索性把思路反过来：假期不背电脑包，但把家里/办公室那台电脑变成常驻的“后台”。手机只负责连接、下指令，重活还是那台电脑在跑。 只要你的工作流里有一部分能用终端（Terminal）或命令行搞定（拉代码、跑脚本、改配置、看日志），一台手机就够当救命稻草。 今天分享一套我反复用过的移动端极简办公方... ]]></description>
-    <pubDate>Sat, 09 May 2026 08:21:26 GMT</pubDate>
+    <pubDate>Sat, 16 May 2026 08:11:28 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Sat, 09 May 2026 08:21:26 GMT</pubDate>
+    <pubDate>Sat, 16 May 2026 08:11:28 GMT</pubDate>
+  </item><item>
+    <title>R 里能生成 3D 模型了，我试了一下</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/cast3d/cast3d-intro</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/cast3d/cast3d-intro</guid>
+    <description><![CDATA[  最近这个项目挺火的，3D画细胞模型，技术上倒挺简单，主要是用Tripo模型来生3维，然后用Three.js来可视化。有人用它做了一个三星堆文物的3维可视化。 Tripo（VAST-AI 团队做的 3D 生成服务）有 API。喂一张图片进去，三十秒吐一个 .glb 模型出来。关键是，Tripo 是正经做 image-to-3D 的，生成的模型不是那种多视角拼凑的纸片，是水密的、带纹理的、能直接丢进 Blender 用的。 整个技术栈就比较简单，于是我给 tripo 的 API 写了个 R 皮。包名叫 cast3d。 能干什么 简单来说就是一句话： model &lt;- generate_3d... ]]></description>
+    <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>听说做个肿瘤免疫分析要装十几个R包？tigeR说，我一个就够了</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/06-one-package-to-rule-them-all</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/tigeR/06-one-package-to-rule-them-all</guid>
+    <description><![CDATA[  那天我数了一下，发现事情不太对 做肿瘤免疫生信分析几年了，我一直觉得自己的 R 环境越来越臃肿是正常的——毕竟术业有专攻嘛。 直到那天我打算从零复现一套分析流程，顺手列了个清单： 载数据得自己写 GEOquery 脚本 去批次得配 sva 的 Combat 做免疫浸润得去装 CIBERSORT 的 R 脚本（还得手动改源码里的路径） 算 TIDE 得分得去官网下载那个 Python 版 画生存曲线得 survival + survminer 跑机器学习得 caret 或者 mlr3 画图还得 ggplot2 调半天 theme 列到一半我就放弃了。这不是做分析，这是拼乐高——而且每个零件还来... ]]></description>
+    <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>文章发表：EasyMultiProfiler：微生物组多组学整合分析工作流</title>
     <link>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E6%96%87%E7%AB%A0%E5%8F%91%E8%A1%A8%EF%BC%9AEasyMultiProfiler%EF%BC%9A%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84%E5%A4%9A%E7%BB%84%E5%AD%A6%E6%95%B4%E5%90%88%E5%88%86%E6%9E%90%E5%B7%A5%E4%BD%9C%E6%B5%81</link>
@@ -52,18 +64,6 @@
     <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E7%95%AA%E5%A4%96%E7%AF%87</link>
     <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E7%95%AA%E5%A4%96%E7%AF%87</guid>
     <description><![CDATA[ 在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细... ]]></description>
-    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>常见统计检验的本质：进阶篇（其实还是线性模型）</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E8%BF%9B%E9%98%B6%E7%AF%87</guid>
-    <description><![CDATA[ 在上一篇文章里，我们扒了 t 检验、方差分析 (ANOVA)、非参数检验的马甲，发现它们全都是 y = \beta_0 + \beta_1 x 这一个初中直线方程的变体。后来我们又引入了“联系函数（Link Function）”，顺手把生信里高大上的 DESeq2 也给扒了（本质是广义线性模型 GLM）。 这时候，肯定有经常跑临床数据和生信生存分析的同学不服了： “那我们临床天天用的卡方检验 (Chi-square) 呢？我们算 KM 曲线和 HR 用的生存分析 (Cox 回归) 呢？这俩总该是另外一套体系了吧？” 不好意思，今天我们就来把这几个硬核的“牛鬼蛇神”也一并扒了。你会发现，万剑归宗... ]]></description>
-    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>常见统计检验的本质：高阶与非线性篇（最后还是线性模型）</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E9%AB%98%E9%98%B6%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%AF%87</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E9%AB%98%E9%98%B6%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%AF%87</guid>
-    <description><![CDATA[ 如果你已经看过了前两篇，你会发现我们用 y = \beta_0 + \beta_1 x 这个初中直线方程，一路砍瓜切菜，把 t检验、ANOVA、卡方检验、逻辑回归（OR值）、生存分析（HR值）甚至混合效应模型全给扒了马甲。 但这时候，又会有人跳出来问两个极其刁钻的问题： 关系复杂怎么办？ 比如流行病学和心理学里天天画的那种“A 导致 B，B 又导致 C”的箭头图，课本说这叫“中介效应 (Mediation)”，线性模型能搞定吗？ 数据弯了怎么办？ 比如生信做单细胞拟时间分析 (Pseudotime)，基因表达量随时间是个抛物线。直线方程怎么可能拟合弯曲的线？这肯定得用高深算法了吧？ 别慌，今天... ]]></description>
     <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
