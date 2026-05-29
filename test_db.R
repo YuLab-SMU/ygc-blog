@@ -1,0 +1,10 @@
+library(CellChat)
+library(SingleCellExperiment)
+sce <- readRDS("e:/YuNotebooks/01_Development/source/yulab-github/sclet/bookdown/data/pancreas_sub_sce.rds")
+db <- CellChatDB.mouse
+db.use <- CellChat::subsetDB(db, search = "Secreted Signaling", key = "annotation")
+genes_in_db <- unique(unlist(db.use$interaction[, c("ligand", "receptor")]))
+print(length(genes_in_db))
+genes_in_sce <- rownames(sce)
+matched <- intersect(genes_in_sce, genes_in_db)
+print(length(matched))
