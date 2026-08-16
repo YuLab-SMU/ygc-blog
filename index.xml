@@ -10,25 +10,31 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Wed, 10 Jun 2026 02:31:31 GMT</pubDate>
+    <pubDate>Sun, 16 Aug 2026 15:21:43 GMT</pubDate>
   </item><item>
     <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
     <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Wed, 10 Jun 2026 02:31:31 GMT</pubDate>
+    <pubDate>Sun, 16 Aug 2026 15:21:43 GMT</pubDate>
   </item><item>
     <title>回老家忘带电脑？我用这套“口袋办公”方案把活儿救回来了（亲测）</title>
     <link>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</link>
     <guid>https://quartz.jzhao.xyz/Tools/%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%A1%88</guid>
     <description><![CDATA[  NOTE 10年前手握500块不到的手机在假装干活；现在是真的能把事办完。 每逢节假日，“随时随地准备干活”似乎成了现代打工人的某种“宿命”。 我最怕的不是加班本身，而是那种“人已经到老家了，电脑还在城里”的尴尬：亲戚家客厅信号满格、零食管够，你却一边陪聊一边心里发虚——万一线上出点小问题怎么办？ 后来我索性把思路反过来：假期不背电脑包，但把家里/办公室那台电脑变成常驻的“后台”。手机只负责连接、下指令，重活还是那台电脑在跑。 只要你的工作流里有一部分能用终端（Terminal）或命令行搞定（拉代码、跑脚本、改配置、看日志），一台手机就够当救命稻草。 今天分享一套我反复用过的移动端极简办公方... ]]></description>
-    <pubDate>Wed, 10 Jun 2026 02:31:31 GMT</pubDate>
+    <pubDate>Sun, 16 Aug 2026 15:21:43 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Wed, 10 Jun 2026 02:31:31 GMT</pubDate>
+    <pubDate>Sun, 16 Aug 2026 15:21:43 GMT</pubDate>
+  </item><item>
+    <title>用CNN识别DNA启动子</title>
+    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/05-DNA-motif-CNN</link>
+    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/05-DNA-motif-CNN</guid>
+    <description><![CDATA[ 在学习了CNN之后，现在我们就可以拿它来做DNA的Motif识别了。这里我们随机产生100bp的序列，有一半在随机位置上嵌入了TATA box (TATAAA)，另一半没有。然后用卷积神经网络来找motif。 先加载必要的库 import random import torch import torch.nn as nn import torch.optim as optim from torch.utils.data import DataLoader, TensorDataset 对序列进行独热编码 这里用独热编码，ACGT四个字符，分别对应: A → [1, 0, 0, 0] C → [... ]]></description>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>R 里能生成 3D 模型了，我试了一下</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/cast3d/cast3d-intro</link>
@@ -58,12 +64,6 @@
     <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E5%85%B6%E5%AE%9E%E9%83%BD%E6%98%AF%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B</link>
     <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E5%85%B6%E5%AE%9E%E9%83%BD%E6%98%AF%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B</guid>
     <description><![CDATA[ 1. ]]></description>
-    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>常见统计检验的本质：番外篇（生信与临床的三大神兽）</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E7%95%AA%E5%A4%96%E7%AF%87</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E7%95%AA%E5%A4%96%E7%AF%87</guid>
-    <description><![CDATA[ 在前面的“扒马甲三部曲”里，我们用极其暴力的手法，把市面上 90% 的统计检验全部归宗到了线性模型（y = \beta_0 + \beta_1 x） 的框架下。 但如果你真的去跑一跑生信转录组，或者做一做临床队列分析，你会发现，哪怕你把线性模型玩出花来，还是会被三个“神兽”拦住去路： 多重检验校正 (FDR / q-value)：为什么算出来显著的基因，被老板逼着做完校正后，全变不显著了？ 孟德尔随机化 (Mendelian Randomization, MR)：医学顶刊天天在发，号称能“不用做实验就证明因果”，这到底是什么黑魔法？ 降维 (PCA / t-SNE / UMAP)：为什么做单细... ]]></description>
     <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>

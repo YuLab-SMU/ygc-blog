@@ -170,7 +170,7 @@ pre:hover > .expand-button {
 <span data-line><span>with gzip.open((PATH / FILENAME).as_posix(), &quot;rb&quot;) as f:</span></span>
 <span data-line><span>    ((x_train, y_train), (x_valid, y_valid), _) = pickle.load(f, encoding=&quot;latin-1&quot;)</span></span></code></pre></figure>
 <p>总共有6万张图片，5万张是训练集，1万张做为验证/测试集。</p>
-<p><img src="https://qcn657qp2atl.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGQ1Y2EwZjBmYmFlYTE5N2RiMTlkZTM2N2U0YzllNmRfUVJDSjRRN09LQXNiQzVmUkpSdE5BT3JhbEpENTFtdEZfVG9rZW46QnRzMmJEQWQyb1JmM2J4OFhRUGNSNkFSbmZiXzE3NjUyNTczMjA6MTc2NTI2MDkyMF9WNA" alt/></p>
+<p><img src="./assets/04-卷积神经网络CNN/file-20260816221505605.png" alt/></p>
 <p>图片是28x28像素的，已经被打成长度为784的一维向量。</p>
 <p>我们可以随便选一张画出来看看：</p>
 <figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from matplotlib import pyplot as plt</span></span>
@@ -297,7 +297,7 @@ pre:hover > .expand-button {
 <figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>torch.manual_seed(42)</span></span>
 <span data-line> </span>
 <span data-line><span>model = MNIST(input_shape=1, hidden_units=10, output_shape=10).to(device)</span></span></code></pre></figure>
-<p><img src="https://qcn657qp2atl.feishu.cn/space/api/box/stream/download/asynccode/?code=N2VhZjI3ZGI1Y2JiMjA5YTE3Y2NlN2ViMmQ0Y2Q3OThfUzVKWVpTSkJ1TjNxdGFTcEJEa1JmU0MxeEM3ZHk2VTRfVG9rZW46SFI1VmJHQUMwb3gzT2R4VzR4MmNLOWJkblljXzE3NjUyNTczMjA6MTc2NTI2MDkyMF9WNA" alt/></p>
+<p><img src="./assets/04-卷积神经网络CNN/file-20260816221601138.png" alt/></p>
 <p>还有相应的损失函数和优化器等：</p>
 <figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from torchmetrics.classification import Accuracy</span></span>
 <span data-line><span>acc_fn = Accuracy(task=&quot;multiclass&quot;, num_classes=10).to(device)</span></span>
