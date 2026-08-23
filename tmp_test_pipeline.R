@@ -1,8 +1,0 @@
-library(sclet)
-library(SingleCellExperiment)
-counts <- matrix(rpois(10000, lambda = 1), ncol=100)
-rownames(counts) <- paste0("Gene", 1:100)
-colnames(counts) <- paste0("Cell", 1:100)
-sce <- SingleCellExperiment(assays = list(counts = counts))
-sce <- RunStandardPipeline(sce, nfeatures=50, npcs=10, dims=1:5, resolution=0.8)
-print(Status(sce))
