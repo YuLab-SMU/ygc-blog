@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>使用CNN对电影评论进行分类</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="YGC"/><meta property="og:title" content="使用CNN对电影评论进行分类"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="使用CNN对电影评论进行分类"/><meta name="twitter:description" content="当我写完《使用RNN对电影评论进行分类》笔记，分享给学生的时候，突然就想到：如果每个句子都固定成 200 个词、每个词都用 embedding 映射成 50 维向量，那么每条样本就会变成一个形状为 (200, 50) 的矩阵。这个矩阵可以当成一张“单通道小图片”（(1, 200, 50)），用 CNN 来提取局部模式并做分类。 这一类方法在文本分类里常见的写法是 TextCNN：用多个不同窗口大小的卷积核提取不同长度的 n-gram 特征，然后 max pooling 得到定长向量，接一个全连接层输出分类结果。 这里和《使用RNN对电影评论进行分类》的结构基本上一模一样，只不过模型换了。 数..."/><meta property="og:description" content="当我写完《使用RNN对电影评论进行分类》笔记，分享给学生的时候，突然就想到：如果每个句子都固定成 200 个词、每个词都用 embedding 映射成 50 维向量，那么每条样本就会变成一个形状为 (200, 50) 的矩阵。这个矩阵可以当成一张“单通道小图片”（(1, 200, 50)），用 CNN 来提取局部模式并做分类。 这一类方法在文本分类里常见的写法是 TextCNN：用多个不同窗口大小的卷积核提取不同长度的 n-gram 特征，然后 max pooling 得到定长向量，接一个全连接层输出分类结果。 这里和《使用RNN对电影评论进行分类》的结构基本上一模一样，只不过模型换了。 数..."/><meta property="og:image:alt" content="当我写完《使用RNN对电影评论进行分类》笔记，分享给学生的时候，突然就想到：如果每个句子都固定成 200 个词、每个词都用 embedding 映射成 50 维向量，那么每条样本就会变成一个形状为 (200, 50) 的矩阵。这个矩阵可以当成一张“单通道小图片”（(1, 200, 50)），用 CNN 来提取局部模式并做分类。 这一类方法在文本分类里常见的写法是 TextCNN：用多个不同窗口大小的卷积核提取不同长度的 n-gram 特征，然后 max pooling 得到定长向量，接一个全连接层输出分类结果。 这里和《使用RNN对电影评论进行分类》的结构基本上一模一样，只不过模型换了。 数..."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="当我写完《使用RNN对电影评论进行分类》笔记，分享给学生的时候，突然就想到：如果每个句子都固定成 200 个词、每个词都用 embedding 映射成 50 维向量，那么每条样本就会变成一个形状为 (200, 50) 的矩阵。这个矩阵可以当成一张“单通道小图片”（(1, 200, 50)），用 CNN 来提取局部模式并做分类。 这一类方法在文本分类里常见的写法是 TextCNN：用多个不同窗口大小的卷积核提取不同长度的 n-gram 特征，然后 max pooling 得到定长向量，接一个全连接层输出分类结果。 这里和《使用RNN对电影评论进行分类》的结构基本上一模一样，只不过模型换了。 数..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="05_Notebooks/机器学习与统计方法/深度学习/09-使用CNN对电影评论进行分类"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">YGC</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-272"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-272" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../05_Notebooks/">05_Notebooks</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../05_Notebooks/机器学习与统计方法/">机器学习与统计方法</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../05_Notebooks/机器学习与统计方法/深度学习/">深度学习</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>使用CNN对电影评论进行分类</a></div></nav><h1 class="article-title">使用CNN对电影评论进行分类</h1><p show-comma="true" class="content-meta"><time datetime="2025-09-03T00:00:00.000Z">Sep 03, 2025</time><span>21 min read</span></p><ul class="tags"><li><a href="../../../tags/CNN" class="internal tag-link">CNN</a></li><li><a href="../../../tags/RNN" class="internal tag-link">RNN</a></li><li><a href="../../../tags/DeepLearning" class="internal tag-link">DeepLearning</a></li></ul></div></div><article class="popover-hint"><p><img src="./assets/使用CNN对电影评论进行分类/cover-rnn-to-cnn-idea.png" alt/></p>
+<p>当我写完《<a href="https://mp.weixin.qq.com/s/D1MTz6s9QPMoJj06Va_zbA" class="external">使用RNN对电影评论进行分类<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>》笔记，分享给学生的时候，突然就想到：如果每个句子都固定成 200 个词、每个词都用 embedding 映射成 50 维向量，那么每条样本就会变成一个形状为 <code>(200, 50)</code> 的矩阵。这个矩阵可以当成一张“单通道小图片”（<code>(1, 200, 50)</code>），用 CNN 来提取局部模式并做分类。</p>
+<p>这一类方法在文本分类里常见的写法是 TextCNN：用多个不同窗口大小的卷积核提取不同长度的 n-gram 特征，然后 max pooling 得到定长向量，接一个全连接层输出分类结果。</p>
+<p>这里和《<a href="https://mp.weixin.qq.com/s/D1MTz6s9QPMoJj06Va_zbA" class="external">使用RNN对电影评论进行分类<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>》的结构基本上一模一样，只不过模型换了。</p>
+<h2 id="数据">数据<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="下载和读入">下载和读入<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#下载和读入" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>下载自以下网址：</p>
+<ul>
+<li><a href="https://media.geeksforgeeks.org/wp-content/uploads/20250520152942314935/IMDB-Dataset.csv" class="external">https://media.geeksforgeeks.org/wp-content/uploads/20250520152942314935/IMDB-Dataset.csv<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>import re</span></span>
+<span data-line><span>import pandas as pd</span></span>
+<span data-line> </span>
+<span data-line><span>df = pd.read_csv(&quot;data/IMDB-Dataset.csv&quot;, header=0, names=[&quot;text&quot;, &quot;label&quot;])</span></span>
+<span data-line> </span>
+<span data-line><span>def tokenize(text: str):</span></span>
+<span data-line><span>    text = text.lower()</span></span>
+<span data-line><span>    text = re.sub(r&quot;&lt;br\s*/?>&quot;, &quot; &quot;, text)</span></span>
+<span data-line><span>    text = re.sub(r&quot;[^a-z0-9']+&quot;, &quot; &quot;, text)</span></span>
+<span data-line><span>    return text.split()</span></span>
+<span data-line> </span>
+<span data-line><span>df[&quot;text&quot;] = df[&quot;text&quot;].apply(tokenize)</span></span>
+<span data-line><span>df.head()</span></span></code></pre></figure>
+<p>把 <code>positive</code> 编码成 <code>1</code>，把 <code>negative</code> 编码成 <code>0</code>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from sklearn.preprocessing import LabelEncoder</span></span>
+<span data-line> </span>
+<span data-line><span>le = LabelEncoder()</span></span>
+<span data-line><span>df[&quot;label&quot;] = le.fit_transform(df[&quot;label&quot;])</span></span></code></pre></figure>
+<h2 id="预处理">预处理<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#预处理" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>切分成训练集、测试集和验证集，这里使用 <code>stratify</code> 保证类别比例一致：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from sklearn.model_selection import train_test_split</span></span>
+<span data-line> </span>
+<span data-line><span>train_data, test_data = train_test_split(</span></span>
+<span data-line><span>    df, test_size=0.2, random_state=42, stratify=df[&quot;label&quot;]</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>train_data, val_data = train_test_split(</span></span>
+<span data-line><span>    train_data, test_size=0.1, random_state=42, stratify=train_data[&quot;label&quot;]</span></span>
+<span data-line><span>)</span></span></code></pre></figure>
+<p>构建词表并做编码。这里把 <code>0</code> 留给 padding，把 <code>1</code> 留给 unknown word：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from collections import Counter</span></span>
+<span data-line> </span>
+<span data-line><span>counter = Counter(word for phrase in df[&quot;text&quot;] for word in phrase)</span></span>
+<span data-line> </span>
+<span data-line><span>N = 100000</span></span>
+<span data-line><span>vocab = [w for w, _ in counter.most_common(N)]</span></span>
+<span data-line> </span>
+<span data-line><span>PAD_IDX = 0</span></span>
+<span data-line><span>UNK_IDX = 1</span></span>
+<span data-line> </span>
+<span data-line><span>word_to_index = {word: idx for idx, word in enumerate(vocab, start=2)}</span></span></code></pre></figure>
+<p>把句子编码成定长（200）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>def encode_and_pad(text, word_to_index, max_length, unk_idx=UNK_IDX, pad_idx=PAD_IDX):</span></span>
+<span data-line><span>    encoded = [word_to_index.get(word, unk_idx) for word in text]</span></span>
+<span data-line><span>    if len(encoded) > max_length:</span></span>
+<span data-line><span>        encoded = encoded[:max_length]</span></span>
+<span data-line><span>    else:</span></span>
+<span data-line><span>        encoded += [pad_idx] * (max_length - len(encoded))</span></span>
+<span data-line><span>    return encoded</span></span>
+<span data-line> </span>
+<span data-line><span>max_length = 200</span></span>
+<span data-line><span>train_data[&quot;text&quot;] = train_data[&quot;text&quot;].apply(</span></span>
+<span data-line><span>    encode_and_pad, word_to_index=word_to_index, max_length=max_length</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>val_data[&quot;text&quot;] = val_data[&quot;text&quot;].apply(</span></span>
+<span data-line><span>    encode_and_pad, word_to_index=word_to_index, max_length=max_length</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>test_data[&quot;text&quot;] = test_data[&quot;text&quot;].apply(</span></span>
+<span data-line><span>    encode_and_pad, word_to_index=word_to_index, max_length=max_length</span></span>
+<span data-line><span>)</span></span></code></pre></figure>
+<h2 id="数据集和数据加载器">数据集和数据加载器<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据集和数据加载器" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>import torch</span></span>
+<span data-line><span>from torch.utils.data import Dataset, DataLoader</span></span>
+<span data-line> </span>
+<span data-line><span>class SentimentDataSet(Dataset):</span></span>
+<span data-line><span>    def __init__(self, data):</span></span>
+<span data-line><span>        self.texts = data[&quot;text&quot;].values</span></span>
+<span data-line><span>        self.labels = data[&quot;label&quot;].values</span></span>
+<span data-line> </span>
+<span data-line><span>    def __len__(self):</span></span>
+<span data-line><span>        return len(self.texts)</span></span>
+<span data-line> </span>
+<span data-line><span>    def __getitem__(self, idx):</span></span>
+<span data-line><span>        text = self.texts[idx]</span></span>
+<span data-line><span>        label = self.labels[idx]</span></span>
+<span data-line><span>        return torch.tensor(text, dtype=torch.long), torch.tensor(label, dtype=torch.long)</span></span>
+<span data-line> </span>
+<span data-line><span>train_ds = SentimentDataSet(train_data)</span></span>
+<span data-line><span>val_ds = SentimentDataSet(val_data)</span></span>
+<span data-line><span>test_ds = SentimentDataSet(test_data)</span></span>
+<span data-line> </span>
+<span data-line><span>bs = 64</span></span>
+<span data-line><span>train_dl = DataLoader(train_ds, batch_size=bs, shuffle=True)</span></span>
+<span data-line><span>val_dl = DataLoader(val_ds, batch_size=bs, shuffle=False)</span></span>
+<span data-line><span>test_dl = DataLoader(test_ds, batch_size=bs, shuffle=False)</span></span></code></pre></figure>
+<h2 id="模型textcnn把-20050-当成图">模型：TextCNN（把 (200,50) 当成“图”）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#模型textcnn把-20050-当成图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>核心是：embedding 后得到 <code>(batch, 200, 50)</code>，再扩一维变成 <code>(batch, 1, 200, 50)</code>。卷积核的宽度取 <code>embed_size=50</code>，这样每次卷积相当于扫过连续的 k 个词（k-gram），每个 k 对应一组卷积核。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>import torch.nn as nn</span></span>
+<span data-line><span>import torch.nn.functional as F</span></span>
+<span data-line> </span>
+<span data-line><span>class SentimentCNN(nn.Module):</span></span>
+<span data-line><span>    def __init__(</span></span>
+<span data-line><span>        self,</span></span>
+<span data-line><span>        vocab_size,</span></span>
+<span data-line><span>        embed_size,</span></span>
+<span data-line><span>        num_filters,</span></span>
+<span data-line><span>        kernel_sizes,</span></span>
+<span data-line><span>        output_size,</span></span>
+<span data-line><span>        dropout=0.5,</span></span>
+<span data-line><span>        padding_idx=0,</span></span>
+<span data-line><span>    ):</span></span>
+<span data-line><span>        super().__init__()</span></span>
+<span data-line><span>        self.padding_idx = padding_idx</span></span>
+<span data-line><span>        self.embedding = nn.Embedding(vocab_size, embed_size, padding_idx=padding_idx)</span></span>
+<span data-line><span>        self.convs = nn.ModuleList(</span></span>
+<span data-line><span>            [nn.Conv2d(1, num_filters, kernel_size=(k, embed_size)) for k in kernel_sizes]</span></span>
+<span data-line><span>        )</span></span>
+<span data-line><span>        self.dropout = nn.Dropout(dropout)</span></span>
+<span data-line><span>        self.fc = nn.Linear(num_filters * len(kernel_sizes), output_size)</span></span>
+<span data-line><span>        self._init_weights()</span></span>
+<span data-line> </span>
+<span data-line><span>    def _init_weights(self):</span></span>
+<span data-line><span>        nn.init.xavier_uniform_(self.fc.weight)</span></span>
+<span data-line><span>        nn.init.zeros_(self.fc.bias)</span></span>
+<span data-line><span>        for conv in self.convs:</span></span>
+<span data-line><span>            nn.init.kaiming_uniform_(conv.weight, nonlinearity=&quot;relu&quot;)</span></span>
+<span data-line><span>            if conv.bias is not None:</span></span>
+<span data-line><span>                nn.init.zeros_(conv.bias)</span></span>
+<span data-line> </span>
+<span data-line><span>    def forward(self, x):</span></span>
+<span data-line><span>        embedded = self.embedding(x)</span></span>
+<span data-line><span>        embedded = embedded.unsqueeze(1)</span></span>
+<span data-line><span>        conv_outs = [F.relu(conv(embedded)).squeeze(3) for conv in self.convs]</span></span>
+<span data-line><span>        pooled = [F.max_pool1d(c, kernel_size=c.size(2)).squeeze(2) for c in conv_outs]</span></span>
+<span data-line><span>        feat = torch.cat(pooled, dim=1)</span></span>
+<span data-line><span>        feat = self.dropout(feat)</span></span>
+<span data-line><span>        return self.fc(feat)</span></span></code></pre></figure>
+<p><strong>为什么这里可以不做 padding mask？</strong> TextCNN 有个常见的坑：短句补了一堆 <code>PAD</code>，如果卷积在 <code>PAD</code> 上也能产生非零响应，max pooling 就会把这些”空位”选出来当成特征。这份代码之所以安全，靠的是两个初始化约定叠加：</p>
+<ol>
+<li><code>nn.Embedding(..., padding_idx=0)</code> 把第 0 行权重固定为<strong>全零、且不参与梯度更新</strong>，所以 <code>PAD</code> 位置的 embedding 恒为零向量；</li>
+<li><code>_init_weights</code> 里 <code>nn.init.zeros_(conv.bias)</code> 把卷积偏置置零，所以<strong>整窗全部落在 <code>PAD</code> 上</strong>时，卷积输出恰好为 0，ReLU 之后仍是 0。</li>
+</ol>
+<p>实测：把一条<strong>全是 <code>PAD</code></strong> 的样本喂进模型，输出 logits 正好是 <code>[0, 0]</code>。如果卷积偏置不是零，这里会得到一个非零常数，进而被 max pooling 当成”特征”。</p>
+<p>所以”不做 mask”在这里是<strong>有前提的</strong>，不是无条件成立。如果哪天把卷积偏置改成非零初始化、或把 ReLU 换成别的激活，这个前提就没了 —— 那时必须显式 mask：把 <code>PAD</code> 位置的卷积输出置为 <code>-inf</code> 再 pooling。</p>
+<p>初始化模型：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>vocab_size = len(vocab) + 2</span></span>
+<span data-line><span>embed_size = 50</span></span>
+<span data-line><span>num_filters = 128</span></span>
+<span data-line><span>kernel_sizes = [3, 4, 5]</span></span>
+<span data-line><span>output_size = 2</span></span>
+<span data-line> </span>
+<span data-line><span>model = SentimentCNN(</span></span>
+<span data-line><span>    vocab_size=vocab_size,</span></span>
+<span data-line><span>    embed_size=embed_size,</span></span>
+<span data-line><span>    num_filters=num_filters,</span></span>
+<span data-line><span>    kernel_sizes=kernel_sizes,</span></span>
+<span data-line><span>    output_size=output_size,</span></span>
+<span data-line><span>    dropout=0.5,</span></span>
+<span data-line><span>    padding_idx=PAD_IDX,</span></span>
+<span data-line><span>)</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model </span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># SentimentCNN(</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#   (embedding): Embedding(100002, 50, padding_idx=0)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#   (convs): ModuleList(</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#     (0): Conv2d(1, 128, kernel_size=(3, 50), stride=(1, 1))</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#     (1): Conv2d(1, 128, kernel_size=(4, 50), stride=(1, 1))</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#     (2): Conv2d(1, 128, kernel_size=(5, 50), stride=(1, 1))</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#   )</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#   (dropout): Dropout(p=0.5, inplace=False)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#   (fc): Linear(in_features=384, out_features=2, bias=True)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># )</span></span></code></pre></figure>
+<h2 id="损失优化器调度器和准确率">损失、优化器、调度器和准确率<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#损失优化器调度器和准确率" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>loss_fn = nn.CrossEntropyLoss()</span></span>
+<span data-line><span>optim = torch.optim.AdamW(model.parameters(), lr=0.001)</span></span>
+<span data-line><span>scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(</span></span>
+<span data-line><span>    optim, mode=&quot;min&quot;, factor=0.5, patience=2</span></span>
+<span data-line><span>)</span></span>
+<span data-line> </span>
+<span data-line><span>def acc_fn(pred, y):</span></span>
+<span data-line><span>    predicted = pred.argmax(dim=1)</span></span>
+<span data-line><span>    return (predicted == y).float().mean().item() * 100</span></span></code></pre></figure>
+<h2 id="训练模型">训练模型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#训练模型" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="训练步骤">训练步骤<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#训练步骤" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)</span></span>
+<span data-line> </span>
+<span data-line><span>def train_step(model, data_loader, loss_fn, optimizer, acc_fn, device=device, max_grad_norm=5.0):</span></span>
+<span data-line><span>    model.train()</span></span>
+<span data-line><span>    train_loss, train_acc = 0.0, 0.0</span></span>
+<span data-line> </span>
+<span data-line><span>    for X, y in data_loader:</span></span>
+<span data-line><span>        X, y = X.to(device), y.to(device)</span></span>
+<span data-line> </span>
+<span data-line><span>        optimizer.zero_grad()</span></span>
+<span data-line><span>        logits = model(X)</span></span>
+<span data-line><span>        loss = loss_fn(logits, y)</span></span>
+<span data-line> </span>
+<span data-line><span>        loss.backward()</span></span>
+<span data-line><span>        torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)</span></span>
+<span data-line><span>        optimizer.step()</span></span>
+<span data-line> </span>
+<span data-line><span>        train_loss += loss.item()</span></span>
+<span data-line><span>        train_acc += acc_fn(logits, y)</span></span>
+<span data-line> </span>
+<span data-line><span>    return train_loss / len(data_loader), train_acc / len(data_loader)</span></span></code></pre></figure>
+<h3 id="测试评估步骤">测试/评估步骤<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#测试评估步骤" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>def test_step(model, data_loader, loss_fn, acc_fn, device=device):</span></span>
+<span data-line><span>    model.eval()</span></span>
+<span data-line><span>    test_loss, test_acc = 0.0, 0.0</span></span>
+<span data-line><span>    with torch.inference_mode():</span></span>
+<span data-line><span>        for X, y in data_loader:</span></span>
+<span data-line><span>            X, y = X.to(device), y.to(device)</span></span>
+<span data-line><span>            logits = model(X)</span></span>
+<span data-line><span>            loss = loss_fn(logits, y)</span></span>
+<span data-line><span>            test_loss += loss.item()</span></span>
+<span data-line><span>            test_acc += acc_fn(logits, y)</span></span>
+<span data-line><span>    return test_loss / len(data_loader), test_acc / len(data_loader)</span></span></code></pre></figure>
+<h3 id="第一次训练5-个-epoch在-colab-上">第一次训练（5 个 epoch，在 Colab 上）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第一次训练5-个-epoch在-colab-上" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>from timeit import default_timer as timer</span></span>
+<span data-line> </span>
+<span data-line><span>model = model.to(device)</span></span>
+<span data-line> </span>
+<span data-line><span>train_loss, train_acc = [], []</span></span>
+<span data-line><span>val_loss, val_acc = [], []</span></span>
+<span data-line> </span>
+<span data-line><span>epochs = 5</span></span>
+<span data-line><span>for epoch in range(epochs):</span></span>
+<span data-line><span>    start_time = timer()</span></span>
+<span data-line> </span>
+<span data-line><span>    trloss, tracc = train_step(</span></span>
+<span data-line><span>        model=model,</span></span>
+<span data-line><span>        data_loader=train_dl,</span></span>
+<span data-line><span>        loss_fn=loss_fn,</span></span>
+<span data-line><span>        optimizer=optim,</span></span>
+<span data-line><span>        acc_fn=acc_fn,</span></span>
+<span data-line><span>        device=device,</span></span>
+<span data-line><span>    )</span></span>
+<span data-line><span>    train_loss.append(trloss)</span></span>
+<span data-line><span>    train_acc.append(tracc)</span></span>
+<span data-line> </span>
+<span data-line><span>    vloss, vacc = test_step(</span></span>
+<span data-line><span>        model=model,</span></span>
+<span data-line><span>        data_loader=val_dl,</span></span>
+<span data-line><span>        loss_fn=loss_fn,</span></span>
+<span data-line><span>        acc_fn=acc_fn,</span></span>
+<span data-line><span>        device=device,</span></span>
+<span data-line><span>    )</span></span>
+<span data-line><span>    val_loss.append(vloss)</span></span>
+<span data-line><span>    val_acc.append(vacc)</span></span>
+<span data-line> </span>
+<span data-line><span>    scheduler.step(vloss)</span></span>
+<span data-line><span>    end_time = timer()</span></span>
+<span data-line> </span>
+<span data-line><span>    print(f&quot;Epoch: {epoch} | Train loss: {trloss:.5f} | Train acc: {tracc:.2f}&quot;)</span></span>
+<span data-line><span>    print(f&quot;Epoch: {epoch} | Val   loss: {vloss:.5f} | Val   acc: {vacc:.2f}&quot;)</span></span>
+<span data-line><span>    print(f&quot;Time elapsed: {end_time - start_time:.3f} seconds&quot;)</span></span></code></pre></figure>
+<pre><code># 在Colab里跑的，所以慢点 -，-
+Epoch: 0 | Train loss: 1.30965 | Train acc: 53.70 
+Epoch: 0 | Val loss: 0.64523 | Val acc: 65.55 
+Time elapsed: 217.333 seconds 
+Epoch: 1 | Train loss: 0.68632 | Train acc: 60.09 
+Epoch: 1 | Val loss: 0.55541 | Val acc: 74.06 
+Time elapsed: 210.956 seconds 
+Epoch: 2 | Train loss: 0.61752 | Train acc: 66.97 
+Epoch: 2 | Val loss: 0.52599 | Val acc: 72.50 
+Time elapsed: 212.012 seconds 
+Epoch: 3 | Train loss: 0.53742 | Train acc: 73.03 
+Epoch: 3 | Val loss: 0.42444 | Val acc: 80.08
+Time elapsed: 211.552 seconds 
+Epoch: 4 | Train loss: 0.46057 | Train acc: 78.30 
+Epoch: 4 | Val loss: 0.36896 | Val acc: 83.13 
+Time elapsed: 212.748 seconds
+</code></pre>
+<p>第一次训练结束后，在测试集上跑一次：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>test_loss_value, test_acc_value = test_step(</span></span>
+<span data-line><span>    model=model, data_loader=test_dl, loss_fn=loss_fn, acc_fn=acc_fn, device=device</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>print(f&quot;Test loss: {test_loss_value:.5f} | Test accuracy: {test_acc_value:.2f}&quot;)</span></span>
+<span data-line><span># Test loss: 0.36640 | Test accuracy: 83.72</span></span></code></pre></figure>
+<hr/>
+<h2 id="复盘第一版的结论是欠训练不是cnn-比-rnn-差">复盘：第一版的结论是”欠训练”，不是”CNN 比 RNN 差”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#复盘第一版的结论是欠训练不是cnn-比-rnn-差" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>第一版只跑了 5 个 epoch，得到 val acc 83.13%、test acc 83.72%。如果据此下结论说”CNN 不如 RNN”，那是错的，有两个原因。</p>
+<p><strong>原因一：训练准确率的统计口径和验证集不一致。</strong></p>
+<p><code>train_step</code> 里用的是 <code>model.train()</code>，dropout 是<strong>打开</strong>的；<code>test_step</code> 里是 <code>model.eval()</code>，dropout <strong>关闭</strong>。所以训练准确率是在”随机丢掉 50% 特征”的状态下统计出来的，天然偏低，<strong>不能直接和 val acc 比</strong>。日志里 <code>Train acc: 78.30</code> 低于 <code>Val acc: 83.13</code>，看着像”泛化很好”，其实只是口径不同——真实情况是模型还没收敛。</p>
+<p><strong>原因二：验证准确率压根没到平台期。</strong></p>
+<p>5 个 epoch 的 val acc 是 65.55 → 74.06 → 72.50 → 80.08 → 83.13，<strong>一路在涨，既没停滞也没过拟合迹象</strong>，说明继续训还能往上走。</p>
+<p>之前是在Colab 上跑的， 217 秒/epoch，5 个 epoch 要 18 分钟；现在我搞了张卡了，所以在本地再跑一次。</p>
+<p>在下面改两处再跑一遍：① 额外用 <code>model.eval()</code> 统计一次训练准确率，让口径和验证集一致；② epoch 加到 15，并记录<strong>验证损失最低</strong>的那个 checkpoint（而不是最后一个）。</p>
+<h3 id="第二次训练15-个-epoch本机-4090">第二次训练（15 个 epoch，本机 4090）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第二次训练15-个-epoch本机-4090" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>先提醒一个容易踩的坑：<strong>不能在第一次训练完之后接着训</strong>。上面那个 <code>model</code> 已经训过 5 个 epoch 了，如果直接再跑 15 个 epoch，实际是 20 个 epoch 的连续训练，而不是”从零训练 15 个 epoch”。所以这里把模型、优化器、调度器全部重新初始化：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span># 重新初始化，从零开始训练（否则会接着第一次的权重继续训）</span></span>
+<span data-line><span>torch.manual_seed(42)</span></span>
+<span data-line><span>model = SentimentCNN(</span></span>
+<span data-line><span>    vocab_size=vocab_size,</span></span>
+<span data-line><span>    embed_size=embed_size,</span></span>
+<span data-line><span>    num_filters=num_filters,</span></span>
+<span data-line><span>    kernel_sizes=kernel_sizes,</span></span>
+<span data-line><span>    output_size=output_size,</span></span>
+<span data-line><span>    dropout=0.5,</span></span>
+<span data-line><span>    padding_idx=PAD_IDX,</span></span>
+<span data-line><span>).to(device)</span></span>
+<span data-line><span>optim = torch.optim.AdamW(model.parameters(), lr=0.001)</span></span>
+<span data-line><span>scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(</span></span>
+<span data-line><span>    optim, mode=&quot;min&quot;, factor=0.5, patience=2</span></span>
+<span data-line><span>)</span></span>
+<span data-line> </span>
+<span data-line><span>from timeit import default_timer as timer</span></span>
+<span data-line> </span>
+<span data-line><span>train_loss, train_acc, train_acc_eval = [], [], []</span></span>
+<span data-line><span>val_loss, val_acc = [], []</span></span>
+<span data-line> </span>
+<span data-line><span>epochs = 15</span></span>
+<span data-line><span>best_val_loss, best_epoch, best_state = float(&quot;inf&quot;), -1, None</span></span>
+<span data-line> </span>
+<span data-line><span>for epoch in range(epochs):</span></span>
+<span data-line><span>    start_time = timer()</span></span>
+<span data-line> </span>
+<span data-line><span>    trloss, tracc = train_step(</span></span>
+<span data-line><span>        model=model, data_loader=train_dl, loss_fn=loss_fn,</span></span>
+<span data-line><span>        optimizer=optim, acc_fn=acc_fn, device=device,</span></span>
+<span data-line><span>    )</span></span>
+<span data-line><span>    # 用 eval 模式再统计一次训练准确率，口径才和验证集一致</span></span>
+<span data-line><span>    _, tracc_eval = test_step(</span></span>
+<span data-line><span>        model=model, data_loader=train_dl, loss_fn=loss_fn,</span></span>
+<span data-line><span>        acc_fn=acc_fn, device=device,</span></span>
+<span data-line><span>    )</span></span>
+<span data-line><span>    vloss, vacc = test_step(</span></span>
+<span data-line><span>        model=model, data_loader=val_dl, loss_fn=loss_fn,</span></span>
+<span data-line><span>        acc_fn=acc_fn, device=device,</span></span>
+<span data-line><span>    )</span></span>
+<span data-line> </span>
+<span data-line><span>    train_loss.append(trloss)</span></span>
+<span data-line><span>    train_acc.append(tracc)</span></span>
+<span data-line><span>    train_acc_eval.append(tracc_eval)</span></span>
+<span data-line><span>    val_loss.append(vloss)</span></span>
+<span data-line><span>    val_acc.append(vacc)</span></span>
+<span data-line> </span>
+<span data-line><span>    # 记住验证损失最低的模型，而不是最后一个</span></span>
+<span data-line><span>    if vloss &lt; best_val_loss:</span></span>
+<span data-line><span>        best_val_loss, best_epoch = vloss, epoch</span></span>
+<span data-line><span>        best_state = {k: v.clone() for k, v in model.state_dict().items()}</span></span>
+<span data-line> </span>
+<span data-line><span>    scheduler.step(vloss)</span></span>
+<span data-line><span>    end_time = timer()</span></span>
+<span data-line> </span>
+<span data-line><span>    print(f&quot;Epoch: {epoch} | Train loss: {trloss:.5f} | Train acc(dropout on): {tracc:.2f} | Train acc(eval): {tracc_eval:.2f}&quot;)</span></span>
+<span data-line><span>    print(f&quot;Epoch: {epoch} | Val   loss: {vloss:.5f} | Val   acc: {vacc:.2f}&quot;)</span></span>
+<span data-line><span>    print(f&quot;Time elapsed: {end_time - start_time:.3f} seconds&quot;)</span></span>
+<span data-line> </span>
+<span data-line><span>print(f&quot;\nbest val_loss {best_val_loss:.5f} at epoch {best_epoch}&quot;)</span></span></code></pre></figure>
+<p>在本机 4090 上跑的日志（约 6.5 秒/epoch，15 个 epoch 不到 2 分钟）：</p>
+<blockquote>
+<p>说明：下面这段日志、后面的测试指标、混淆矩阵和预测概率，都来自<strong>同一次</strong>运行；曲线图也是同一次运行画的。如果再重跑一遍，<code>DataLoader</code> 的 shuffle 顺序会不同，结果会有零点几个百分点的浮动（例如最优 test acc 在 86.0~86.2 之间），属于正常范围，不影响任何结论。</p>
+</blockquote>
+<pre><code>Epoch: 0 | Train loss: 1.24415 | Train acc(dropout on): 54.10 | Train acc(eval): 71.31
+Epoch: 0 | Val   loss: 0.62328 | Val   acc: 69.30
+Time elapsed: 5.529 seconds
+Epoch: 1 | Train loss: 0.66798 | Train acc(dropout on): 61.86 | Train acc(eval): 67.31
+Epoch: 1 | Val   loss: 0.59152 | Val   acc: 65.85
+Time elapsed: 6.695 seconds
+Epoch: 2 | Train loss: 0.60473 | Train acc(dropout on): 67.82 | Train acc(eval): 78.70
+Epoch: 2 | Val   loss: 0.47739 | Val   acc: 76.61
+Time elapsed: 6.545 seconds
+Epoch: 3 | Train loss: 0.52546 | Train acc(dropout on): 74.15 | Train acc(eval): 83.64
+Epoch: 3 | Val   loss: 0.41643 | Val   acc: 81.20
+Time elapsed: 6.608 seconds
+Epoch: 4 | Train loss: 0.44095 | Train acc(dropout on): 79.57 | Train acc(eval): 87.78
+Epoch: 4 | Val   loss: 0.37294 | Val   acc: 83.28
+Time elapsed: 5.611 seconds
+Epoch: 5 | Train loss: 0.37763 | Train acc(dropout on): 83.26 | Train acc(eval): 87.88
+Epoch: 5 | Val   loss: 0.36289 | Val   acc: 83.48
+Time elapsed: 6.697 seconds
+Epoch: 6 | Train loss: 0.31724 | Train acc(dropout on): 86.44 | Train acc(eval): 93.28
+Epoch: 6 | Val   loss: 0.30812 | Val   acc: 86.36
+Time elapsed: 6.712 seconds
+Epoch: 7 | Train loss: 0.26380 | Train acc(dropout on): 89.15 | Train acc(eval): 95.02
+Epoch: 7 | Val   loss: 0.30582 | Val   acc: 86.78
+Time elapsed: 6.673 seconds
+Epoch: 8 | Train loss: 0.21381 | Train acc(dropout on): 91.47 | Train acc(eval): 96.71
+Epoch: 8 | Val   loss: 0.31373 | Val   acc: 86.68
+Time elapsed: 6.727 seconds
+Epoch: 9 | Train loss: 0.16831 | Train acc(dropout on): 93.40 | Train acc(eval): 97.97
+Epoch: 9 | Val   loss: 0.33757 | Val   acc: 86.51
+Time elapsed: 6.618 seconds
+Epoch: 10 | Train loss: 0.12834 | Train acc(dropout on): 95.12 | Train acc(eval): 98.74
+Epoch: 10 | Val   loss: 0.37614 | Val   acc: 86.01
+Time elapsed: 6.593 seconds
+Epoch: 11 | Train loss: 0.09025 | Train acc(dropout on): 96.81 | Train acc(eval): 99.20
+Epoch: 11 | Val   loss: 0.41564 | Val   acc: 85.42
+Time elapsed: 6.720 seconds
+Epoch: 12 | Train loss: 0.07204 | Train acc(dropout on): 97.41 | Train acc(eval): 99.54
+Epoch: 12 | Val   loss: 0.45578 | Val   acc: 85.59
+Time elapsed: 6.127 seconds
+Epoch: 13 | Train loss: 0.05745 | Train acc(dropout on): 97.94 | Train acc(eval): 99.68
+Epoch: 13 | Val   loss: 0.49074 | Val   acc: 85.59
+Time elapsed: 6.691 seconds
+Epoch: 14 | Train loss: 0.04353 | Train acc(dropout on): 98.50 | Train acc(eval): 99.75
+Epoch: 14 | Val   loss: 0.51557 | Val   acc: 85.19
+Time elapsed: 6.774 seconds
+
+best val_loss 0.30582 at epoch 7
+</code></pre>
+<p>分别看<strong>最后一个 epoch 的模型</strong>和<strong>验证损失最低的模型</strong>在测试集上的表现：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span># 最后一个 epoch 的模型</span></span>
+<span data-line><span>test_loss_last, test_acc_last = test_step(</span></span>
+<span data-line><span>    model=model, data_loader=test_dl, loss_fn=loss_fn, acc_fn=acc_fn, device=device</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>print(f&quot;LAST | Test loss: {test_loss_last:.5f} | Test accuracy: {test_acc_last:.2f}&quot;)</span></span>
+<span data-line> </span>
+<span data-line><span># 换回验证损失最低的那个模型</span></span>
+<span data-line><span>model.load_state_dict(best_state)</span></span>
+<span data-line><span>test_loss_best, test_acc_best = test_step(</span></span>
+<span data-line><span>    model=model, data_loader=test_dl, loss_fn=loss_fn, acc_fn=acc_fn, device=device</span></span>
+<span data-line><span>)</span></span>
+<span data-line><span>print(f&quot;BEST | Test loss: {test_loss_best:.5f} | Test accuracy: {test_acc_best:.2f}&quot;)</span></span></code></pre></figure>
+<pre><code>LAST | Test loss: 0.53990 | Test accuracy: 85.20
+BEST | Test loss: 0.32164 | Test accuracy: 86.24
+</code></pre>
+<p><strong>这两个数字的差距值得停下来看一眼</strong>：只因为多训了 7 个 epoch，测试准确率就从 86.24% 掉到 85.20%，掉了 1.04 个百分点。这就是 early stopping（早停）的价值——训练到验证损失最低点就该停，而不是”跑满 epoch 数”。</p>
+<p>比第一版的 5 epoch（83.72%）提升了约 2.5 个百分点。</p>
+<h3 id="可视化">可视化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可视化" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> numpy </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> np</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> matplotlib.pyplot </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> plt</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">N </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> np.arange(epochs)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.style.use(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;ggplot&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.figure(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">figsize</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">6</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.plot(N, train_loss, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;train_loss&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.plot(N, val_loss, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;val_loss&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.axvline(best_epoch, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">color</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;green&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">ls</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;--&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;best val_loss (epoch </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">best_epoch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">}</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.title(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;TextCNN: Training &amp; Validation Loss&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.xlabel(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Epoch #&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">weight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;bold&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.ylabel(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Loss&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">weight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;bold&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.legend()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.show()</span></span></code></pre></figure>
+<p><img src="./assets/使用CNN对电影评论进行分类/training-loss.png" alt/></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.figure(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">figsize</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">6</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.plot(N, train_acc, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;train_acc (dropout ON)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.plot(N, train_acc_eval, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;train_acc (eval mode)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.plot(N, val_acc, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;val_acc&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.axvline(best_epoch, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">color</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;green&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">ls</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;--&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">label</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;best val_loss (epoch </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">best_epoch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">}</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.title(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;TextCNN: Training &amp; Validation Accuracy&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.xlabel(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Epoch #&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">weight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;bold&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.ylabel(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Accuracy&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">weight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;bold&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.legend()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">plt.show()</span></span></code></pre></figure>
+<p><img src="./assets/使用CNN对电影评论进行分类/training-accuracy.png" alt/></p>
+<p>两张图把该看的都摆出来了：</p>
+<ul>
+<li><strong>损失图</strong>：train_loss 一路降到 0.044，但 val_loss 在第 7 个 epoch 触底（0.306）后<strong>掉头向上</strong>，到第 14 个 epoch 涨回 0.516。两条线在第 6~7 个 epoch 交叉——交叉点之后，模型背的是训练集的噪声，不是可泛化的特征。</li>
+<li><strong>准确率图</strong>：<code>train_acc (eval mode)</code> 一路涨到 99.75%，而 <code>val_acc</code> 在第 7 个 epoch 见顶（86.78%）后回落，两者差距越拉越大，这是过拟合的标准形状。</li>
+<li><strong>红线 vs 蓝线（同一条训练集）</strong>：最后一个 epoch，dropout 开着统计是 98.50%，eval 模式统计是 99.75%，<strong>差 1.2 个百分点</strong>；第 0 个 epoch 差距更大（54.10 vs 71.31，差 17.2 个百分点）。这就是第一版”Train acc 低于 Val acc”的全部原因，和泛化能力无关。</li>
+</ul>
+<h2 id="结论rnn-和-cnn-到底谁更好">结论：RNN 和 CNN 到底谁更好？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#结论rnn-和-cnn-到底谁更好" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>现在把两个模型放在<strong>同一份数据划分、同一个随机种子、同样 15 个 epoch</strong> 下各跑一遍，结论要改。所有实验都在同一台 4090 上、用同一个 10000 条测试集：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>模型</th><th>优化器 / 学习率</th><th>epoch</th><th>验证损失最低的 epoch</th><th>最优 val acc</th><th><strong>最优 test acc</strong></th><th>跑满 epoch 的 test acc</th></tr></thead><tbody><tr><td>TextCNN</td><td>AdamW, 1e-3</td><td>15</td><td>7</td><td>86.78</td><td><strong>86.24</strong></td><td>85.20</td></tr><tr><td>TextCNN</td><td>AdamW, 1e-3</td><td>30</td><td>7</td><td>86.48</td><td>86.17</td><td>84.82</td></tr><tr><td>RNN</td><td>AdamW, 1e-3</td><td>15</td><td>2</td><td>86.01</td><td><strong>85.44</strong></td><td>85.09</td></tr><tr><td>RNN</td><td>Adam, 5e-3（08 用的）</td><td>15</td><td>1</td><td>86.33</td><td>86.80</td><td>85.65</td></tr><tr><td>TextCNN（只在训练集上建词表）</td><td>AdamW, 1e-3</td><td>15</td><td>7</td><td>86.90</td><td>86.88</td><td>85.45</td></tr></tbody></table></div>
+<p>能读出来的几点：</p>
+<ol>
+<li><strong>两个模型基本打平，都在 86% 上下。</strong> 上面五次实验的最优 test acc 全部落在 <strong>85.4% ~ 86.9%</strong> 这个不足 1.5 个百分点的区间里。作为参照：10,000 条测试集上准确率的标准误约 0.35 个百分点，而仅仅换一个学习率（RNN 从 1e-3 换到 5e-3）就让结果从 85.44 变到 86.80。<strong>所以没有证据说明哪个结构明显更强。</strong></li>
+<li><strong>原来的”RNN 稍好”是欠训练造成的假象</strong>：CNN 在 5 个 epoch 时只有 83.72%，跑到验证损失最低点就升到 86.24%。</li>
+<li><strong>在完全相同的优化器、学习率、epoch 数下，CNN（86.24）反而略高于 RNN（85.44）</strong>；但把 RNN 的学习率换回 08 用的 5e-3，RNN 又到 86.80。所以真正决定结果的不是”RNN 还是 CNN”，而是<strong>学习率有没有调对、有没有早停</strong>。</li>
+<li><strong>两个模型都严重过拟合</strong>：最优 checkpoint 都远早于最后一个 epoch。RNN 更夸张——第 1 个 epoch 就是最好，之后训练准确率一路到 100%，val_loss 从 0.31 爆到 1.50。</li>
+<li><strong>词表泄漏的影响可以忽略</strong>：只在训练集上建词表的 CNN 得到 86.88%，与用全量数据建词表的 86.24% 差不多（甚至略高）。所以这是个该改的习惯，但<strong>不是</strong>这两个模型表现差异的原因。</li>
+</ol>
+<p>换句话说，这篇笔记真正的收获不是”CNN 和 RNN 谁赢”，而是：<strong>在没有调好学习率、没有早停的情况下比较两个模型，比较的是超参数，不是结构。</strong></p>
+<h2 id="补充更丰富的评估指标">补充：更丰富的评估指标<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#补充更丰富的评估指标" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>注意这里评估的是<strong>验证损失最低的 checkpoint</strong>（即上面 <code>model.load_state_dict(best_state)</code> 之后的模型），不是跑满 15 个 epoch 的那个：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>import numpy as np</span></span>
+<span data-line><span>from sklearn.metrics import classification_report, confusion_matrix</span></span>
+<span data-line> </span>
+<span data-line><span>def collect_preds(model, data_loader, device):</span></span>
+<span data-line><span>    model.eval()</span></span>
+<span data-line><span>    y_true, y_pred = [], []</span></span>
+<span data-line><span>    with torch.inference_mode():</span></span>
+<span data-line><span>        for X, y in data_loader:</span></span>
+<span data-line><span>            X, y = X.to(device), y.to(device)</span></span>
+<span data-line><span>            logits = model(X)</span></span>
+<span data-line><span>            pred = logits.argmax(dim=1)</span></span>
+<span data-line><span>            y_true.append(y.cpu().numpy())</span></span>
+<span data-line><span>            y_pred.append(pred.cpu().numpy())</span></span>
+<span data-line><span>    return np.concatenate(y_true), np.concatenate(y_pred)</span></span>
+<span data-line> </span>
+<span data-line><span>y_true, y_pred = collect_preds(model, test_dl, device=device)</span></span>
+<span data-line><span>print(confusion_matrix(y_true, y_pred))</span></span>
+<span data-line><span>print(classification_report(y_true, y_pred, target_names=[&quot;negative&quot;, &quot;positive&quot;]))</span></span></code></pre></figure>
+<pre><code>[[4263  737]
+ [ 643 4357]]
+              precision    recall  f1-score   support
+
+    negative       0.87      0.85      0.86      5000
+    positive       0.86      0.87      0.86      5000
+
+    accuracy                           0.86     10000
+   macro avg       0.86      0.86      0.86     10000
+weighted avg       0.86      0.86      0.86     10000
+</code></pre>
+<p>对照第一版（83.72%）的混淆矩阵 <code>[[4093, 907], [726, 4274]]</code>：两类错误是<strong>同时</strong>在减少的（907→737、726→643），说明提升来自整体拟合变好，而不是模型往某一类偏。</p>
+<h2 id="预测">预测<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#预测" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="Python" data-theme="github-light github-dark"><code data-language="Python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>def predict_sentiment(model, sentence):</span></span>
+<span data-line><span>    text = tokenize(sentence)</span></span>
+<span data-line><span>    encoded = encode_and_pad(text, word_to_index, max_length)</span></span>
+<span data-line><span>    x = torch.tensor(encoded, dtype=torch.long).to(device)</span></span>
+<span data-line><span>    model.eval()</span></span>
+<span data-line><span>    with torch.inference_mode():</span></span>
+<span data-line><span>        logits = model(x.unsqueeze(0))</span></span>
+<span data-line><span>        prob = torch.nn.functional.softmax(logits, dim=1)</span></span>
+<span data-line><span>        predicted = prob.argmax(dim=1).item()</span></span>
+<span data-line><span>        res = &quot;positive&quot; if predicted == 1 else &quot;negative&quot;</span></span>
+<span data-line><span>        score = prob.squeeze(0)[predicted].item()</span></span>
+<span data-line><span>    print(res, score)</span></span>
+<span data-line><span>    return res, score</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">predict_sentiment(model, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;I really hate this movie. It is really bad and sucks!&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># negative 0.9919127225875854</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># </span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ('negative', 0.9919127225875854)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">predict_sentiment(model, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;This is such an awesome movie, I really love it!&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># positive 0.999886155128479</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># </span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ('positive', 0.999886155128479)</span></span></code></pre></figure>
+<h2 id="参考资料">参考资料<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#参考资料" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Kim, Y. (2014). <em>Convolutional Neural Networks for Sentence Classification.</em> EMNLP. <a href="https://arxiv.org/abs/1408.5882" class="external">https://arxiv.org/abs/1408.5882<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> —— TextCNN 的原始论文，本文模型结构就出自这里</li>
+<li>Zhang, Y., &amp; Wallace, B. (2015). <em>A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification.</em> <a href="https://arxiv.org/abs/1510.03820" class="external">https://arxiv.org/abs/1510.03820<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> —— 系统做了 TextCNN 的超参数消融（卷积核大小、filter 数量、词向量、dropout 等），本文”学习率/早停的影响大于结构”这个结论在这篇里有更完整的量化</li>
+<li>PyTorch 文档：<code>nn.Conv2d</code> <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html" class="external">https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> 、<code>nn.Embedding</code> 的 <code>padding_idx</code> <a href="https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html" class="external">https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-60" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#数据" data-for="数据">数据</a></li><li class="depth-1"><a href="#下载和读入" data-for="下载和读入">下载和读入</a></li><li class="depth-0"><a href="#预处理" data-for="预处理">预处理</a></li><li class="depth-0"><a href="#数据集和数据加载器" data-for="数据集和数据加载器">数据集和数据加载器</a></li><li class="depth-0"><a href="#模型textcnn把-20050-当成图" data-for="模型textcnn把-20050-当成图">模型：TextCNN（把 (200,50) 当成“图”）</a></li><li class="depth-0"><a href="#损失优化器调度器和准确率" data-for="损失优化器调度器和准确率">损失、优化器、调度器和准确率</a></li><li class="depth-0"><a href="#训练模型" data-for="训练模型">训练模型</a></li><li class="depth-1"><a href="#训练步骤" data-for="训练步骤">训练步骤</a></li><li class="depth-1"><a href="#测试评估步骤" data-for="测试评估步骤">测试/评估步骤</a></li><li class="depth-1"><a href="#第一次训练5-个-epoch在-colab-上" data-for="第一次训练5-个-epoch在-colab-上">第一次训练（5 个 epoch，在 Colab 上）</a></li><li class="depth-0"><a href="#复盘第一版的结论是欠训练不是cnn-比-rnn-差" data-for="复盘第一版的结论是欠训练不是cnn-比-rnn-差">复盘：第一版的结论是”欠训练”，不是”CNN 比 RNN 差”</a></li><li class="depth-1"><a href="#第二次训练15-个-epoch本机-4090" data-for="第二次训练15-个-epoch本机-4090">第二次训练（15 个 epoch，本机 4090）</a></li><li class="depth-1"><a href="#可视化" data-for="可视化">可视化</a></li><li class="depth-0"><a href="#结论rnn-和-cnn-到底谁更好" data-for="结论rnn-和-cnn-到底谁更好">结论：RNN 和 CNN 到底谁更好？</a></li><li class="depth-0"><a href="#补充更丰富的评估指标" data-for="补充更丰富的评估指标">补充：更丰富的评估指标</a></li><li class="depth-0"><a href="#预测" data-for="预测">预测</a></li><li class="depth-0"><a href="#参考资料" data-for="参考资料">参考资料</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><p>Content licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}container;content;isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>
