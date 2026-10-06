@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">一个比整张图还大的对象</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">面板把它裁掉了，矢量设备照样把它写进文件</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="60" y="196" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">屏幕上：你看到的</text>
+
+  <rect x="100" y="340" width="560" height="290" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <line x1="100" y1="630" x2="660" y2="630" stroke="#2B6777" stroke-width="3"/>
+
+  <rect x="124" y="514" width="110" height="116" fill="#2B6777"/>
+  <rect x="258" y="456" width="110" height="174" fill="#2B6777"/>
+  <rect x="392" y="340" width="110" height="290" fill="#2B6777"/>
+  <rect x="526" y="485" width="110" height="145" fill="#2B6777"/>
+
+  <rect x="392" y="178" width="110" height="162" fill="#FFF3E6" stroke="#E07B39" stroke-width="3" stroke-dasharray="10 7"/>
+  <line x1="392" y1="253" x2="502" y2="240" stroke="#E07B39" stroke-width="3"/>
+  <line x1="392" y1="271" x2="502" y2="258" stroke="#E07B39" stroke-width="3"/>
+
+  <line x1="80" y1="340" x2="690" y2="340" stroke="#E07B39" stroke-width="3" stroke-dasharray="10 7"/>
+  <text x="88" y="322" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">面板的上边界</text>
+
+  <path d="M 545 245 L 512 256" fill="none" stroke="#E07B39" stroke-width="2" marker-end="url(#a)"/>
+  <text x="556" y="230" font-family="Noto Sans CJK SC" font-size="19" fill="#B85C1E">这一截被面板裁掉了</text>
+  <text x="556" y="262" font-family="Noto Sans CJK SC" font-size="19" fill="#B85C1E">但它照样进了文件</text>
+
+  <text x="100" y="672" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">这个窗口只负责显示 0 到 30 这一段</text>
+
+  <rect x="820" y="180" width="720" height="450" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="852" y="228" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">ggbreak 不切数据</text>
+  <text x="852" y="278" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">一个 break 画出来是两个窗口，每个窗口都拿到</text>
+  <text x="852" y="310" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">整份数据，各自 clip 掉不属于自己的那一部分。</text>
+  <text x="852" y="362" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">所以被藏起来的几何，只是没被画出来，</text>
+  <text x="852" y="394" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">它还是被交给了设备。</text>
+  <text x="852" y="446" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">光栅设备看不见就算了，矢量设备会老老实实</text>
+  <text x="852" y="478" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">写进文件，于是 PDF 里多出一个比整张图还大的</text>
+  <text x="852" y="510" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">对象，Illustrator 打开就报：</text>
+  <text x="852" y="562" font-family="Noto Sans CJK SC" font-size="18" fill="#E07B39">the requested transformation</text>
+  <text x="852" y="592" font-family="Noto Sans CJK SC" font-size="18" fill="#E07B39">would make some objects too large</text>
+
+  <rect x="60" y="700" width="700" height="140" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="90" y="744" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">修复前</text>
+  <text x="90" y="784" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">那个矩形有 30 个面板那么高</text>
+  <text x="90" y="816" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">另一个窗口里是 22.5 个</text>
+
+  <rect x="800" y="700" width="740" height="140" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="830" y="744" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#B85C1E">修复后</text>
+  <text x="830" y="784" font-family="Noto Sans CJK SC" font-size="19" fill="#B85C1E">两个窗口都是 1.0045 个面板高</text>
+  <text x="830" y="816" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">画出来一模一样，整张渲染电池 0 像素差</text>
+</svg>

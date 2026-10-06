@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">点名要的模型，被静默忽略</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">session/set_model 对任何字符串都回 {}，这一路上没有任何异常</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="200" width="340" height="270" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="230" y="244" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">我点名要的</text>
+  <line x1="90" y1="264" x2="370" y2="264" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="230" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">agentOptions.model</text>
+  <text x="230" y="338" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">hy4-preview-f</text>
+  <text x="230" y="404" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">模型是工具实例的属性</text>
+  <text x="230" y="430" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">不是调用时的参数</text>
+
+  <text x="420" y="346" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#2B6777">→</text>
+
+  <rect x="440" y="200" width="340" height="270" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="610" y="244" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">发给 ACP 端</text>
+  <line x1="470" y1="264" x2="750" y2="264" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="610" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">session/set_model</text>
+  <text x="610" y="338" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">{ sessionId, model }</text>
+  <text x="610" y="404" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">协议层完全合法</text>
+  <text x="610" y="430" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">挑不出毛病</text>
+
+  <text x="800" y="346" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#E07B39">→</text>
+
+  <rect x="820" y="200" width="340" height="270" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="990" y="244" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">peer 的回话</text>
+  <line x1="850" y1="264" x2="1130" y2="264" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="990" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#B85C1E">回一个 {}</text>
+  <text x="990" y="338" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">对任何字符串都一样</text>
+  <text x="990" y="404" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">不认识的 id 不报错</text>
+  <text x="990" y="430" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">只是安静地保持默认</text>
+
+  <text x="1180" y="346" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#E07B39">→</text>
+
+  <rect x="1200" y="200" width="340" height="270" rx="14" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="3"/>
+  <text x="1370" y="244" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#7A838B">实际发生的事</text>
+  <line x1="1230" y1="264" x2="1510" y2="264" stroke="#DDD7CC" stroke-width="2"/>
+  <text x="1370" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">会话默认模型没变</text>
+  <text x="1370" y="338" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#7A838B">仍然跑 fast-model</text>
+  <text x="1370" y="404" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">而委派报成功</text>
+  <text x="1370" y="430" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">输出也是对的</text>
+
+  <rect x="60" y="516" width="1480" height="92" rx="12" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="800" y="558" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#B85C1E">没有 throw、没有 error、没有日志，你没有任何东西可以 catch</text>
+  <text x="800" y="590" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">崩溃会骂人，静默只会坑人</text>
+
+  <rect x="60" y="638" width="1480" height="150" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="678" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">为什么具名模型压根不在列表里</text>
+  <text x="90" y="716" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">CODEBUDDY_CONFIG_DIR 没传给子进程时，session/new 只广告 5 个（4 个档位别名 + custom-local:）</text>
+  <text x="90" y="752" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">传到本机 WorkBuddy 数据目录，整个账号的模型池才出来，我这台机器上是 22 个</text>
+
+  <text x="60" y="838" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">桌面版应用自己会设这个变量，裸 shell 不会，所以 dsh 拉起来的子进程天生就是个「瘦」环境</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#F7F4EE"/>
+
+  <text x="90" y="150" font-family="Noto Sans CJK SC" font-size="52" font-weight="700" fill="#1F2A33">一个空 catch</text>
+  <text x="90" y="216" font-family="Noto Sans CJK SC" font-size="52" font-weight="700" fill="#1F2A33">让语音插件哑了</text>
+  <text x="90" y="266" font-family="Noto Sans CJK SC" font-size="23" fill="#6B7A85">dsh 升级到 0.1.5 之后，两个症状，一个根因</text>
+  <line x1="90" y1="300" x2="1110" y2="300" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="90" y="384" width="12" height="92" rx="6" fill="#2B6777"/>
+  <rect x="115.5" y="358" width="12" height="144" rx="6" fill="#2B6777"/>
+  <rect x="141" y="392" width="12" height="76" rx="6" fill="#2B6777"/>
+  <rect x="166.5" y="334" width="12" height="192" rx="6" fill="#2B6777"/>
+  <rect x="192" y="310" width="12" height="240" rx="6" fill="#2B6777"/>
+  <rect x="217.5" y="366" width="12" height="128" rx="6" fill="#2B6777"/>
+  <rect x="243" y="342" width="12" height="176" rx="6" fill="#2B6777"/>
+  <rect x="268.5" y="388" width="12" height="84" rx="6" fill="#2B6777"/>
+  <rect x="294" y="320" width="12" height="220" rx="6" fill="#2B6777"/>
+  <rect x="319.5" y="356" width="12" height="148" rx="6" fill="#2B6777"/>
+  <rect x="345" y="378" width="12" height="104" rx="6" fill="#2B6777"/>
+  <rect x="370.5" y="332" width="12" height="196" rx="6" fill="#2B6777"/>
+  <rect x="396" y="362" width="12" height="136" rx="6" fill="#2B6777"/>
+  <rect x="421.5" y="300" width="12" height="260" rx="6" fill="#2B6777"/>
+  <rect x="447" y="372" width="12" height="116" rx="6" fill="#2B6777"/>
+  <rect x="472.5" y="346" width="12" height="168" rx="6" fill="#2B6777"/>
+  <rect x="498" y="390" width="12" height="80" rx="6" fill="#2B6777"/>
+  <rect x="523.5" y="326" width="12" height="208" rx="6" fill="#2B6777"/>
+  <rect x="549" y="364" width="12" height="132" rx="6" fill="#2B6777"/>
+  <rect x="574.5" y="338" width="12" height="184" rx="6" fill="#2B6777"/>
+  <rect x="600" y="382" width="12" height="96" rx="6" fill="#2B6777"/>
+  <rect x="625.5" y="354" width="12" height="152" rx="6" fill="#2B6777"/>
+  <rect x="651" y="374" width="12" height="112" rx="6" fill="#2B6777"/>
+  <rect x="676.5" y="396" width="12" height="68" rx="6" fill="#2B6777"/>
+
+  <rect x="727.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="753" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="778.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="804" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="829.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="855" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="880.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="906" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="931.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="957" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="982.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="1008" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="1033.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="1059" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+  <rect x="1084.5" y="427" width="12" height="6" rx="3" fill="#C9C2B4"/>
+
+  <line x1="720" y1="292" x2="720" y2="560" stroke="#E07B39" stroke-width="3" stroke-dasharray="9 7"/>
+  <circle cx="720" cy="430" r="9" fill="#E07B39"/>
+  <text x="742" y="576" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">从这里开始，它就不说话了</text>
+
+  <text x="90" y="576" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">events.mux 每 100 ms 抛一次 TypeError，被一个空的 catch 吞掉</text>
+</svg>

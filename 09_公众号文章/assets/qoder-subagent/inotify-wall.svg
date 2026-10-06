@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">第二个实例起不来，换一条路验证</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">撞上的是这台机器上 inotify 的额度，跟我的代码无关</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="188" width="700" height="330" rx="14" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="410" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#7A838B">原计划：再开一个 dsh 实例</text>
+  <line x1="90" y1="254" x2="730" y2="254" stroke="#DDD7CC" stroke-width="2"/>
+  <text x="410" y="300" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">dsh --profile web --port 3099</text>
+  <text x="410" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">Error: EMFILE: too many open files</text>
+  <text x="410" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">syscall: watch，path: ~/.dsh/profiles/web</text>
+  <text x="410" y="428" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">不是 fd 不够（ulimit 是 1048576）</text>
+  <text x="410" y="462" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">是 inotify 实例用满了：max_user_instances = 128</text>
+  <text x="410" y="496" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">IDE、浏览器、已经在跑的那个 dsh 一起占的</text>
+
+  <rect x="840" y="188" width="700" height="330" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="1190" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">改走：一次性 DSH_HOME</text>
+  <line x1="870" y1="254" x2="1510" y2="254" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="1190" y="300" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">DSH_HOME=/tmp/dsh-qhome</text>
+  <text x="1190" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">settings 和 credentials 软链过去</text>
+  <text x="1190" y="388" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">patchReload: startup（干脆不建 watcher）</text>
+  <text x="1190" y="440" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">绕开 inotify，也绕开在跑的那个实例</text>
+  <text x="1190" y="480" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">IDE 日志里那串 inotify_init failed 是同一个原因</text>
+
+  <text x="800" y="566" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">它证明了什么</text>
+
+  <rect x="60" y="592" width="470" height="120" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="295" y="634" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#2B6777">✓ 插件能在真实 dsh 进程里加载</text>
+  <text x="295" y="668" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#2B6777">✓ provider 注册成功</text>
+  <text x="295" y="700" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#2B6777">✓ 真实委派跑通拿到结果</text>
+
+  <rect x="565" y="592" width="470" height="120" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="800" y="634" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">✗ headless 不挂 preset</text>
+  <text x="800" y="668" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">✗ 会话工具表不是从 preset 组合的</text>
+  <text x="800" y="700" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">✗ 没看到 subagent_qoder 这一行</text>
+
+  <rect x="1070" y="592" width="470" height="120" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="1305" y="634" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">这一步要等重启 dsh 才算数</text>
+  <text x="1305" y="668" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">preset 挂载失败会让所有会话</text>
+  <text x="1305" y="700" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">都开不起来，这种事故测试报告看不出来</text>
+
+  <text x="60" y="788" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">验证到哪、没到哪，我分开写清楚。上一篇文章里那个「三个坑都不报错」的教训，</text>
+  <text x="60" y="820" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">在这一步又出现了一次：一个全绿的测试报告，证明不了活会话里的那一行到底在不在。</text>
+
+  <text x="60" y="862" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：fs.inotify.max_user_instances=128 · 2026-09-22</text>
+</svg>

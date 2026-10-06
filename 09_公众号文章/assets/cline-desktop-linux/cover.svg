@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#F7F4EE"/>
+
+  <text x="90" y="140" font-family="Noto Sans CJK SC" font-size="52" font-weight="700" fill="#1F2A33">真 Linux 版 Cline Desktop</text>
+  <text x="90" y="196" font-family="Noto Sans CJK SC" font-size="23" fill="#6B7A85">官方没建的那条 CI job，我在本机把它跑了一遍</text>
+  <line x1="90" y1="232" x2="1110" y2="232" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="90" y="286" font-family="Noto Sans CJK SC" font-size="19" fill="#98A4AD">官方 desktop-v0.0.32 发布资产</text>
+
+  <rect x="90" y="310" width="290" height="104" rx="10" fill="none" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="114" y="352" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#98A4AD">.dmg</text>
+  <text x="114" y="386" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">macOS universal</text>
+
+  <rect x="400" y="310" width="290" height="104" rx="10" fill="none" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="424" y="352" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#98A4AD">.exe</text>
+  <text x="424" y="386" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">Windows x64 NSIS</text>
+
+  <line x1="90" y1="310" x2="380" y2="414" stroke="#C9C2B4" stroke-width="3"/>
+  <line x1="380" y1="310" x2="90" y2="414" stroke="#C9C2B4" stroke-width="3"/>
+  <line x1="400" y1="310" x2="690" y2="414" stroke="#C9C2B4" stroke-width="3"/>
+  <line x1="690" y1="310" x2="400" y2="414" stroke="#C9C2B4" stroke-width="3"/>
+
+  <rect x="760" y="310" width="350" height="104" rx="10" fill="#2B6777"/>
+  <text x="788" y="352" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#F7F4EE">.deb</text>
+  <text x="788" y="386" font-family="Noto Sans CJK SC" font-size="18" fill="#CFE3E8">自己构建，143 MB</text>
+
+  <text x="90" y="486" font-family="Noto Sans CJK SC" font-size="20" fill="#6B7A85">它不是 Electron，是 Tauri。拆包换壳那套在这里没有东西可拆。</text>
+  <text x="90" y="524" font-family="Noto Sans CJK SC" font-size="20" fill="#6B7A85">好消息是：Apache-2.0 开源，而且打包脚本本来就认 Linux。</text>
+
+  <line x1="90" y1="566" x2="1110" y2="566" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="90" y="610" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">缺的不是代码支持，是 .github/workflows/desktop-publish.yml 里一个 build-linux job</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">一个空 catch，是怎么把事件流吞掉的</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">0.1.5 撤掉了 @deepseek-ai/dsh-client-runtime，客户端 connection 服务因此丢掉了 .api</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="140" y="182" width="1320" height="76" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <circle cx="192" cy="220" r="20" fill="#2B6777"/>
+  <text x="192" y="228" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">1</text>
+  <text x="240" y="214" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">connection 服务还在，只是没有 .api 了</text>
+  <text x="240" y="244" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">0.1.5 里它只剩 { isLoopback, generation, state, rpc, reconnect, … }</text>
+
+  <line x1="192" y1="260" x2="192" y2="278" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="140" y="280" width="1320" height="76" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <circle cx="192" cy="318" r="20" fill="#2B6777"/>
+  <text x="192" y="326" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">2</text>
+  <text x="240" y="312" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">插件照旧去读 this.api.events.mux(…)</text>
+  <text x="240" y="342" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">this.api 就是那个 undefined，在它身上读 .events</text>
+
+  <line x1="192" y1="358" x2="192" y2="376" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="140" y="378" width="1320" height="76" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <circle cx="192" cy="416" r="20" fill="#2B6777"/>
+  <text x="192" y="424" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">3</text>
+  <text x="240" y="410" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">TypeError: Cannot read properties of undefined (reading 'events')</text>
+  <text x="240" y="440" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">这个异常本身没有任何问题，它说得清清楚楚</text>
+
+  <line x1="192" y1="456" x2="192" y2="474" stroke="#E07B39" stroke-width="3" marker-end="url(#arrowOrange)"/>
+
+  <rect x="140" y="476" width="1320" height="86" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <circle cx="192" cy="519" r="20" fill="#E07B39"/>
+  <text x="192" y="527" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">4</text>
+  <text x="240" y="510" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#B85C1E">外面那个 catch {} 把它接住了，然后什么也没做</text>
+  <text x="240" y="542" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">没有日志、没有降级、没有标记，连一句 console.warn 都没有</text>
+
+  <line x1="192" y1="564" x2="192" y2="582" stroke="#E07B39" stroke-width="3" marker-end="url(#arrowOrange)"/>
+
+  <rect x="140" y="584" width="1320" height="76" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <circle cx="192" cy="622" r="20" fill="#2B6777"/>
+  <text x="192" y="630" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">5</text>
+  <text x="240" y="616" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">100 ms 之后重试，回到第 2 步</text>
+  <text x="240" y="646" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">于是这个循环一直跑到进程结束，一次都没成功过</text>
+
+  <line x1="192" y1="662" x2="192" y2="680" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="140" y="682" width="1320" height="76" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <circle cx="192" cy="720" r="20" fill="#2B6777"/>
+  <text x="192" y="728" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#FFFFFF">6</text>
+  <text x="240" y="714" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">事件流永远订阅不上</text>
+  <text x="240" y="744" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">界面上却一切正常，插件照常加载、照常出现在面板里</text>
+
+  <rect x="140" y="782" width="646" height="86" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="172" y="816" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#1F2A33">症状一：自动发送不被确认</text>
+  <text x="172" y="846" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">10 秒后弹「Harness 未确认自动发送」</text>
+
+  <rect x="814" y="782" width="646" height="86" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="846" y="816" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#1F2A33">症状二：回复不再朗读</text>
+  <text x="846" y="846" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">听得到自己说话，听不到它说话</text>
+</svg>

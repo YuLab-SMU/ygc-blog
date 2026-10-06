@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">实时文本换了条通道</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">assistant/chunk 从 session 事件里消失之后，给 TTS 供数的那段代码就没有输入了</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="100" y="176" width="640" height="206" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="130" y="220" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#1F2A33">0.1.1 那一代</text>
+  <text x="130" y="262" font-family="Noto Sans CJK SC" font-size="20" fill="#2B6777">assistant/chunk 是 SessionEventMap 的成员</text>
+  <text x="130" y="296" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">事件里带着 turn 和 step</text>
+  <line x1="130" y1="318" x2="710" y2="318" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="130" y="350" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">监听事件流，看到 chunk 就能念</text>
+
+  <rect x="860" y="176" width="640" height="206" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="890" y="220" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#1F2A33">0.1.5</text>
+  <text x="890" y="262" font-family="Noto Sans CJK SC" font-size="20" fill="#E07B39">它不再是一个 session 事件类型</text>
+  <text x="890" y="296" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">实时文本改走 follow(…, assistantStream: true)</text>
+  <line x1="890" y1="318" x2="1470" y2="318" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="890" y="350" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">拿到的是进程内稠密帧，不是事件</text>
+
+  <path d="M 420 382 L 420 424 L 800 424 L 800 448" fill="none" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1180 382 L 1180 424 L 800 424" fill="none" stroke="#E07B39" stroke-width="3"/>
+
+  <rect x="100" y="454" width="1400" height="160" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="130" y="496" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">稠密帧长这样：revision 单调，turn 只在 start 帧里</text>
+  <rect x="130" y="518" width="330" height="72" rx="10" fill="#EAF1F3" stroke="#2B6777" stroke-width="2"/>
+  <text x="295" y="548" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">start</text>
+  <text x="295" y="576" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">attemptId · revision · turn · step</text>
+  <rect x="490" y="518" width="330" height="72" rx="10" fill="#FFF3E6" stroke="#E07B39" stroke-width="2"/>
+  <text x="655" y="548" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">chunk</text>
+  <text x="655" y="576" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">revision · index · time · chunk</text>
+  <rect x="850" y="518" width="330" height="72" rx="10" fill="#EAF1F3" stroke="#2B6777" stroke-width="2"/>
+  <text x="1015" y="548" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">end</text>
+  <text x="1015" y="576" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">attemptId · revision · outcome</text>
+  <text x="1220" y="548" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">chunk 帧不带 turn，</text>
+  <text x="1220" y="576" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">于是什么都不念</text>
+
+  <rect x="100" y="642" width="1400" height="112" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="130" y="684" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">适配层的做法：把稠密帧投影回 assistant/chunk</text>
+  <text x="130" y="718" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">从 start 帧记住 turn 和 step，chunk 帧到达时补上去；revision 跳号就重开一次 journal，不拼接</text>
+
+  <text x="100" y="806" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">顺手把 reasoning delta 滤掉：那些片段既不该进 TTS，也会把桥接里 100 帧的有界缓冲挤爆</text>
+</svg>

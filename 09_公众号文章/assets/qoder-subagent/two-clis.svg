@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">协议一样，实现两样</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">同一个 ACP，两种连接策略，连失败的方式都不一样</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="176" width="1480" height="66" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="800" y="218" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#2B6777">ACP：initialize → session/new → … → session/prompt，两边都认</text>
+
+  <rect x="60" y="268" width="700" height="440" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="410" y="312" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">WorkBuddy（上一篇）</text>
+  <line x1="90" y1="334" x2="730" y2="334" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="92" y="378" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">子进程</text>
+  <text x="728" y="378" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">常驻，spawn 一次反复用</text>
+  <text x="92" y="424" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">模型放在哪</text>
+  <text x="728" y="424" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">会话里：set_model</text>
+  <text x="92" y="470" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">要不要环境变量</text>
+  <text x="728" y="470" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">要，CODEBUDDY_CONFIG_DIR</text>
+  <text x="92" y="516" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">点错模型</text>
+  <text x="728" y="516" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">回一个 {}，静默保持默认</text>
+  <text x="92" y="562" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">能证伪吗</text>
+  <text x="728" y="562" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">只能拿模型清单猜</text>
+  <line x1="90" y1="592" x2="730" y2="592" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="410" y="632" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">那套接法我原以为可以直接复制过来</text>
+  <text x="410" y="668" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">结果第一条就不成立</text>
+
+  <rect x="840" y="268" width="700" height="440" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="1190" y="312" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">Qoder（这一篇）</text>
+  <line x1="870" y1="334" x2="1510" y2="334" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="872" y="378" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">子进程</text>
+  <text x="1508" y="378" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">一次委派一个，干完回收</text>
+  <text x="872" y="424" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">模型放在哪</text>
+  <text x="1508" y="424" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">启动参数：--model</text>
+  <text x="872" y="470" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">要不要环境变量</text>
+  <text x="1508" y="470" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">不要，登录态在 $HOME 里</text>
+  <text x="872" y="516" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">点错模型</text>
+  <text x="1508" y="516" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">--model 启动时就报错</text>
+  <text x="872" y="562" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">能证伪吗</text>
+  <text x="1508" y="562" text-anchor="end" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">能：_meta.quota.model_usage</text>
+  <line x1="870" y1="592" x2="1510" y2="592" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1190" y="632" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">所以插件里不再拿清单去猜</text>
+  <text x="1190" y="668" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">点名和实跑不一致，就写进诊断</text>
+
+  <text x="60" y="770" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">同一个协议，两种连接策略。ACP 规定了怎么说话，没规定一个进程该活多久。</text>
+  <text x="60" y="806" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">1.5 秒的启动开销，换掉的是一整类脏状态，这笔账我认为划算。</text>
+
+  <text x="60" y="858" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：WorkBuddy 10.1s/次（常驻）· Qoder 4.5-10.3s/次（一次一进程，含 1.5s 启动）· 2026-09-19 / 09-22</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+  <rect width="1200" height="640" fill="#F7F4EE"/>
+  <text x="80" y="68" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">三次下载，两条要换路</text>
+  <text x="80" y="104" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">速度都是这台机器上实测的数，不是查来的。</text>
+  <line x1="80" y1="132" x2="1120" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="80" y="178" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">源码 tarball</text>
+  <rect x="80" y="194" width="480" height="64" rx="8" fill="#FFFFFF" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="100" y="222" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">git clone github.com</text>
+  <text x="100" y="246" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#B85C1E">85 KB/s，两分钟 34 MB</text>
+  <text x="592" y="234" font-family="Noto Sans CJK SC" font-size="22" fill="#98A4AD">→</text>
+  <rect x="628" y="194" width="492" height="64" rx="8" fill="#2B6777"/>
+  <text x="648" y="222" font-family="Noto Sans CJK SC" font-size="17" fill="#CFE3E8">gh.ddlc.top 镜像</text>
+  <text x="648" y="246" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#FFFFFF">38.7 MB，12 秒</text>
+
+  <text x="80" y="306" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">bun 交叉运行时</text>
+  <rect x="80" y="322" width="480" height="64" rx="8" fill="#FFFFFF" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="100" y="350" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">bun --compile --target 自己下</text>
+  <text x="100" y="374" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#B85C1E">约 100 MB ×2，没有镜像可走</text>
+  <text x="592" y="362" font-family="Noto Sans CJK SC" font-size="22" fill="#98A4AD">→</text>
+  <rect x="628" y="322" width="492" height="64" rx="8" fill="#2B6777"/>
+  <text x="648" y="350" font-family="Noto Sans CJK SC" font-size="17" fill="#CFE3E8">npm pack @oven/bun-linux-* 喂缓存</text>
+  <text x="648" y="374" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#FFFFFF">npmmirror，官方 CI 同款写法</text>
+
+  <text x="80" y="434" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">Rust crates</text>
+  <rect x="80" y="450" width="1040" height="64" rx="8" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="100" y="478" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">static.crates.io 直连</text>
+  <text x="100" y="502" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#2B6777">258 KB/s，索引也利索，一个镜像都不用换</text>
+
+  <rect x="80" y="544" width="1040" height="60" rx="8" fill="#1F2A33"/>
+  <text x="104" y="582" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#E8F4F1">换完路，全程唯一一次「卡住」是我自己误判的，下一节说。</text>
+</svg>

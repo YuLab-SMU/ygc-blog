@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">我把「通过 ACP 提供」读成了「必须你提供」</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">差一个主语，就差点去实现一套根本用不上的文件接口</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="188" width="1480" height="140" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="230" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#7A838B">文档原文（我的读法）</text>
+  <text x="90" y="270" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">「文件操作或终端：使用 IDE 侧通过 ACP 协议提供的能力」</text>
+  <text x="90" y="304" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">→ 我以为：客户端得把 fs/read_text_file、fs/write_text_file、terminal 全实现出来</text>
+
+  <text x="800" y="376" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="24" fill="#E07B39">↓ 那我按最保守的方式握手，看它报什么错</text>
+
+  <rect x="60" y="406" width="720" height="250" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="420" y="450" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">我发的 clientCapabilities</text>
+  <line x1="90" y1="472" x2="750" y2="472" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="420" y="514" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">fs: { readTextFile: false, writeTextFile: false }</text>
+  <text x="420" y="550" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">terminal: false</text>
+  <text x="420" y="600" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">意思是「磁盘和终端我都不管」</text>
+  <text x="420" y="630" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">准备好接收一句 -32601</text>
+
+  <rect x="820" y="406" width="720" height="250" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="1180" y="450" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">实际发生的</text>
+  <line x1="850" y1="472" x2="1510" y2="472" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1180" y="514" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">它用自己的工具写了文件，又读了回来</text>
+  <text x="1180" y="550" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">tool_call：Write /tmp/qoder-probe-cwd/qoder-probe-out.txt</text>
+  <text x="1180" y="600" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">一次 fs/* 请求都没发过来</text>
+  <text x="1180" y="630" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">磁盘上的文件是真的，读回来内容也对</text>
+
+  <rect x="60" y="690" width="1480" height="80" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="800" y="740" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#B85C1E">省下来的时间不是靠推理，是靠一句话的探测：报 false，看它怎么办</text>
+
+  <text x="60" y="820" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">文档说「通过 ACP 提供」，说的是能力可以从这条线上过，不是说这件事必须由客户端做。</text>
+  <text x="60" y="852" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：initialize 时 fs/terminal 均报 false，全程零个客户端请求，子进程自带文件工具 · 2026-09-22</text>
+</svg>

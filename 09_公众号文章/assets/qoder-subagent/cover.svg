@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#F7F4EE"/>
+
+  <text x="70" y="140" font-family="Noto Sans CJK SC" font-size="46" font-weight="700" fill="#1F2A33">把 Qoder 接成 sub agent</text>
+  <text x="70" y="196" font-family="Noto Sans CJK SC" font-size="26" fill="#6B7A85">协议是同一个，脾气不是</text>
+  <line x1="70" y1="232" x2="1130" y2="232" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="70" y="292" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="235" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">dsh 主代理</text>
+  <text x="235" y="386" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">只管分派</text>
+  <text x="235" y="418" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">subagent_qoder</text>
+
+  <line x1="424" y1="367" x2="746" y2="367" stroke="#2B6777" stroke-width="3" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+  <text x="585" y="340" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#2B6777">ACP over stdio</text>
+  <text x="585" y="402" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">--acp</text>
+
+  <rect x="750" y="292" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="940" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">Qoder CLI 子进程</text>
+  <text x="940" y="386" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">自己的工具和模型池</text>
+  <text x="940" y="418" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#E07B39">一次委派一个进程</text>
+
+  <rect x="70" y="486" width="1060" height="92" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="600" y="528" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#B85C1E">同一个协议，两种脾气</text>
+  <text x="600" y="560" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">模型在启动参数上 → 不在会话里改 → 顺便拿到一个能证伪的信号</text>
+
+  <text x="70" y="628" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：qoderclicn 1.1.60 · dsh 0.1.5-rc.2 · Ubuntu · 2026-09-22</text>
+</svg>

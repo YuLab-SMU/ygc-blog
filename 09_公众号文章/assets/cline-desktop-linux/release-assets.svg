@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+  <rect width="1200" height="620" fill="#F7F4EE"/>
+  <text x="80" y="68" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">六个文件，三条线索</text>
+  <text x="80" y="104" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">desktop-v0.0.32 这个 tag 下的全部发布资产，右边是我当时的判断。</text>
+  <line x1="80" y1="132" x2="1120" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="80" y="176" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">Cline_0.0.32_universal.dmg</text>
+  <text x="580" y="176" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">macOS 包，看不出栈</text>
+
+  <text x="80" y="222" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">Cline_0.0.32_universal.app.tar.gz</text>
+  <text x="580" y="222" font-family="Noto Sans CJK SC" font-size="16" fill="#2B6777">线索一：Tauri 的更新包格式，Electron 不产这个</text>
+
+  <text x="80" y="268" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">Cline_0.0.32_universal.app.tar.gz.sig</text>
+  <text x="580" y="268" font-family="Noto Sans CJK SC" font-size="16" fill="#2B6777">线索二：minisign 签名，配的是 updater 插件</text>
+
+  <text x="80" y="314" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">Cline_0.0.32_x64-setup.exe</text>
+  <text x="580" y="314" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">带空格才对，这个名字就不对味</text>
+
+  <text x="80" y="360" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">Cline_0.0.32_x64-setup.exe.sig</text>
+  <text x="580" y="360" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">同上</text>
+
+  <text x="80" y="406" font-family="DejaVu Sans Mono, monospace" font-size="17" fill="#1F2A33">latest.json</text>
+  <text x="580" y="406" font-family="Noto Sans CJK SC" font-size="16" fill="#E07B39">线索三：Electron 这里是 latest.yml</text>
+
+  <line x1="80" y1="440" x2="1120" y2="440" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="80" y="468" width="1040" height="86" rx="8" fill="#2B6777"/>
+  <text x="104" y="504" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#FFFFFF">三条线索指向同一个格式：Tauri v2 的自动更新产物。</text>
+  <text x="104" y="536" font-family="Noto Sans CJK SC" font-size="18" fill="#CFE3E8">顺带一个坏消息，Linux 的产物一个都没有，deb 和 AppImage 都不在。</text>
+
+  <text x="80" y="600" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">这一步花的时间：看一眼 Releases 页，十秒。</text>
+</svg>

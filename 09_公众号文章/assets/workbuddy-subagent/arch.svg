@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">把 WorkBuddy 接成 dsh 的 sub agent</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">主代理只分派，杂活丢给本机 WorkBuddy，中间就一根 ACP 线</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="180" width="320" height="220" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="220" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="25" font-weight="700" fill="#1F2A33">dsh 主代理</text>
+  <text x="220" y="274" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">会话里的那个我</text>
+  <text x="220" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">写方案、改代码、看日志</text>
+  <text x="220" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">deepseek-flash</text>
+  <line x1="90" y1="362" x2="350" y2="362" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="220" y="386" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="14" fill="#6B7A85">出口工具：subagent_workbuddy / _pro</text>
+
+  <line x1="382" y1="300" x2="556" y2="300" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="469" y="272" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">两档工具</text>
+
+  <rect x="560" y="180" width="380" height="220" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="750" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">插件 dsh-subagent-workbuddy</text>
+  <text x="750" y="274" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">往 ctx.subagents 注册</text>
+  <text x="750" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">一个名叫 workbuddy 的 provider</text>
+  <text x="750" y="344" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">inheritsParentContext = false</text>
+  <line x1="590" y1="362" x2="910" y2="362" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="750" y="386" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="14" fill="#6B7A85">spawn codebuddy --acp（常驻复用）</text>
+
+  <line x1="942" y1="300" x2="1116" y2="300" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1029" y="272" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">ACP 会话</text>
+
+  <rect x="1120" y="180" width="420" height="220" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="1330" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">WorkBuddy CLI 子进程</text>
+  <text x="1330" y="274" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">agent 跑在自己的工具和模型上</text>
+  <text x="1330" y="306" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">只把最终文本交回来</text>
+  <line x1="1150" y1="330" x2="1510" y2="330" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="1330" y="362" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#E07B39">实测一次委派：10.1 秒</text>
+
+  <path d="M 1330 402 L 1330 455 L 235 455 L 235 408" fill="none" stroke="#E07B39" stroke-width="3" stroke-dasharray="10 7" marker-end="url(#arrowOrange)"/>
+  <text x="800" y="492" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#E07B39">结果走 session/update 通知流：agent_message_chunk 是正文，agent_thought_chunk 是思考，不能混</text>
+
+  <rect x="60" y="520" width="1480" height="90" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="90" y="558" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#1F2A33">ACP 握手</text>
+  <text x="90" y="590" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">initialize → session/new → session/set_model → session/set_mode → session/prompt</text>
+  <text x="1510" y="590" text-anchor="end" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">protocolVersion 必须是数字 1</text>
+
+  <rect x="60" y="650" width="560" height="110" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="690" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#7A838B">CODEBUDDY_CONFIG_DIR 没传进去</text>
+  <text x="90" y="724" font-family="Noto Sans CJK SC" font-size="19" fill="#7A838B">只广告 4 个档位别名 + custom-local:（5 个）</text>
+
+  <rect x="650" y="650" width="420" height="110" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="680" y="690" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">传到本机数据目录</text>
+  <text x="680" y="724" font-family="Noto Sans CJK SC" font-size="19" fill="#B85C1E">整个模型池出来（22 个）</text>
+
+  <text x="1100" y="692" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">set_model 对任何字符串都回 {}</text>
+  <text x="1100" y="724" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">点错的模型不报错，只是安静地跑默认</text>
+
+  <text x="60" y="836" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">实测环境：codebuddy CLI 2.137.1 · dsh 0.1.x · Ubuntu · 2026-09-19 / 09-20</text>
+</svg>

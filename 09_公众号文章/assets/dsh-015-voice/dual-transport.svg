@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">不能替换，只能适配</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">两代宿主各缺一半，插件却必须同时活在这两代上</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="100" y="176" width="640" height="196" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="130" y="220" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#1F2A33">dsh 0.1.1 / 0.1.2 那一代</text>
+  <text x="130" y="262" font-family="Noto Sans CJK SC" font-size="20" fill="#2B6777">connection.api 在</text>
+  <text x="130" y="296" font-family="Noto Sans CJK SC" font-size="20" fill="#98A4AD">remote.session 不存在</text>
+  <line x1="130" y1="316" x2="710" y2="316" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="130" y="348" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">事件流靠 connection.api.events.mux 隐式订阅</text>
+
+  <rect x="860" y="176" width="640" height="196" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="890" y="220" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#1F2A33">dsh 0.1.5</text>
+  <text x="890" y="262" font-family="Noto Sans CJK SC" font-size="20" fill="#98A4AD">connection.api 没了</text>
+  <text x="890" y="296" font-family="Noto Sans CJK SC" font-size="20" fill="#E07B39">remote.session 在</text>
+  <line x1="890" y1="316" x2="1470" y2="316" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="890" y="348" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">事件流要靠 follow() 显式跟随，还得自己退订</text>
+
+  <path d="M 420 376 L 420 428 L 800 428 L 800 462" fill="none" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1180 376 L 1180 428 L 800 428" fill="none" stroke="#E07B39" stroke-width="3"/>
+
+  <rect x="100" y="468" width="1400" height="186" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="4"/>
+  <text x="130" y="512" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#1F2A33">适配层 src/client/session-transport.ts</text>
+  <text x="130" y="552" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">createSessionApi(read) 对外仍然只交出插件本来就在用的那个 RpcApi</text>
+  <text x="130" y="588" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">每次调用惰性解析，绝不在 apply 时缓存（重连会把命名空间整个换掉）</text>
+  <text x="130" y="624" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">把 0.1.5 的 assistant-stream 稠密帧投影回原来的 assistant/chunk</text>
+
+  <rect x="100" y="678" width="1400" height="104" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="130" y="718" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">适配层以外的代码，一行没动</text>
+  <text x="130" y="752" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">桥接、TTS、观察者、事件负载处理全部保持原样，所以两代宿主上行为一致</text>
+
+  <text x="100" y="836" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">inject 也缩到 ['slots'] 一项：cordis 4.0 的 inject 表达不了「A 或 B」，两条通道都走 ctx.get()</text>
+</svg>

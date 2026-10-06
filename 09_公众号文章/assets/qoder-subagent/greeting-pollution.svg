@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">会话里改状态，问候语插进了这一轮</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">我发的五步都成功了，拿回来的却不是我要的答案</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="60" y="196" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#2B6777">我发的（全部返回成功）</text>
+
+  <rect x="60" y="216" width="250" height="86" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="185" y="252" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">session/new</text>
+  <text x="185" y="282" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">建会话</text>
+
+  <text x="326" y="262" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="346" y="216" width="250" height="86" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="471" y="252" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">set_model</text>
+  <text x="471" y="282" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">{ sessionId, modelId }</text>
+
+  <text x="612" y="262" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="632" y="216" width="250" height="86" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="757" y="252" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">set_mode</text>
+  <text x="757" y="282" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">{ sessionId, modeId }</text>
+
+  <text x="898" y="262" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="918" y="216" width="250" height="86" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="1043" y="252" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">session/prompt</text>
+  <text x="1043" y="282" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">sleep 45 再回 DONE</text>
+
+  <text x="1184" y="262" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#E07B39">→</text>
+
+  <rect x="1204" y="216" width="336" height="86" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="1372" y="252" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#B85C1E">stopReason: end_turn</text>
+  <text x="1372" y="282" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">「成功」，没有异常</text>
+
+  <path d="M 1372 316 L 1372 372 L 300 372 L 300 330" fill="none" stroke="#E07B39" stroke-width="3" stroke-dasharray="10 7"/>
+  <text x="836" y="404" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#E07B39">我实际收到的正文（被当成这一轮的答案收走）</text>
+
+  <rect x="300" y="428" width="1000" height="96" rx="12" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="800" y="472" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" fill="#B85C1E">I'm here and ready. What would you like me to work on in /tmp/qoder-probe-cwd?</text>
+  <text x="800" y="504" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">不是 DONE-SLEEPING，是一句问候</text>
+
+  <rect x="60" y="560" width="720" height="130" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="600" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#7A838B">为什么会这样</text>
+  <text x="90" y="636" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">会话状态被动过之后，CLI 顺手吐了一句话</text>
+  <text x="90" y="668" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">没有错误，没有异常，收集逻辑分不出来</text>
+
+  <rect x="820" y="560" width="720" height="130" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="850" y="600" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">那就别在会话里改</text>
+  <text x="850" y="636" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">--acp --model qfmodel --permission-mode bypass_permissions</text>
+  <text x="850" y="668" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">spawn 到会话建好 1.5 秒，回答干净</text>
+
+  <text x="60" y="760" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">同一个握手，两种脾气。ACP 规定的是怎么说话，没规定状态该在哪里改。</text>
+  <text x="60" y="794" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">set_model 写成 { sessionId, model } 还会直接给你一个 -32602 Invalid params，键名都不含糊。</text>
+
+  <text x="60" y="852" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：qoderclicn 1.1.60 · initialize → session/new → set_model → set_mode → session/prompt · 2026-09-22</text>
+</svg>

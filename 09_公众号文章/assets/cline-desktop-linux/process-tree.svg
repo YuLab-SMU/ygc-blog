@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#F7F4EE"/>
+  <text x="80" y="68" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">三层进程，一个回环端口</text>
+  <text x="80" y="104" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">deb 解到 /tmp 直接跑起来的实际进程树，PID 是真的。</text>
+  <line x1="80" y1="132" x2="1120" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="80" y="168" width="440" height="96" rx="10" fill="#1F2A33"/>
+  <text x="104" y="204" font-family="DejaVu Sans Mono, monospace" font-size="19" font-weight="700" fill="#E8F4F1">2254119  cline-app</text>
+  <text x="104" y="232" font-family="Noto Sans CJK SC" font-size="17" fill="#9BB0B8">Rust 壳，25 MB，前端资源嵌在里面</text>
+
+  <line x1="300" y1="264" x2="300" y2="300" stroke="#C9C2B4" stroke-width="2"/>
+  <line x1="300" y1="300" x2="180" y2="300" stroke="#C9C2B4" stroke-width="2"/>
+  <line x1="180" y1="300" x2="180" y2="312" stroke="#C9C2B4" stroke-width="2"/>
+
+  <rect x="80" y="312" width="440" height="96" rx="10" fill="#FFFFFF" stroke="#2B6777" stroke-width="2"/>
+  <text x="104" y="348" font-family="DejaVu Sans Mono, monospace" font-size="19" font-weight="700" fill="#1F2A33">2254266  code-sidecar</text>
+  <text x="104" y="376" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">Bun 编译的后端，122 MB</text>
+
+  <line x1="300" y1="408" x2="300" y2="440" stroke="#C9C2B4" stroke-width="2"/>
+  <line x1="300" y1="440" x2="180" y2="440" stroke="#C9C2B4" stroke-width="2"/>
+  <line x1="180" y1="440" x2="180" y2="452" stroke="#C9C2B4" stroke-width="2"/>
+
+  <rect x="80" y="452" width="440" height="80" rx="10" fill="#FFFFFF" stroke="#E07B39" stroke-width="2"/>
+  <text x="104" y="484" font-family="DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1F2A33">2254480  code-sidecar --cline-hub-daemon</text>
+  <text x="104" y="512" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">只监听 127.0.0.1:25463，没往网卡上绑</text>
+
+  <text x="580" y="196" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">同时刻的观察</text>
+  <text x="580" y="234" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">启动到窗口出现</text>
+  <text x="900" y="234" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">约 12 秒</text>
+  <line x1="580" y1="256" x2="1120" y2="256" stroke="#D8D2C6" stroke-width="1"/>
+  <text x="580" y="292" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">窗口标题 / 尺寸</text>
+  <text x="900" y="292" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">Cline v0.0.32　1500×980</text>
+  <line x1="580" y1="314" x2="1120" y2="314" stroke="#D8D2C6" stroke-width="1"/>
+  <text x="580" y="350" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">stderr 输出</text>
+  <text x="900" y="350" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">0 字节</text>
+  <line x1="580" y1="372" x2="1120" y2="372" stroke="#D8D2C6" stroke-width="1"/>
+  <text x="580" y="408" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">包管理器登记了什么</text>
+  <text x="900" y="408" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">0 条记录（没跑 dpkg -i）</text>
+
+  <text x="580" y="470" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">解包直跑不动系统，但它跑起来会在</text>
+  <text x="580" y="498" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">~/.local/share 建一个数据目录，得单独删。</text>
+</svg>

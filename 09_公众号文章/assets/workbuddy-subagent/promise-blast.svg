@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">一个 Promise，带走整个 dsh</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">没有插件级隔离：任何一个插件漏掉一个 Promise，web 和 imchat 一起陪葬</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="186" width="460" height="208" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="226" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">① 插件里这么写</text>
+  <line x1="90" y1="244" x2="490" y2="244" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="90" y="284" font-family="monospace" font-size="15" fill="#4A5A66">try { this.call('session/cancel') }</text>
+  <text x="90" y="308" font-family="monospace" font-size="15" fill="#4A5A66">catch {}</text>
+  <text x="90" y="352" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">call() 返回的是 Promise</text>
+  <text x="90" y="378" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">同步 try/catch 抓不到它的 reject</text>
+
+  <text x="550" y="294" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#2B6777">→</text>
+
+  <rect x="570" y="186" width="460" height="208" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="600" y="226" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">② ACP 端回 -32601</text>
+  <line x1="600" y1="244" x2="1000" y2="244" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="600" y="284" font-family="monospace" font-size="15" fill="#4A5A66">session/cancel</text>
+  <text x="600" y="308" font-family="monospace" font-size="15" fill="#B85C1E">Method not found</text>
+  <text x="600" y="352" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">WorkBuddy 这个 ACP 端</text>
+  <text x="600" y="378" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">压根没实现 cancel</text>
+
+  <text x="1060" y="294" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#E07B39">→</text>
+
+  <rect x="1080" y="186" width="460" height="208" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="1110" y="226" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">③ installFailLoud 抓到</text>
+  <line x1="1110" y1="244" x2="1510" y2="244" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1110" y="284" font-family="monospace" font-size="15" fill="#B85C1E">on('unhandledRejection')</text>
+  <text x="1110" y="308" font-family="monospace" font-size="15" fill="#B85C1E">process.exit(1)</text>
+  <text x="1110" y="352" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">写下 fatal load failure</text>
+  <text x="1110" y="378" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">然后整个进程没了</text>
+
+  <rect x="60" y="428" width="1480" height="164" rx="14" fill="#FFFFFF" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="466" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">波及范围：不分插件，整个 dsh 进程</text>
+
+  <rect x="90" y="486" width="300" height="80" rx="10" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="240" y="520" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#7A838B">dsh web</text>
+  <text x="240" y="548" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">一起退出</text>
+
+  <rect x="410" y="486" width="300" height="80" rx="10" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="560" y="520" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#7A838B">dsh --profile imchat</text>
+  <text x="560" y="548" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">一起退出</text>
+
+  <text x="740" y="534" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">哪个插件漏的，报错就指向哪个插件的文件</text>
+
+  <rect x="60" y="628" width="1480" height="130" rx="12" fill="#E8F0F1" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="666" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#2B6777">正确写法：在返回的 Promise 上兜底</text>
+  <text x="90" y="704" font-family="monospace" font-size="17" fill="#1F2A33">this.call('session/cancel').catch(() =&gt; {})</text>
+  <text x="90" y="736" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">顺手还要补：child.on('error')、child.stdin.on('error')、stdout 行解析器包 try</text>
+
+  <text x="60" y="812" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">验证也不能靠眼看：像 dsh 加载器那样 import 插件、apply(ctx, cfg)，真跑一次委派，</text>
+  <text x="60" y="840" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">同时把 unhandledRejection 和 uncaughtException 全部转成断言失败。这是唯一真正保护 dsh 的断言。</text>
+</svg>

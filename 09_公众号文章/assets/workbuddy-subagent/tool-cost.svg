@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">想多一个模型，就得多一行工具</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">dsh 的 subagent 工具 schema 里没有 model 参数，模型是「工具实例」的属性</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="186" width="620" height="212" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="226" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">工具 schema 只有三个字段</text>
+  <line x1="90" y1="244" x2="650" y2="244" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="90" y="290" font-family="monospace" font-size="17" fill="#4A5A66">{ description, prompt,</text>
+  <text x="90" y="318" font-family="monospace" font-size="17" fill="#4A5A66">  run_in_background }</text>
+  <text x="90" y="368" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#B85C1E">没有 model 参数</text>
+
+  <text x="706" y="292" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="26" fill="#2B6777">→</text>
+
+  <rect x="740" y="186" width="800" height="212" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="770" y="226" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">所以模型只能挂在工具实例上</text>
+  <line x1="770" y1="244" x2="1510" y2="244" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="770" y="290" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">1 个模型 = 1 行工具，2 个模型 = 2 行工具</text>
+  <text x="770" y="326" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">名字还得各不相同，否则分不清谁是谁</text>
+  <text x="770" y="372" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">subagent_workbuddy / subagent_workbuddy_pro</text>
+
+  <rect x="60" y="434" width="1480" height="132" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="90" y="478" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#B85C1E">代价：每多一行，每次请求就多付一份固定 schema 开销</text>
+  <text x="90" y="516" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">一行大约 200 到 400 个 token，跟这一行用不用没关系，是常驻的</text>
+  <text x="90" y="548" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">所以不是越多越好，两档就够了</text>
+
+  <rect x="60" y="600" width="1480" height="176" rx="12" fill="#E8F0F1" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="642" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#2B6777">唯一的按次覆盖通道：workflow 工具</text>
+  <text x="90" y="686" font-family="monospace" font-size="18" fill="#1F2A33">agent(prompt, { provider: 'workbuddy', model: 'kimi-k3' })</text>
+  <text x="90" y="726" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">它会把 provider 和 model 原样转发进 agentOptions</text>
+  <text x="90" y="758" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">想临时用第三个模型又不想为此多付一份固定开销，走这条路</text>
+
+  <text x="60" y="838" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">另外：ACP 没有种子通道，provider 声明 inheritsParentContext = false，子代理开的是全新会话，</text>
+  <text x="60" y="866" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">它看不到主代理这边聊了什么，上下文得自己在 prompt 里带全</text>
+</svg>

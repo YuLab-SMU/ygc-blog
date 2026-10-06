@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">加一道守卫：不一致就不跑</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">模型不再只是"设置"下去，而是设置完还要回头问一句：你刚才报的是谁</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="186" width="300" height="92" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="210" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">起子进程</text>
+  <text x="210" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">cline --acp</text>
+
+  <text x="378" y="238" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="398" y="186" width="300" height="92" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="548" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">钉模型</text>
+  <text x="548" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">CLINE_MODEL=点名那个</text>
+
+  <text x="716" y="238" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="736" y="186" width="300" height="92" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="886" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">session/new</text>
+  <text x="886" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#4A5A66">拿 currentModelId</text>
+
+  <text x="1054" y="238" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" fill="#2B6777">→</text>
+
+  <rect x="1074" y="186" width="466" height="92" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="1307" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#1F2A33">比对：报的和点名的是同一个吗</text>
+  <text x="1307" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">这就是全部的新增逻辑</text>
+
+  <path d="M 1307 292 L 1307 330 L 420 330 L 420 356" fill="none" stroke="#2B6777" stroke-width="3" marker-end="url(#g)"/>
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+  <text x="863" y="320" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">一致</text>
+
+  <path d="M 1307 292 L 1307 490 L 1180 490" fill="none" stroke="#E07B39" stroke-width="3" marker-end="url(#o)"/>
+  <text x="1360" y="470" font-family="Noto Sans CJK SC" font-size="17" fill="#E07B39">不一致</text>
+
+  <rect x="60" y="356" width="720" height="130" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="396" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">照常执行 session/prompt</text>
+  <text x="90" y="432" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">子代理用自己的工具干活（auto-approve 开着）</text>
+  <text x="90" y="464" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">实测：默认档 13.5 秒、GLM 别名 31.7 秒、写文件 18.9 秒</text>
+
+  <rect x="820" y="356" width="720" height="130" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="850" y="396" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">拒跑，并把理由交回去</text>
+  <text x="850" y="432" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">宁可这次委派失败，也不要它悄悄花着付费档的钱</text>
+  <text x="850" y="464" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">实测：两次拒跑都在 2.2–3.0 秒内返回理由</text>
+
+  <rect x="60" y="520" width="1480" height="150" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="562" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">这里我改了一版</text>
+  <text x="90" y="600" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">第一版把拒跑的理由只写进 stderr 的调试日志，等于没人看得到 —— 守卫的意义就是不让它静默，</text>
+  <text x="90" y="632" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">理由必须随结果返回，放进 diagnostic 字段（dsh 会显示出来的地方），不然拒跑跟静默失败没区别。</text>
+
+  <text x="60" y="740" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">三次接同一个协议，接线越来越短，验证越来越长。</text>
+  <text x="60" y="776" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">这次真正花时间的不是 spawn 一个 ACP 子进程，是逐条把"它到底会不会按我说的跑"试出来。</text>
+
+  <text x="60" y="846" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：dsh-subagent-cline，strictModel: true · 2026-09-22</text>
+</svg>

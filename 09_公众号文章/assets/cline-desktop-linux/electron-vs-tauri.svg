@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#F7F4EE"/>
+  <text x="80" y="72" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">两条路，只有一条能拆</text>
+  <text x="80" y="108" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">左边是 WorkBuddy（Electron），右边是 Cline Desktop（Tauri）</text>
+  <line x1="80" y1="136" x2="1120" y2="136" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="80" y="170" width="490" height="360" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="2"/>
+  <text x="108" y="212" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#2B6777">Electron：壳和业务逻辑是分开的</text>
+
+  <rect x="108" y="238" width="434" height="52" rx="6" fill="#EAF1F3"/>
+  <text x="126" y="270" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">Windows Electron 壳（PE 二进制）</text>
+  <text x="126" y="286" font-family="Noto Sans CJK SC" font-size="13" fill="#98A4AD">→ 整个换成 Linux Electron 壳</text>
+
+  <rect x="108" y="300" width="434" height="52" rx="6" fill="#2B6777"/>
+  <text x="126" y="328" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#FFFFFF">app.asar：全部 JS 业务代码</text>
+  <text x="126" y="346" font-family="Noto Sans CJK SC" font-size="13" fill="#CFE3E8">→ 平台无关，原样搬走</text>
+
+  <rect x="108" y="362" width="434" height="52" rx="6" fill="#EAF1F3"/>
+  <text x="126" y="390" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">better-sqlite3 等 .node 原生模块</text>
+  <text x="126" y="408" font-family="Noto Sans CJK SC" font-size="13" fill="#98A4AD">→ 针对 Electron ABI 重编译</text>
+
+  <text x="108" y="454" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">7z 拆 NSIS，换壳，重打 asar，出 deb</text>
+  <text x="108" y="486" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#2B6777">成立。闭源也能干，因为是黑盒搬运。</text>
+
+  <rect x="630" y="170" width="490" height="360" rx="12" fill="#FFFFFF" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="658" y="212" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#B85C1E">Tauri：壳就是业务逻辑</text>
+
+  <rect x="658" y="238" width="434" height="52" rx="6" fill="#FBEFE4"/>
+  <text x="676" y="266" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">Rust 主程序（PE 二进制）</text>
+  <text x="676" y="284" font-family="Noto Sans CJK SC" font-size="13" fill="#98A4AD">→ 前端资源在编译期嵌进这个二进制</text>
+
+  <rect x="658" y="300" width="434" height="52" rx="6" fill="#FBEFE4"/>
+  <text x="676" y="328" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">Bun 编译的 sidecar（PE 二进制）</text>
+  <text x="676" y="346" font-family="Noto Sans CJK SC" font-size="13" fill="#98A4AD">→ 自带运行时，但也是 PE，跑不了</text>
+
+  <rect x="658" y="362" width="434" height="52" rx="6" fill="#FBEFE4"/>
+  <text x="676" y="390" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">Next.js 静态页面</text>
+  <text x="676" y="408" font-family="Noto Sans CJK SC" font-size="13" fill="#98A4AD">→ 唯一平台无关的部分，且已在二进制里</text>
+
+  <text x="658" y="454" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">没有 asar，没有可替换的壳</text>
+  <text x="658" y="486" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#B85C1E">拆包法在这里没有落点。</text>
+
+  <text x="80" y="574" font-family="Noto Sans CJK SC" font-size="19" fill="#1F2A33">结论：换个思路，从源码构建。而源码是 Apache-2.0，这条路比拆包更干净。</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">同一个协议，接了三档</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">每档的毛病都不一样，上一档学到的结论，下一档就失效</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="182" width="470" height="330" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="295" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">WorkBuddy</text>
+  <text x="295" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">第一篇</text>
+  <line x1="90" y1="276" x2="500" y2="276" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="92" y="314" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">子进程</text>
+  <text x="498" y="314" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">常驻复用</text>
+  <text x="92" y="352" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">模型在哪</text>
+  <text x="498" y="352" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">会话里 set_model</text>
+  <text x="92" y="390" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">毛病</text>
+  <text x="498" y="390" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">工程细节会咬人</text>
+  <line x1="90" y1="414" x2="500" y2="414" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="295" y="450" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">改的代码不在跑</text>
+  <text x="295" y="480" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">点名的模型被静默忽略</text>
+  <text x="295" y="510" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#7A838B">一个没人收尸的 Promise</text>
+
+  <rect x="565" y="182" width="470" height="330" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="800" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">Qoder</text>
+  <text x="800" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">第二篇</text>
+  <line x1="595" y1="276" x2="1005" y2="276" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="597" y="314" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">子进程</text>
+  <text x="1003" y="314" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">一次委派一个</text>
+  <text x="597" y="352" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">模型在哪</text>
+  <text x="1003" y="352" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">启动参数 --model</text>
+  <text x="597" y="390" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">毛病</text>
+  <text x="1003" y="390" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#4A5A66">会话内改状态会脏</text>
+  <line x1="595" y1="414" x2="1005" y2="414" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="800" y="450" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">中途改模型，它会往这一轮</text>
+  <text x="800" y="480" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">吐一句问候语</text>
+  <text x="800" y="510" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">所以模型挪到启动参数上</text>
+
+  <rect x="1070" y="182" width="470" height="330" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="1305" y="226" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">Cline</text>
+  <text x="1305" y="256" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">这一篇</text>
+  <line x1="1100" y1="276" x2="1510" y2="276" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1102" y="314" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">子进程</text>
+  <text x="1508" y="314" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">一次委派一个</text>
+  <text x="1102" y="352" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">模型在哪</text>
+  <text x="1508" y="352" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">启动参数 CLINE_MODEL</text>
+  <text x="1102" y="390" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">毛病</text>
+  <text x="1508" y="390" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">启动参数也不作数</text>
+  <line x1="1100" y1="414" x2="1510" y2="414" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1305" y="450" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">选不中的模型静默回退</text>
+  <text x="1305" y="480" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">回退到付费档还报成功</text>
+  <text x="1305" y="510" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">所以模型要验证，不是设置</text>
+
+  <rect x="60" y="556" width="1480" height="120" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="800" y="600" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#B85C1E">接线越来越短，验证越来越长</text>
+  <text x="800" y="638" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">第三次基本是照抄插件骨架，真正花时间的是逐条试出"它会不会按我说的跑"</text>
+  <text x="800" y="666" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">所以每一档的结论都是下一档的待验证项</text>
+
+  <text x="60" y="740" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">还有一条没走的路：社区插件把 Cline 的免费模型接成 dsh 的 LLM provider，</text>
+  <text x="60" y="772" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">让 dsh 自己的 in-process 子代理跑在免费模型上（能继承上下文）。</text>
+  <text x="60" y="804" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">门槛是它要求 dsh-llm 0.1.6-alpha.1 以上，这台机器是 0.1.5-rc.2。</text>
+
+  <text x="60" y="862" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：三档都走 ACP · dsh 0.1.5-rc.2 · 2026-09-19 / 09-22</text>
+</svg>

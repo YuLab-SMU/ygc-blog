@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#F7F4EE"/>
+  <text x="80" y="68" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">四步，二十六分钟</text>
+  <text x="80" y="104" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">12:19 开始，12:45 deb 落地。真正编译的时间不到五分钟。</text>
+  <line x1="80" y1="132" x2="1120" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="80" y="168" width="240" height="180" rx="10" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="104" y="206" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">01</text>
+  <text x="104" y="238" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">取源码</text>
+  <text x="104" y="270" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">tag desktop-v0.0.32</text>
+  <text x="104" y="298" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">38.7 MB</text>
+  <text x="104" y="326" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#2B6777">镜像 12 秒</text>
+
+  <rect x="363" y="168" width="240" height="180" rx="10" fill="#FFFFFF" stroke="#E07B39" stroke-width="2"/>
+  <text x="387" y="206" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">02</text>
+  <text x="387" y="238" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">bun install</text>
+  <text x="387" y="270" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">npmmirror 源</text>
+  <text x="387" y="298" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">缓存 3.8 GB</text>
+  <text x="387" y="326" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#B85C1E">22 分钟，且是误判</text>
+
+  <rect x="646" y="168" width="240" height="180" rx="10" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="670" y="206" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">03</text>
+  <text x="670" y="238" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">sidecar</text>
+  <text x="670" y="270" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">build:sdk 六个包</text>
+  <text x="670" y="298" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">bun --compile ×3</text>
+  <text x="670" y="326" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#2B6777">约 1 分钟</text>
+
+  <rect x="929" y="168" width="191" height="180" rx="10" fill="#2B6777"/>
+  <text x="953" y="206" font-family="Noto Sans CJK SC" font-size="17" fill="#CFE3E8">04</text>
+  <text x="953" y="238" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#FFFFFF">tauri build</text>
+  <text x="953" y="270" font-family="Noto Sans CJK SC" font-size="16" fill="#CFE3E8">next build 12s</text>
+  <text x="953" y="298" font-family="Noto Sans CJK SC" font-size="16" fill="#CFE3E8">cargo release 1m38s</text>
+  <text x="953" y="326" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#FFFFFF">出 deb</text>
+
+  <text x="80" y="404" font-family="Noto Sans CJK SC" font-size="19" fill="#1F2A33">全程只有一条命令是官方的：</text>
+  <rect x="80" y="424" width="1040" height="72" rx="8" fill="#1F2A33"/>
+  <text x="104" y="454" font-family="DejaVu Sans Mono, monospace" font-size="18" fill="#E8F4F1">tauri build --bundles deb --config src-tauri/tauri.linux-local.conf.json</text>
+  <text x="104" y="482" font-family="DejaVu Sans Mono, monospace" font-size="15" fill="#7FA3AC">那个 conf 只干一件事：把 createUpdaterArtifacts 关掉</text>
+
+  <text x="80" y="536" font-family="Noto Sans CJK SC" font-size="18" fill="#98A4AD">Rust 依赖提前 cargo fetch 过，所以正式编译只花了一分半。</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#F7F4EE"/>
+
+  <text x="70" y="140" font-family="Noto Sans CJK SC" font-size="46" font-weight="700" fill="#1F2A33">把 Cline 接成 sub agent</text>
+  <text x="70" y="196" font-family="Noto Sans CJK SC" font-size="26" fill="#6B7A85">名字里写着免费，但它会静默换掉</text>
+  <line x1="70" y1="232" x2="1130" y2="232" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="70" y="286" width="330" height="146" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="235" y="336" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">点名的模型</text>
+  <text x="235" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#2B6777">~deepseek/deepseek-flash-latest</text>
+  <text x="235" y="410" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">启动参数上钉住</text>
+
+  <line x1="424" y1="359" x2="742" y2="359" stroke="#E07B39" stroke-width="3" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+  <text x="583" y="332" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#E07B39">CLINE_MODEL</text>
+  <text x="583" y="394" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#98A4AD">选不中就悄悄换</text>
+
+  <rect x="746" y="286" width="384" height="146" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="938" y="336" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#1F2A33">会话实际报的</text>
+  <text x="938" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#B85C1E">anthropic/claude-sonnet-5</text>
+  <text x="938" y="410" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#B85C1E">不报错，不提示</text>
+
+  <rect x="70" y="478" width="1060" height="92" rx="12" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="600" y="520" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#B85C1E">你以为在跑免费模型，账单在跑付费模型</text>
+  <text x="600" y="552" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">所以这一档的重点不是接线，是加一道守卫</text>
+
+  <text x="70" y="628" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：cline CLI 3.0.63 · dsh 0.1.5-rc.2 · 账号 guangchuangyu@gmail.com · 2026-09-22</text>
+</svg>

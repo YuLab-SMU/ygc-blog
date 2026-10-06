@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#F7F4EE"/>
+  <text x="80" y="68" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">这个 deb 里装了什么</text>
+  <text x="80" y="104" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">解压后 370 MB，16 个文件。数字来自 dpkg-deb -c 的实际输出。</text>
+  <line x1="80" y1="132" x2="1120" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <text x="80" y="182" font-family="Noto Sans CJK SC" font-size="20" fill="#1F2A33">code-sidecar（Bun 编译的后端）</text>
+  <rect x="440" y="160" width="277" height="30" rx="4" fill="#2B6777"/>
+  <text x="728" y="182" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">122 MB　33%</text>
+
+  <text x="80" y="234" font-family="Noto Sans CJK SC" font-size="20" fill="#1F2A33">remote-helper x86_64（SSH 远端用）</text>
+  <rect x="440" y="212" width="250" height="30" rx="4" fill="#E07B39"/>
+  <text x="701" y="234" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">110 MB　30%</text>
+
+  <text x="80" y="286" font-family="Noto Sans CJK SC" font-size="20" fill="#1F2A33">remote-helper aarch64（SSH 远端用）</text>
+  <rect x="440" y="264" width="249" height="30" rx="4" fill="#E07B39"/>
+  <text x="699" y="286" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">110 MB　30%</text>
+
+  <text x="80" y="338" font-family="Noto Sans CJK SC" font-size="20" fill="#1F2A33">cline-app（Rust 壳，前端已嵌在里面）</text>
+  <rect x="440" y="316" width="56" height="30" rx="4" fill="#2B6777"/>
+  <text x="507" y="338" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">25 MB　6.6%</text>
+
+  <text x="80" y="390" font-family="Noto Sans CJK SC" font-size="20" fill="#1F2A33">图标与 .desktop</text>
+  <rect x="440" y="368" width="7" height="30" rx="2" fill="#C9C2B4"/>
+  <text x="458" y="390" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">2.9 MB　0.8%</text>
+
+  <line x1="80" y1="430" x2="1120" y2="430" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="80" y="472" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#B85C1E">六成体积是两个 SSH remote helper，本机用不到。</text>
+  <text x="80" y="508" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">它们在 tauri.conf.json 里是 bundle.resources，要裁就得改配置重打，</text>
+  <text x="80" y="538" font-family="Noto Sans CJK SC" font-size="19" fill="#6B7A85">或者装完再删文件（包管理器会抱怨，但能用）。我没有动它，先保真。</text>
+</svg>

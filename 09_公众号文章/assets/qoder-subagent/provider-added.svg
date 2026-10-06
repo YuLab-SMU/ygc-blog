@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">加一行之前，先去读别人的代码</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">preset 是所有 profile 共享的，我只想加一行工具，不想连累别人</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="188" width="440" height="240" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="280" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">我要加的那一行</text>
+  <line x1="90" y1="254" x2="470" y2="254" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="280" y="298" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">standard preset 里加</text>
+  <text x="280" y="334" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">subagent_qoder</text>
+  <text x="280" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">agentOptions.model: auto</text>
+  <text x="280" y="406" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">provider: qoder</text>
+
+  <text x="530" y="320" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="28" fill="#E07B39">?</text>
+
+  <rect x="580" y="188" width="460" height="240" rx="14" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="810" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#7A838B">我的担心</text>
+  <line x1="610" y1="254" x2="1010" y2="254" stroke="#DDD7CC" stroke-width="2"/>
+  <text x="810" y="298" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">别的 profile 也用这个 preset</text>
+  <text x="810" y="334" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#7A838B">但那边没有 qoder 这个 provider</text>
+  <text x="810" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">比如 imchat，它连 preset 系统</text>
+  <text x="810" y="406" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">都不挂，本来就不该受影响</text>
+
+  <rect x="1070" y="188" width="470" height="240" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="1305" y="232" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#B85C1E">真出事会是什么样</text>
+  <line x1="1100" y1="254" x2="1510" y2="254" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1305" y="298" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">preset 挂载期抛错</text>
+  <text x="1305" y="334" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">→ 那个 profile 的所有会话开不起来</text>
+  <text x="1305" y="378" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">这个仓库里已经踩过一次</text>
+  <text x="1305" y="406" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" fill="#B85C1E">所以我不想靠感觉回答</text>
+
+  <text x="800" y="486" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#1F2A33">读 dsh-tool-subagent 的实现</text>
+
+  <rect x="60" y="514" width="720" height="150" rx="12" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="420" y="556" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#2B6777">provider 不在的时候</text>
+  <line x1="90" y1="574" x2="750" y2="574" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="420" y="612" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">getProvider 拿到 undefined，不抛错</text>
+  <text x="420" y="644" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">挂一个 subagent/provider-added 监听，等它出现再挂工具</text>
+
+  <rect x="820" y="514" width="720" height="150" rx="12" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="1180" y="556" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#B85C1E">只有这种情况会抛</text>
+  <line x1="850" y1="574" x2="1510" y2="574" stroke="#E8D5C0" stroke-width="2"/>
+  <text x="1180" y="612" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">provider 在，但没声明 agentOptions 能力</text>
+  <text x="1180" y="644" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="18" fill="#B85C1E">而工具行又配了 agentOptions.model</text>
+
+  <rect x="60" y="700" width="1480" height="82" rx="12" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="800" y="750" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="21" font-weight="700" fill="#1F2A33">结论是安全的，依据是我读了它的源码</text>
+
+  <text x="60" y="836" font-family="Noto Sans CJK SC" font-size="18" fill="#4A5A66">共享配置的改动，读一遍别人的代码就有答案；猜一遍，只会得到焦虑。</text>
+  <text x="60" y="868" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">实测：dsh-tool-subagent lib/index.js 的 apply() 与 subagent/provider-added 监听 · dsh 0.1.5-rc.2</text>
+</svg>
