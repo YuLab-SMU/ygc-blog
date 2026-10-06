@@ -45,6 +45,7 @@ jobs:
           cp -a ../YuNotebooks/. ../public-content/
           rm -rf ../public-content/00_biobabble
           rm -rf ../public-content/03_Manuscript/manuscript-draft
+          rm -rf ../public-content/Tools
 
       - name: Build Quartz
         working-directory: blog
