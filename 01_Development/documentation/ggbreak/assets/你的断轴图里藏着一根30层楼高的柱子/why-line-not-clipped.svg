@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Noto Sans CJK SC, WenQuanYi Zen Hei, sans-serif">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <!-- title -->
+  <text x="60" y="72" font-size="34" font-weight="700" fill="#1F2A33">线为什么故意不裁</text>
+  <text x="60" y="108" font-size="21" fill="#6B7A85">polylineGrob 里留着整根线的坐标，读得出来它从哪出去、从哪进来</text>
+  <line x1="60" y1="132" x2="1540" y2="132" stroke="#D8D2C6" stroke-width="2"/>
+
+  <!-- ============ 左侧：两个窗口 + 中间的 space ============ -->
+  <text x="60" y="176" font-size="20" font-weight="700" fill="#1F2A33">一根线穿过断轴</text>
+
+  <!-- 上面的窗口 -->
+  <rect x="60" y="196" width="700" height="150" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="78" y="222" font-size="17" fill="#6B7A85">上面的窗口</text>
+
+  <!-- space 区 -->
+  <rect x="60" y="346" width="700" height="110" fill="#FFF3E6" stroke="#E07B39" stroke-width="2" stroke-dasharray="9,7"/>
+  <text x="78" y="372" font-size="17" fill="#E07B39">space 开出来的那一格</text>
+
+  <!-- 下面的窗口 -->
+  <rect x="60" y="456" width="700" height="150" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="78" y="482" font-size="17" fill="#6B7A85">下面的窗口</text>
+
+  <!-- 整根线的坐标：从下面窗口左下，穿过 space，到上面窗口右上 -->
+  <polyline points="200,596 330,456 400,346 620,214" fill="none" stroke="#4A7FA5" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- 出去 / 进来 两个点 -->
+  <circle cx="330" cy="456" r="11" fill="#E07B39"/>
+  <circle cx="400" cy="346" r="11" fill="#E07B39"/>
+
+  <line x1="330" y1="456" x2="470" y2="530" stroke="#E07B39" stroke-width="2"/>
+  <text x="482" y="537" font-size="18" fill="#E07B39">从这条边出去</text>
+
+  <line x1="400" y1="346" x2="540" y2="300" stroke="#E07B39" stroke-width="2"/>
+  <text x="552" y="307" font-size="18" fill="#E07B39">从这条边进来</text>
+
+  <text x="60" y="648" font-size="18" fill="#1F2A33">柱子裁掉就没了；线只在画的那一刻被 clip，坐标一直是完整的。</text>
+
+  <!-- ============ 右侧：说明面板 ============ -->
+  <rect x="880" y="196" width="660" height="330" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="912" y="238" font-size="24" font-weight="700" fill="#1F2A33">rectGrob 和 polylineGrob</text>
+
+  <text x="912" y="282" font-size="20" fill="#1F2A33">柱子、矩形、多边形，断轴两边本来就<tspan x="912" dy="30">是分开的，各自画各自的就行。</tspan></text>
+
+  <text x="912" y="366" font-size="20" fill="#1F2A33">线是一整根。它跨过断轴的时候，中间<tspan x="912" dy="30">那段既不在上面的窗口，也不在下面的</tspan><tspan x="912" dy="30">窗口，谁都不管它，于是看着就断了。</tspan></text>
+
+  <text x="912" y="486" font-size="20" font-weight="700" fill="#2B6777">所以我把线留着没裁，才补得回来。</text>
+
+  <!-- ============ 底部两格 ============ -->
+  <rect x="60" y="690" width="700" height="150" rx="14" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="92" y="732" font-size="21" font-weight="700" fill="#1F2A33">哪些线能接</text>
+  <text x="92" y="770" font-size="19" fill="#1F2A33">geom_line()、geom_path()、geom_step()</text>
+  <text x="92" y="800" font-size="19" fill="#6B7A85">三种都行，都是 polylineGrob</text>
+
+  <rect x="880" y="690" width="660" height="150" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="912" y="732" font-size="21" font-weight="700" fill="#E07B39">默认是关的</text>
+  <text x="912" y="770" font-size="19" fill="#1F2A33">bridge = FALSE。你不主动开，</text>
+  <text x="912" y="800" font-size="19" fill="#1F2A33">这张图跟你去年存的一模一样。</text>
+</svg>
