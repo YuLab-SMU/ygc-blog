@@ -6,6 +6,24 @@
       <description>Last 10 notes on YGC</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
+    <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
+    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+  </item><item>
+    <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
+    <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
+    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+  </item><item>
+    <title>Guangchuang Yu&#039;s Blog</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
+    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+  </item><item>
     <title>你的断轴图里，藏着一根30层楼高的柱子</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E4%BD%A0%E7%9A%84%E6%96%AD%E8%BD%B4%E5%9B%BE%E9%87%8C%E8%97%8F%E7%9D%80%E4%B8%80%E6%A0%B930%E5%B1%82%E6%A5%BC%E9%AB%98%E7%9A%84%E6%9F%B1%E5%AD%90</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E4%BD%A0%E7%9A%84%E6%96%AD%E8%BD%B4%E5%9B%BE%E9%87%8C%E8%97%8F%E7%9D%80%E4%B8%80%E6%A0%B930%E5%B1%82%E6%A5%BC%E9%AB%98%E7%9A%84%E6%9F%B1%E5%AD%90</guid>
@@ -18,28 +36,10 @@
     <description><![CDATA[  [!一句话版本：ggbreak 的图不是普通的 ggplot 对象，这一个事实同时解释了两件事：两个 scale 一起上会一个嵌在另一个里面，别的拼图包会把断轴静默吃掉。以前它俩都只画错不报错，现在组合非法就在画图前拦住，拼图那条路则从 ggplotGrob() 的根上修好了，套 print() 的土办法可以扔了。] 有人问我：scale_wrap 和 scale_y_break 能不能一起用？不能的话，能不能加这个功能？ 我当时的回答是「不支持」。但我没想到的是，不支持的方式有两种，而我给出的那一种是最坏的。 另一件事是个老 issue，2022 年 3 月提的，原话是「断轴图用 patc... ]]></description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>告别“对着富集列表发呆”！clusterProfiler 引入 AI 多智能体，一键挖掘生物学故事</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
-    <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Thu, 15 Oct 2026 21:26:45 GMT</pubDate>
-  </item><item>
-    <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
-    <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Thu, 15 Oct 2026 21:26:45 GMT</pubDate>
-  </item><item>
-    <title>Guangchuang Yu&#039;s Blog</title>
-    <link>https://quartz.jzhao.xyz/</link>
-    <guid>https://quartz.jzhao.xyz/</guid>
-    <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Thu, 15 Oct 2026 21:26:45 GMT</pubDate>
-  </item><item>
-    <title>图片会躲，图会动：ggimage 这半年</title>
+    <title>图片会躲，图会动，还能点着看：ggimage 这一年</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/ggimage/%E5%9B%BE%E7%89%87%E4%BC%9A%E8%BA%B2%EF%BC%8C%E5%9B%BE%E4%BC%9A%E5%8A%A8%EF%BC%9Aggimage%E8%BF%99%E5%8D%8A%E5%B9%B4</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggimage/%E5%9B%BE%E7%89%87%E4%BC%9A%E8%BA%B2%EF%BC%8C%E5%9B%BE%E4%BC%9A%E5%8A%A8%EF%BC%9Aggimage%E8%BF%99%E5%8D%8A%E5%B9%B4</guid>
-    <description><![CDATA[  [!一句话版本：ggimage 从 0.3.4 走到 0.3.7，挑几个真正影响画图的讲：图片自己躲开重叠、图例里放真图、把图片钉在数据坐标上、用帧数据把图做成动画，外加几个修掉的坑，比如 NA 原来会画出纳米比亚的国旗。] 有人在 GitHub 上提了个 issue，说用 geom_image() 画 GIF 只出第一帧，他想要完整的动画。 这个需求我当时回不了，因为 geom_image() 画的是静态图，一个 raster grob，画完就完了，它压根不知道什么叫时间。 半年过去，0.3.4 走到 0.3.7，这个包攒了不少东西。我不打算念更新日志，只挑几个真正画出来好看的，跑给你看。... ]]></description>
+    <description><![CDATA[  [!一句话版本：ggimage 这一年的更新里，挑几个真正影响画图的讲：图片自己躲开重叠、图片可以只给宽或只给高、图例里放真图、把图片钉在数据坐标上、用帧数据把图做成动画、GIF 拆成帧当原料、鼠标放上去就出数据，外加几个修掉的坑，比如 NA 原来会画出纳米比亚的国旗。] 有人在 GitHub 上提了个 issue，说用 geom_image() 画 GIF 只出第一帧，他想要完整的动画。 这个需求我当时回不了，因为 geom_image() 画的是静态图，一个 raster grob，画完就完了，它压根不知道什么叫时间。 一年过去，这个包攒了不少东西。我不打算念更新日志，只挑几个真正画出来... ]]></description>
     <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>一章书发表：用IOBR系统分析肿瘤微环境</title>
