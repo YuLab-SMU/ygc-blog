@@ -10,19 +10,31 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
   </item><item>
     <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
     <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Fri, 16 Oct 2026 07:33:50 GMT</pubDate>
+    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
+  </item><item>
+    <title>坐标轴截断那点事，一篇说完</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%88%AA%E6%96%AD%E9%82%A3%E7%82%B9%E4%BA%8B%E4%B8%80%E7%AF%87%E8%AF%B4%E5%AE%8C</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%88%AA%E6%96%AD%E9%82%A3%E7%82%B9%E4%BA%8B%E4%B8%80%E7%AF%87%E8%AF%B4%E5%AE%8C</guid>
+    <description><![CDATA[  [!一句话版本：ggbreak 从 0.0.1 到 0.2.x 的截断功能，一篇收齐：scale_x_break() / scale_y_break() 设置断点，同一个轴想切几刀就叠几个；断口可以画斜杠、调缝宽、自定义刻度；scales 决定每段占多宽；分面、双轴、coord_flip()、patchwork 都接得住。] 2021年5月8号，校内杨老师组织的小型会议上，我讲了 ggtree，朱老师问我，枝长特别长的情况下，能不能截断。 我以前是觉得，坐标轴有啥好截断的，做个数据转换（比如 log）就行了。这一问，让我想到数据就单纯只是有 outliers，而 outliers 是有意义的... ]]></description>
+    <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>长图折成几行，挤的地方放大</title>
+    <link>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E9%95%BF%E5%9B%BE%E6%8A%98%E6%88%90%E5%87%A0%E8%A1%8C%E6%8C%A4%E7%9A%84%E5%9C%B0%E6%96%B9%E6%94%BE%E5%A4%A7</link>
+    <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E9%95%BF%E5%9B%BE%E6%8A%98%E6%88%90%E5%87%A0%E8%A1%8C%E6%8C%A4%E7%9A%84%E5%9C%B0%E6%96%B9%E6%94%BE%E5%A4%A7</guid>
+    <description><![CDATA[  [!一句话版本：scale_wrap() 把往右边要空间变成往下边要空间，长坐标轴折成几行，现在分类变量也能用；数据里没有大段空白可截的时候，别用 break，用 scale_x_cut() / scale_y_cut() 直接切片，把挤的那一块拎出来放大。] 往下面要空间 当一个序列型（比如说时间序列）的数据很长的时候，是不容易看到细节的，最主要是打印在A4纸上，空间有限，把它像B图一样，分成几行，就好了，把往右边要空间的需求，变成了往下边要空间。右边空间要不来，但下面有的是。 另一方面，比如时间序列吧，比如新冠疫情的数据吧，分成几行还有一个好处，可以比较不同周期的同一时间点的数据。 这个... ]]></description>
+    <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>你的断轴图里，藏着一根30层楼高的柱子</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E4%BD%A0%E7%9A%84%E6%96%AD%E8%BD%B4%E5%9B%BE%E9%87%8C%E8%97%8F%E7%9D%80%E4%B8%80%E6%A0%B930%E5%B1%82%E6%A5%BC%E9%AB%98%E7%9A%84%E6%9F%B1%E5%AD%90</link>
@@ -53,18 +65,6 @@
     <guid>https://quartz.jzhao.xyz/05_Notebooks/os/workbuddy-linux-wine</guid>
     <description><![CDATA[ 为什么选择 WorkBuddy？ WorkBuddy 是腾讯推出的 AI 办公助手，国际版（workbuddy.ai）能用 GPT-6-Astra，目前限时免费开放多个大模型： DeepSeek 4.1 — 推理能力强劲 混元 3 — 腾讯自研，中文理解优秀 混元 4 Preview — 最新版本，尝鲜体验 限时不限量啊，本着不用白不用的心理，一定要安排上。 workbuddy.ai/invite 你用我的链接，我得100积分，你得350积分，积分当然是拿来换Tokens用的。看到这里，你已经默默地跑去下载使用了，不需要再读下去了。 但我想跑在 Linux 系统里 WorkBuddy 官方只支... ]]></description>
     <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>用RNN识别DNA启动子</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/10-DNA-motif-RNN</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/10-DNA-motif-RNN</guid>
-    <description><![CDATA[ 上次我们用CNN重做了一遍RNN对电影评论分类，这次我们用RNN来重做一遍CNN识别DNA启动子。 这两次”交换作业”是配套的：在《使用CNN对电影评论进行分类》里，CNN抢了RNN的活；这一篇反过来，让LSTM去干CNN最擅长的活。只有把同一个任务交给两个模型各跑一遍，才能看清它们各自的适用边界在哪里。 CNN 用卷积核在序列上滑动，天然擅长局部、位置无关的模式。TATA box 正好是一个长度 6bp 的固定串，出现在哪个位置都算——这几乎是给卷积量身定做的任务。 LSTM 用循环单元一个碱基一个碱基地读过去，靠隐藏状态”记住”前面看过什么，它的强项是长程依赖和变长序列（见《循环神经网络R... ]]></description>
-    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>模型微调</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/13-nt2-frozen-finetune</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/13-nt2-frozen-finetune</guid>
-    <description><![CDATA[ 上一次我们已经做了全量微调，《站在巨人的肩膀上：预训练模型之全量微调》，但是在真实场景中，预训练模型可能很大，全量微调需要为每个参数存梯度 + Adam 优化器状态，搞起来显存/算力都不现实。 更现实的做法是1）把预训练模型给冻结了，我们只训练MLP小头；2）冻结预训练模型的骨干，只解冻最后的k层，那么训练就是这最后的k层 + MLP小头，这是一种折中的方法。 前面已经学习《反向传播》，对冻结微调就很好理解了，冻结的参数就不动了。实际操作就是冻结的参数设 requires_grad = False，而优化器只优化可训练的参数，也就是只包含 requires_grad = True 的参数。其它... ]]></description>
-    <pubDate>Mon, 07 Sep 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
