@@ -10,19 +10,25 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
+    <pubDate>Wed, 21 Oct 2026 13:08:12 GMT</pubDate>
   </item><item>
     <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
     <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
+    <pubDate>Wed, 21 Oct 2026 13:08:12 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Tue, 20 Oct 2026 02:32:07 GMT</pubDate>
+    <pubDate>Wed, 21 Oct 2026 13:08:12 GMT</pubDate>
+  </item><item>
+    <title>环形图，进了 ggplot2</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/ggcircos_%E7%8E%AF%E5%BD%A2%E5%9B%BE%E8%BF%9B%E4%BA%86ggplot2</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/ggcircos_%E7%8E%AF%E5%BD%A2%E5%9B%BE%E8%BF%9B%E4%BA%86ggplot2</guid>
+    <description><![CDATA[  [!一句话版本：ggcircos 把环形布局算成一张角度表，弦、轨道、轴都从这张表读数。于是 facet、legend、patchwork 这些 ggplot2 的基本功，环形图第一次也能用。] 2020 年 7 月，ggtreeExtra 刚能往环形进化树上叠图层，我们就想把同一套办法搬到弦图上。仓库当天就建了。 然后这个坑一放就是六年。 2021 年补上线性布局和 geom_circos()，2022 年支持 tbl_graph，2023 年 3 月提交最后一次改动，之后再没动过。今年 10 月推倒重写，才把它填上。 当年为什么填不上 旧版 DESCRIPTION 的 Imports 有... ]]></description>
+    <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>坐标轴截断那点事，一篇说完</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E5%9D%90%E6%A0%87%E8%BD%B4%E6%88%AA%E6%96%AD%E9%82%A3%E7%82%B9%E4%BA%8B%E4%B8%80%E7%AF%87%E8%AF%B4%E5%AE%8C</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E4%B8%80%E7%AB%A0%E4%B9%A6%E5%8F%91%E8%A1%A8%EF%BC%9A%E7%94%A8IOBR%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E8%82%BF%E7%98%A4%E5%BE%AE%E7%8E%AF%E5%A2%83</guid>
     <description><![CDATA[  [!一句话版本：这本书的新版，第 11 章是 IOBR。同一本书 2020 年的第 11 章也是我写的，那次讲 GOSemSim。这章是一份能照着敲的 protocol：从 count 矩阵一路到生存曲线，十种反卷积、322 个基因集、813 对 ligand-receptor，都在一个包里。] 2020 年，《Stem Cell Transcriptional Networks》里有一章是我写的，讲 GOSemSim，排在书里的第 11 章。今年这本书出了新版，第 11 章还是我写的，只是内容全换了，主角变成 IOBR。 这是 Springer《Methods in Molecular B... ]]></description>
     <pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>我愿称之为 ”越狱版“ WorkBuddy</title>
-    <link>https://quartz.jzhao.xyz/05_Notebooks/os/workbuddy-linux-wine</link>
-    <guid>https://quartz.jzhao.xyz/05_Notebooks/os/workbuddy-linux-wine</guid>
-    <description><![CDATA[ 为什么选择 WorkBuddy？ WorkBuddy 是腾讯推出的 AI 办公助手，国际版（workbuddy.ai）能用 GPT-6-Astra，目前限时免费开放多个大模型： DeepSeek 4.1 — 推理能力强劲 混元 3 — 腾讯自研，中文理解优秀 混元 4 Preview — 最新版本，尝鲜体验 限时不限量啊，本着不用白不用的心理，一定要安排上。 workbuddy.ai/invite 你用我的链接，我得100积分，你得350积分，积分当然是拿来换Tokens用的。看到这里，你已经默默地跑去下载使用了，不需要再读下去了。 但我想跑在 Linux 系统里 WorkBuddy 官方只支... ]]></description>
-    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
