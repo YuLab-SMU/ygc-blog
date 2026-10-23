@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="60" y="78" font-family="Noto Sans CJK SC" font-size="34" font-weight="700" fill="#1F2A33">两个服务，各答一半</text>
+  <text x="60" y="118" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">方向来自 GPSAdb，关系来自 STRING</text>
+  <line x1="60" y1="142" x2="1540" y2="142" stroke="#D8D2C6" stroke-width="2"/>
+
+  <rect x="60" y="190" width="600" height="250" rx="14" fill="#FFFFFF" stroke="#2B6777" stroke-width="3"/>
+  <text x="90" y="240" font-family="Noto Sans CJK SC" font-size="26" font-weight="700" fill="#1F2A33">GPSAdb</text>
+  <text x="630" y="238" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">12 个工具</text>
+  <line x1="90" y1="262" x2="630" y2="262" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="90" y="308" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">答：变了什么，往哪个方向变</text>
+  <text x="90" y="348" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">D20305：上调 274 / 下调 237</text>
+  <text x="90" y="388" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">扰动转录组，一次实验一个数据集</text>
+
+  <rect x="940" y="190" width="600" height="250" rx="14" fill="#FFFFFF" stroke="#E07B39" stroke-width="3"/>
+  <text x="970" y="240" font-family="Noto Sans CJK SC" font-size="26" font-weight="700" fill="#1F2A33">STRING</text>
+  <text x="1510" y="238" text-anchor="end" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">17 个工具</text>
+  <line x1="970" y1="262" x2="1510" y2="262" stroke="#E4E0D7" stroke-width="2"/>
+  <text x="970" y="308" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">答：这些蛋白是不是一个模块</text>
+  <text x="970" y="348" font-family="Noto Sans CJK SC" font-size="20" fill="#4A5A66">20 节点 / 37 条边，p = 8.8e-10</text>
+  <text x="970" y="388" font-family="Noto Sans CJK SC" font-size="17" fill="#98A4AD">蛋白互作 + 富集检验 + 社区划分</text>
+
+  <line x1="360" y1="444" x2="500" y2="536" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="380" y="500" font-family="Noto Sans CJK SC" font-size="17" fill="#2B6777">变的基因</text>
+
+  <line x1="1240" y1="444" x2="1100" y2="536" stroke="#E07B39" stroke-width="3" marker-end="url(#arrowOrange)"/>
+  <text x="1170" y="500" font-family="Noto Sans CJK SC" font-size="17" fill="#E07B39">互作关系</text>
+
+  <rect x="380" y="540" width="840" height="200" rx="14" fill="#FFF3E6" stroke="#E07B39" stroke-width="3"/>
+  <text x="800" y="588" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="22" font-weight="700" fill="#1F2A33">一个扰动带来的变化，是不是一件事</text>
+  <text x="420" y="630" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">上调侧：NF-κB 复合物，三条边都到 0.999</text>
+  <text x="420" y="668" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">下调侧：5 条边，基本成对，不是模块</text>
+  <text x="420" y="706" font-family="Noto Sans CJK SC" font-size="19" fill="#4A5A66">AURKA：唯一同时连两侧的节点，度数 6</text>
+
+  <rect x="60" y="780" width="1480" height="70" rx="12" fill="#EFEBE2" stroke="#C9C2B4" stroke-width="2"/>
+  <text x="90" y="824" font-family="monospace" font-size="18" fill="#4A5A66">combine_mcp_tools(gpsadb = gps, string = string)  →  29 个工具</text>
+</svg>

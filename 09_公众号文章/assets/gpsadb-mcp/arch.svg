@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+
+  <text x="80" y="96" font-family="Noto Sans CJK SC" font-size="36" font-weight="bold" fill="#1F2A33">gpsadb 走的这条链路</text>
+  <text x="80" y="140" font-family="Noto Sans CJK SC" font-size="21" fill="#6B7A85">数据层和传输层分开：换服务端只换一行地址，换传输只换一个客户端</text>
+  <line x1="80" y1="170" x2="1520" y2="170" stroke="#D8D2C6" stroke-width="2"/>
+
+  <!-- Box 1 -->
+  <rect x="60" y="270" width="310" height="180" rx="18" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="90" y="322" font-family="Noto Sans CJK SC" font-size="25" font-weight="bold" fill="#1F2A33">你的 R 脚本</text>
+  <text x="90" y="364" font-family="Noto Sans CJK SC" font-size="18" fill="#2B6777">gpsadb_de()</text>
+  <text x="90" y="394" font-family="Noto Sans CJK SC" font-size="18" fill="#2B6777">gpsadb_query_gene()</text>
+  <text x="90" y="424" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">要的是能直接算的 tibble</text>
+
+  <!-- Box 2 -->
+  <rect x="440" y="270" width="310" height="180" rx="18" fill="#FFFFFF" stroke="#2B6777" stroke-width="2.5"/>
+  <text x="470" y="322" font-family="Noto Sans CJK SC" font-size="25" font-weight="bold" fill="#1F2A33">gpsadb</text>
+  <text x="470" y="360" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">11 个函数，一一对应服务端工具</text>
+  <text x="470" y="392" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">结构化结果转 tibble</text>
+  <text x="470" y="424" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">只管数据，不碰协议</text>
+
+  <!-- Box 3 -->
+  <rect x="820" y="270" width="310" height="180" rx="18" fill="#FFFFFF" stroke="#2B6777" stroke-width="2.5"/>
+  <text x="850" y="322" font-family="Noto Sans CJK SC" font-size="25" font-weight="bold" fill="#1F2A33">aisdk.mcp</text>
+  <text x="850" y="360" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">McpHttpClient</text>
+  <text x="850" y="392" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">Streamable HTTP，一次 POST</text>
+  <text x="850" y="424" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">清单、调用、错误都在这层</text>
+
+  <!-- Box 4 -->
+  <rect x="1200" y="270" width="320" height="180" rx="18" fill="#FFFFFF" stroke="#D8D2C6" stroke-width="2"/>
+  <text x="1230" y="322" font-family="Noto Sans CJK SC" font-size="25" font-weight="bold" fill="#1F2A33">GPSAdb</text>
+  <text x="1230" y="360" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">7665 个扰动实验</text>
+  <text x="1230" y="392" font-family="Noto Sans CJK SC" font-size="18" fill="#6B7A85">7112 个进参考集</text>
+  <text x="1230" y="424" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">42235 个样本</text>
+
+  <!-- arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#2B6777"/>
+    </marker>
+    <marker id="arrowO" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#E07B39"/>
+    </marker>
+  </defs>
+  <line x1="370" y1="360" x2="432" y2="360" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="360" x2="812" y2="360" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="360" x2="1192" y2="360" stroke="#2B6777" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="864" y="252" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">POST https://gpsadb.gzdlab.com/mcp</text>
+  <text x="864" y="232" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">Accept: application/json, text/event-stream</text>
+
+  <!-- old path -->
+  <rect x="820" y="560" width="700" height="120" rx="16" fill="#FFF3E6" stroke="#E07B39" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="850" y="602" font-family="Noto Sans CJK SC" font-size="21" font-weight="bold" fill="#E07B39">老的 HTTP+SSE 客户端连不上</text>
+  <text x="850" y="638" font-family="Noto Sans CJK SC" font-size="18" fill="#1F2A33">它会先 GET 一条长连接等 endpoint 事件，服务端直接回 405</text>
+  <text x="850" y="666" font-family="Noto Sans CJK SC" font-size="17" fill="#6B7A85">Streamable HTTP 只收 POST，没有那条流</text>
+  <line x1="975" y1="556" x2="975" y2="456" stroke="#E07B39" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrowO)"/>
+
+  <!-- note -->
+  <text x="80" y="616" font-family="Noto Sans CJK SC" font-size="19" fill="#1F2A33">$data 是一页 tibble，$meta 是 total 和网页报告地址</text>
+  <text x="80" y="652" font-family="Noto Sans CJK SC" font-size="19" fill="#1F2A33">反查类接口上限 500 条，没有 offset</text>
+  <text x="80" y="688" font-family="Noto Sans CJK SC" font-size="19" fill="#1F2A33">能翻页的只有 search_datasets，每页 200</text>
+
+  <text x="80" y="820" font-family="Noto Sans CJK SC" font-size="16" fill="#6B7A85">数据：GPSAdb 2.0（NAR 2026, doi:10.1093/nar/gkaf1077），CC BY 4.0</text>
+</svg>

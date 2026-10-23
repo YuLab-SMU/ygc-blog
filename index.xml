@@ -10,19 +10,31 @@
     <link>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/clusterProfiler/interpret/multi-agent-interpretation</guid>
     <description><![CDATA[  导读：做完富集分析，面对几十条 KEGG 通路，你是否依然感到迷茫？“细胞周期”和“DNA修复”同时出现意味着什么？核心转录因子是谁？本文将介绍 clusterProfiler 最新引入的“多智能体（Multi-Agent）”解读模式，利用 DeepSeek 等大模型，通过“清洗-侦探-叙事”三步走策略，帮你从枯燥的列表中还原出鲜活的生物学故事。 深夜实验室的“灵魂拷问” 你是否有过这样的经历： 凌晨两点，你终于跑完了 RNA-seq 流程，拿到了差异基因列表。满怀期待地运行了 enrichKEGG，屏幕上跳出了 50 条显著通路： Cell cycle DNA replication Ri... ]]></description>
-    <pubDate>Thu, 22 Oct 2026 15:26:24 GMT</pubDate>
+    <pubDate>Fri, 23 Oct 2026 12:25:51 GMT</pubDate>
   </item><item>
     <title>我刚做了一个叫 edify 的 R 包，想把“教学流程”也写成代码</title>
     <link>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</link>
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/edify/edify-intro</guid>
     <description><![CDATA[ 最近这段时间，我一直在想一件事：我们已经很习惯把分析流程写成代码了，但教学流程其实还没有被真正写成代码。 数据读取、预处理、建模、可视化、报告生成，这些环节在 R 里都已经很自然。我们会写函数，会写 package，会把一整套分析步骤做成可复用工作流。可一旦到了“教别人学会这件事”，很多时候流程又退回到了文档、聊天、截图、会议演示和临场发挥。老师脑子里明明有一套非常清楚的教学路径：先看什么，再做什么，哪里容易错，错了该怎么提醒，什么时候给 hint，什么时候应该让学生自己再想一轮；但这套东西，过去通常没有一个很好的承载形式。 我最近刚做了一个新的 R 包，叫 edify。它想做的事情，说大不大... ]]></description>
-    <pubDate>Thu, 22 Oct 2026 15:26:24 GMT</pubDate>
+    <pubDate>Fri, 23 Oct 2026 12:25:51 GMT</pubDate>
   </item><item>
     <title>Guangchuang Yu&#039;s Blog</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
     <description><![CDATA[ 欢迎来到余光创的博客，主要记录本人在科研工作中的一些经验与思考、科研进展和学习笔记。 课题组主页 主页：yulab-smu.top/ GitHub：github.com/YuLab-SMU 课题组公众号 欢迎关注课题组 公众号：YuLabSMU。. ]]></description>
-    <pubDate>Thu, 22 Oct 2026 15:26:24 GMT</pubDate>
+    <pubDate>Fri, 23 Oct 2026 12:25:51 GMT</pubDate>
+  </item><item>
+    <title>GPSAdb，进了 R</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/gpsadb_%E6%8A%8A%E6%89%B0%E5%8A%A8%E5%AE%9E%E9%AA%8C%E6%8E%A5%E8%BF%9BR</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/gpsadb_%E6%8A%8A%E6%89%B0%E5%8A%A8%E5%AE%9E%E9%AA%8C%E6%8E%A5%E8%BF%9BR</guid>
+    <description><![CDATA[ 昨天我上了9节课，嗓子都要hold不住了，下课已经是晚上快10点钟了，先回办公室，我就看到了果子推送的《GPSAdb 3.0 上线：分析从一分钟缩短到几秒，还能让 AI 助手直接查数据》。然后我继续干了一会活，在我后面骑自行车回家的路上，我就产生了一个想法。 我可以通过这个mcp把数据接入R。 这个想法，其实也不是昨天晚上想的，而是在一年多以前，我和果子就聊过，要把GPSAdb变成R包。这个数据资源进入R，是非常有用的。然后果子说等他有空再和我细聊，然后就一直鸽到现在。 [!一句话版本：GPSAdb 攒了 7665 个基因扰动 RNA-seq 实验（42235 个样本、2810 个被扰动的基因... ]]></description>
+    <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>许愿式分析，一条管道</title>
+    <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/mcp_%E8%AE%B8%E6%84%BF%E5%BC%8F%E5%88%86%E6%9E%90</link>
+    <guid>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/mcp_%E8%AE%B8%E6%84%BF%E5%BC%8F%E5%88%86%E6%9E%90</guid>
+    <description><![CDATA[  [!一句话版本：生物数据库开始提供 MCP 端点，那是给 agent 用的。我把它们接回 R，变成三种能力：直连服务、把多个服务串成管道、用一句话生成整条分析程序。这套东西我管它叫许愿式分析。] 从一个问题开始 假设你在研究 HIF1A，一个管缺氧应答的转录因子。 你想知道三件事。敲低它之后，哪些基因跟着变？这些基因在蛋白层面是不是一个模块？在人体组织里，它们是不是同步表达？ 三个问题，三个数据库：GPSAdb、STRING、GTBAdb。 过去要分别打开三个网站，查、下载，再回 R 里拼。会写脚本的人可以调各自的 API，但三个服务的请求格式并不一样：一个要 JSON 数组，一个要回车分隔... ]]></description>
+    <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
   </item><item>
     <title>环形图，进了 ggplot2</title>
     <link>https://quartz.jzhao.xyz/09_%E5%85%AC%E4%BC%97%E5%8F%B7%E6%96%87%E7%AB%A0/ggcircos_%E7%8E%AF%E5%BD%A2%E5%9B%BE%E8%BF%9B%E4%BA%86ggplot2</link>
@@ -53,18 +65,6 @@
     <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggbreak/%E6%96%AD%E8%BD%B4%E5%9B%BE%E8%B0%81%E9%83%BD%E5%A4%84%E4%B8%8D%E5%A5%BD</guid>
     <description><![CDATA[  [!一句话版本：ggbreak 的图不是普通的 ggplot 对象，这一个事实同时解释了两件事：两个 scale 一起上会一个嵌在另一个里面，别的拼图包会把断轴静默吃掉。以前它俩都只画错不报错，现在组合非法就在画图前拦住，拼图那条路则从 ggplotGrob() 的根上修好了，套 print() 的土办法可以扔了。] 有人问我：scale_wrap 和 scale_y_break 能不能一起用？不能的话，能不能加这个功能？ 我当时的回答是「不支持」。但我没想到的是，不支持的方式有两种，而我给出的那一种是最坏的。 另一件事是个老 issue，2022 年 3 月提的，原话是「断轴图用 patc... ]]></description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>图片会躲，图会动，还能点着看：ggimage 这一年</title>
-    <link>https://quartz.jzhao.xyz/01_Development/documentation/ggimage/%E5%9B%BE%E7%89%87%E4%BC%9A%E8%BA%B2%EF%BC%8C%E5%9B%BE%E4%BC%9A%E5%8A%A8%EF%BC%9Aggimage%E8%BF%99%E5%8D%8A%E5%B9%B4</link>
-    <guid>https://quartz.jzhao.xyz/01_Development/documentation/ggimage/%E5%9B%BE%E7%89%87%E4%BC%9A%E8%BA%B2%EF%BC%8C%E5%9B%BE%E4%BC%9A%E5%8A%A8%EF%BC%9Aggimage%E8%BF%99%E5%8D%8A%E5%B9%B4</guid>
-    <description><![CDATA[  [!一句话版本：ggimage 这一年的更新里，挑几个真正影响画图的讲：图片自己躲开重叠、图片可以只给宽或只给高、图例里放真图、把图片钉在数据坐标上、用帧数据把图做成动画、GIF 拆成帧当原料、鼠标放上去就出数据，外加几个修掉的坑，比如 NA 原来会画出纳米比亚的国旗。] 有人在 GitHub 上提了个 issue，说用 geom_image() 画 GIF 只出第一帧，他想要完整的动画。 这个需求我当时回不了，因为 geom_image() 画的是静态图，一个 raster grob，画完就完了，它压根不知道什么叫时间。 一年过去，这个包攒了不少东西。我不打算念更新日志，只挑几个真正画出来... ]]></description>
-    <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>一章书发表：用IOBR系统分析肿瘤微环境</title>
-    <link>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E4%B8%80%E7%AB%A0%E4%B9%A6%E5%8F%91%E8%A1%A8%EF%BC%9A%E7%94%A8IOBR%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E8%82%BF%E7%98%A4%E5%BE%AE%E7%8E%AF%E5%A2%83</link>
-    <guid>https://quartz.jzhao.xyz/03_Manuscript/NEWS/%E4%B8%80%E7%AB%A0%E4%B9%A6%E5%8F%91%E8%A1%A8%EF%BC%9A%E7%94%A8IOBR%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E8%82%BF%E7%98%A4%E5%BE%AE%E7%8E%AF%E5%A2%83</guid>
-    <description><![CDATA[  [!一句话版本：这本书的新版，第 11 章是 IOBR。同一本书 2020 年的第 11 章也是我写的，那次讲 GOSemSim。这章是一份能照着敲的 protocol：从 count 矩阵一路到生存曲线，十种反卷积、322 个基因集、813 对 ligand-receptor，都在一个包里。] 2020 年，《Stem Cell Transcriptional Networks》里有一章是我写的，讲 GOSemSim，排在书里的第 11 章。今年这本书出了新版，第 11 章还是我写的，只是内容全换了，主角变成 IOBR。 这是 Springer《Methods in Molecular B... ]]></description>
-    <pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
