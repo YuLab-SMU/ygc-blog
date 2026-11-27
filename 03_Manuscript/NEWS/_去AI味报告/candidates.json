@@ -1,0 +1,252 @@
+{
+ "meta": {
+  "n_candidates": 34,
+  "n_rename": 12,
+  "n_cohesion": 13,
+  "n_colon": 9,
+  "n_iso3": 0,
+  "truncated": false
+ },
+ "rename": [
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 10,
+   "para": "第一作者是本科生，通讯是我，徐双斌也在作者名单里。文章在 2026 年第 19 卷第 1 期，372 到 388 页，DOI 是 10.1016/j.cmp.2026.09.003。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 14,
+   "para": "中药网络药理学不缺数据库，也不缺工具，缺的是一条能从头跑到尾的线。药材、成分、靶点、疾病、富集、PPI，每一步都有现成的网页和软件，可你真跑一个课题，就得在它们之间来回导数据，换个来源 gene symbol 还对不上，最后桌上摆着几十上百个靶点，凭什么说哪几个重要？这一步基本靠感觉。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 20,
+   "para": "我翻了一下官方文档站，十章，从按药材名查起（连拼音格式都支持），到 PubChem 的 resolvecid()、getcid() 解析化合物、取化学性质、下载分子结构，到 Open Targets、GeneCards、CTD 拿疾病靶点，SwissTargetPrediction 和 SEA 预测化合物靶点，ivolcano 画火山图，Venn 和 UpSet 取交集，ggtangle 画网络，Sankey 把药材、成分、靶点串成一张图，再往上是 KEGG/GO 的 ORA 和 GSEA。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 22,
+   "para": "数据清洗和 gene symbol 标准化之后的规模也写清楚了：1,808 味药材、2,068 个有靶点关联的化合物、15,889 个人类蛋白靶点。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 28,
+   "para": "从 BATMAN 2.0、TCMIO、NPASS、CTD 这些数据资源进，到 PubMed 预处理、PubChem 注释、组学输入，再到网络构建、富集、PPI、机器学习，最后一格是 AI 辅助分析。富集那格挂的是 clusterProfiler，看到自己写的包被摆进流程里，我就不多说了。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 30,
+   "para": "我看完图的第一个念头是，值钱的不是又多了一种算法，是这些散件终于被放进同一个 R 包，跑完一遍还能原样再跑一遍。能重跑，才谈得上可重复。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 34,
+   "para": "我数了一下，靶点优先级这块给了 19 种 PPI 中心性指标、4 种社区发现算法（Louvain、MCODE、MCL、fast greedy），外加一个可配置的网络扰动框架，文档里举例是 knockout 掉 IL6，看网络前后怎么变。再往上一层是机器学习，LASSO、Random Forest 加 Boruta、SVM-RFE、XGBoost 一起上，最后取 consensus，不是谁的结果顺眼就挑谁。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 36,
+   "para": "第 9 章是 AI 模块，分了解读层、agent 层和 skill 层。tcmagent() 跑一次性任务，tcmchat() 开交互会话，createtcmtaskagent() 可以自己拼 agent，skills 还能自定义。我特意把配置那节看了一遍，官方 OpenAI、Anthropic、DeepSeek 和中转端点都列了，能解读富集对象、PPI 对象，也能起草结果段落。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 38,
+   "para": "AI 把结果写成一段流畅的话，和这段结论站得住，是两码事。文章自己也在结论里留了边界：解读输出要看公共数据库的覆盖度，筛出来的靶点还得靠实验验证。这话我同意，富集分析里的坑我以前写过，换个更会写故事的模型，坑不会自己消失。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 42,
+   "para": "案例是灵芝（Ganoderma lucidum）对脓毒症（sepsis）。TCMDATA 排出 4 个候选靶点，MAPK14、CASP1、ARG1、PPARG，外部疾病数据库、文献证据和分子 docking 都对得上，说明这套流程能给出一个讲得通的起点。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 50,
+   "para": "带学生做工具，我向来不太信一键出结论，更在意数据从哪来、每一步能不能重跑、别人接手能不能改。这个项目由国家级大学生创新训练项目资助，第一作者是 2022 级生信本科生，文档写到十章，把数据清洗、网络分析、可视化和 AI 解读都收进一个 R 包，我觉得这件事本身比那 4 个靶点更值得记一笔。"
+  },
+  {
+   "type": "rename",
+   "file": "draft-v1-humanizer.md",
+   "line": 52,
+   "para": "当然包也有代价。外部数据库一更新，结果就可能跟着变，公共数据的老问题，谁也躲不掉。人生苦短，先把能复现的部分做扎实。"
+  }
+ ],
+ "cohesion": [
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 10,
+   "prev_tail": "课题组 News 页上，9 月添的那一行很短：TCMDATA 在 Current Molecular Pharmacology 发表，恭喜贺楠，2022 级生信本科生",
+   "next_head": "第一作者是本科生，通讯是我，徐双斌也在作者名单里"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 14,
+   "prev_tail": "文章在 2026 年第 19 卷第 1 期，372 到 388 页，DOI 是 10.1016/j.cmp.2026.09.003",
+   "next_head": "中药网络药理学不缺数据库，也不缺工具，缺的是一条能从头跑到尾的线"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 20,
+   "prev_tail": "这一步基本靠感觉",
+   "next_head": "我翻了一下官方文档站，十章，从按药材名查起（连拼音格式都支持），到 PubChem 的 resolvecid()、getcid() 解析化合物、取化学性质、下载分子结构，到 Open Targets、GeneCards、CTD 拿疾病靶点，SwissTargetPrediction 和 SEA 预测化合物靶点，ivolcano 画火山图，Venn 和 UpSet 取交集，ggtangle 画网络，Sankey 把药材、成分、靶点串成一张图，再往上是 KEGG/GO 的 ORA 和 GSEA"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 22,
+   "prev_tail": "我翻了一下官方文档站，十章，从按药材名查起（连拼音格式都支持），到 PubChem 的 resolvecid()、getcid() 解析化合物、取化学性质、下载分子结构，到 Open Targets、GeneCards、CTD 拿疾病靶点，SwissTargetPrediction 和 SEA 预测化合物靶点，ivolcano 画火山图，Venn 和 UpSet 取交集，ggtangle 画网络，Sankey 把药材、成分、靶点串成一张图，再往上是 KEGG/GO 的 ORA 和 GSEA",
+   "next_head": "数据清洗和 gene symbol 标准化之后的规模也写清楚了：1,808 味药材、2,068 个有靶点关联的化合物、15,889 个人类蛋白靶点"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 28,
+   "prev_tail": "数据清洗和 gene symbol 标准化之后的规模也写清楚了：1,808 味药材、2,068 个有靶点关联的化合物、15,889 个人类蛋白靶点",
+   "next_head": "从 BATMAN 2.0、TCMIO、NPASS、CTD 这些数据资源进，到 PubMed 预处理、PubChem 注释、组学输入，再到网络构建、富集、PPI、机器学习，最后一格是 AI 辅助分析"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 30,
+   "prev_tail": "富集那格挂的是 clusterProfiler，看到自己写的包被摆进流程里，我就不多说了",
+   "next_head": "我看完图的第一个念头是，值钱的不是又多了一种算法，是这些散件终于被放进同一个 R 包，跑完一遍还能原样再跑一遍"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 34,
+   "prev_tail": "能重跑，才谈得上可重复",
+   "next_head": "我数了一下，靶点优先级这块给了 19 种 PPI 中心性指标、4 种社区发现算法（Louvain、MCODE、MCL、fast greedy），外加一个可配置的网络扰动框架，文档里举例是 knockout 掉 IL6，看网络前后怎么变"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 36,
+   "prev_tail": "再往上一层是机器学习，LASSO、Random Forest 加 Boruta、SVM-RFE、XGBoost 一起上，最后取 consensus，不是谁的结果顺眼就挑谁",
+   "next_head": "第 9 章是 AI 模块，分了解读层、agent 层和 skill 层"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 38,
+   "prev_tail": "我特意把配置那节看了一遍，官方 OpenAI、Anthropic、DeepSeek 和中转端点都列了，能解读富集对象、PPI 对象，也能起草结果段落",
+   "next_head": "AI 把结果写成一段流畅的话，和这段结论站得住，是两码事"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 42,
+   "prev_tail": "这话我同意，富集分析里的坑我以前写过，换个更会写故事的模型，坑不会自己消失",
+   "next_head": "案例是灵芝（Ganoderma lucidum）对脓毒症（sepsis）"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 46,
+   "prev_tail": "TCMDATA 排出 4 个候选靶点，MAPK14、CASP1、ARG1、PPARG，外部疾病数据库、文献证据和分子 docking 都对得上，说明这套流程能给出一个讲得通的起点",
+   "next_head": "这话得说在前面，免得有人拿着图就去写「灵芝通过某通路治疗脓毒症」"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 50,
+   "prev_tail": "这话得说在前面，免得有人拿着图就去写「灵芝通过某通路治疗脓毒症」",
+   "next_head": "带学生做工具，我向来不太信一键出结论，更在意数据从哪来、每一步能不能重跑、别人接手能不能改"
+  },
+  {
+   "type": "cohesion",
+   "file": "draft-v1-humanizer.md",
+   "line": 52,
+   "prev_tail": "这个项目由国家级大学生创新训练项目资助，第一作者是 2022 级生信本科生，文档写到十章，把数据清洗、网络分析、可视化和 AI 解读都收进一个 R 包，我觉得这件事本身比那 4 个靶点更值得记一笔",
+   "next_head": "当然包也有代价"
+  }
+ ],
+ "colon": [
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 2,
+   "colon_before": "title",
+   "colon_after": " 文章发表：TCMDATA，中药网络药理学那点事",
+   "sentence": "title: 文章发表：TCMDATA，中药网络药理学那点事"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 3,
+   "colon_before": "date",
+   "colon_after": " 2026-11-26",
+   "sentence": "date: 2026-11-26"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 4,
+   "colon_before": "author",
+   "colon_after": " YGC",
+   "sentence": "author: YGC"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 5,
+   "colon_before": "publish",
+   "colon_after": " true",
+   "sentence": "publish: true"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 8,
+   "colon_before": "9 月添的那一行很短",
+   "colon_after": "TCMDATA 在 *Current Molecular Pharmacology* 发表，恭喜贺楠，2022 级生信本",
+   "sentence": "课题组 News 页上，9 月添的那一行很短：TCMDATA 在 *Current Molecular Pharmacology* 发表，恭喜贺楠，2022 级生信本科生。"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 22,
+   "colon_before": "据清洗和 gene symbol 标准化之后的规模也写清楚了",
+   "colon_after": "1,808 味药材、2,068 个有靶点关联的化合物、15,889 个人类蛋白靶点。",
+   "sentence": "数据清洗和 gene symbol 标准化之后的规模也写清楚了：1,808 味药材、2,068 个有靶点关联的化合物、15,889 个人类蛋白靶点。"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 38,
+   "colon_before": "文章自己也在结论里留了边界",
+   "colon_after": "解读输出要看公共数据库的覆盖度，筛出来的靶点还得靠实验验证。这话我同意，富集分析里的坑我以前写过，换个更会写故事的模型，",
+   "sentence": "AI 把结果写成一段流畅的话，和这段结论站得住，是两码事。文章自己也在结论里留了边界：解读输出要看公共数据库的覆盖度，筛出来的靶点还得靠实验验证。这话我同意，富集分析里的坑我以前写过，换个更会写故事的模型，坑不会自己消失。"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 67,
+   "colon_before": "> **Citation",
+   "colon_after": "** He N, Xu S, Mo K, et al. TCMDATA: An integrated R package",
+   "sentence": "> **Citation:** He N, Xu S, Mo K, et al. TCMDATA: An integrated R package for target-oriented network pharmacology analy"
+  },
+  {
+   "type": "colon",
+   "file": "draft-v1-humanizer.md",
+   "line": 67,
+   "colon_before": "r Pharmacology***. 2026, 19(1)",
+   "colon_after": "372-388.",
+   "sentence": "> **Citation:** He N, Xu S, Mo K, et al. TCMDATA: An integrated R package for target-oriented network pharmacology analy"
+  }
+ ],
+ "iso3": []
+}

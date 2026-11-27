@@ -1,0 +1,124 @@
+{
+ "meta": {
+  "篇数": 1,
+  "万汉字": 0.11,
+  "段数": 21,
+  "小标题数": 6
+ },
+ "density": {
+  "翻案腔": 0.0,
+  "提示语冒号": 0.0,
+  "起手式": 0.0,
+  "当…时从句": 0.0,
+  "前置话题壳": 0.0,
+  "句首连接词": 0.0,
+  "顿号并列≥3": 11.299,
+  "过长前置定语": 0.0,
+  "拟人化喻体": 0.0,
+  "概括替代(已否决)": 0.0,
+  "序数词小标题(已否决)": 0.0,
+  "「这意味着」复述(已否决)": 0.0,
+  "空转句引列表(已否决)": 1.883
+ },
+ "char_density": {
+  "破折号": 0.0,
+  "分号": 0.0,
+  "引号": 0.0
+ },
+ "hits": {
+  "翻案腔": [],
+  "提示语冒号": [],
+  "起手式": [],
+  "当…时从句": [],
+  "前置话题壳": [],
+  "句首连接词": [],
+  "顿号并列≥3": [
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 14,
+    "excerpt": "药材、成分、靶点"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 14,
+    "excerpt": "疾病、富集、PPI"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 20,
+    "excerpt": "到 Open Targets、GeneCards、CTD 拿疾病靶点"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 20,
+    "excerpt": "Sankey 把药材、成分、靶点串成一张图"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 28,
+    "excerpt": "从 BATMAN 2.0、TCMIO、NPASS"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 28,
+    "excerpt": "再到网络构建、富集、PPI 与机器学习"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 34,
+    "excerpt": "社区发现算法（Louvain、MCODE、MCL"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 34,
+    "excerpt": "orest 加 Boruta、SVM-RFE、XGBoost 一起上"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 36,
+    "excerpt": "官方 OpenAI、Anthropic、DeepSeek"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 42,
+    "excerpt": "MAPK14、CASP1、ARG1"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 50,
+    "excerpt": "更在意数据从哪来、每一步能不能重跑、别人接手能不能改"
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 50,
+    "excerpt": "把数据清洗、网络分析、可视化和 AI 解读都收进一"
+   }
+  ],
+  "过长前置定语": [],
+  "拟人化喻体": [],
+  "概括替代(已否决)": [],
+  "序数词小标题(已否决)": [],
+  "「这意味着」复述(已否决)": [],
+  "空转句引列表(已否决)": [
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 24,
+    "excerpt": "把这一整条线压成九个模块："
+   },
+   {
+    "file": "draft-v2-lieflat.md",
+    "line": 61,
+    "excerpt": "装一下就能跑："
+   }
+  ]
+ },
+ "syn_hits": [],
+ "structure": {
+  "句长CV": 0.695,
+  "节长CV": 0.834,
+  "小标题/千字": 5.65,
+  "两句同构/百段": 0.0,
+  "三句同构/百段": 0.0,
+  "mtld粗估": 1209
+ }
+}
